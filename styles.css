@@ -1,0 +1,101 @@
+/* General body styling */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #2f2f2f; /* Discord-like dark grey */
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Header styling */
+header {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+header img {
+    width: 150px;
+    transition: transform 0.3s ease;
+}
+
+header img:hover {
+    transform: scale(1.1) rotate(-2deg);
+}
+
+/* Page title text (green) */
+.title-text {
+    color: #70e6b8; /* Mint green */
+    font-size: 20px;
+    margin-top: 10px;
+    text-align: center;
+    font-weight: 600;
+}
+
+/* Chat container with green gradient */
+.chat-container {
+    width: 100%;
+    max-width: 1200px;
+    height: 75vh;
+    margin-top: 20px;
+    position: relative;
+    background: linear-gradient(to bottom, #000000, #ffffff); /* Dark green to mint green */
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Minty AI footer tag */
+.minty-footer-tag {
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(60px);
+    color: #70e6b8;
+    font-size: 12px;
+    pointer-events: none;
+    white-space: nowrap;
+    text-shadow: 0 0 6px rgba(112, 230, 184, 0.8);
+    animation: pulse 2s infinite;
+}
+
+/* Iframe */
+#quickchat-embedded {
+    width: 95%;
+    height: 95%;
+    border-radius: 10px;
+    background-color: #FAF9F6 /* dark green inside chat */
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+    header img { width: 120px; }
+    .chat-container { height: 70vh; }
+}
+
+/* Animations */
+@keyframes pulse {
+    0%, 100% { text-shadow: 0 0 6px rgba(112, 230, 184, 0.8); }
+    50% { text-shadow: 0 0 12px rgba(112, 230, 184, 1); }
+}
+.minty-footer-tag {
+    position: absolute;
+    bottom: 19px;           /* safe distance from bottom */
+    left: 50%;
+    transform: translate(108%, 0); /* center horizontally */
+    color: #000000;        /* same green as your text */
+    font-size: 12px;
+    pointer-events: none;
+    white-space: nowrap;
+    text-shadow: 0 0 6px rgba(112, 230, 184, 0.8);
+    animation: pulse 2s infinite;
+}
+

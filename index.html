@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Minty AI Chatbot</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+<header>
+    <img src="minty.png" alt="Minty AI Logo">
+</header>
+
+<h1 class="page-title">Minty AI: The AI that actually helps you understand.</h1>
+
+<div class="chat-container">
+    <div id="quickchat-embedded"></div>
+    <div class="minty-footer-tag">+ Minty AI</div>
+</div>
+
+<script>
+(function(e,a,d,i,c,t=a.createElement(d)){
+    e[c]=e[c]||function(){(e[c].q=e[c].q||[]).push(arguments)};
+    t.src=i;
+    t.async=1;
+    a.body.appendChild(t);
+})(window,document,"script","https://widget.quickchat.ai/embed.js","_quickchat_embedded");
+
+_quickchat_embedded("host", "app.quickchat.ai");
+
+_quickchat_embedded("init", "mo6r8ou35i", {
+    theme: {
+        type: "dark",
+        primary: "#70e6b8",
+        background: "#135a3c",       // chat container green
+        text: "#ffffff",             // AI text
+        inputBackground: "#0d3d27",
+        inputText: "#ffffff",
+        bubbleUser: "#0a2a1d",
+        bubbleAi: "#1abc9c",
+        bubbleBorder: "#70e6b8",
+        bubbleShadow: "0 2px 8px rgba(112,230,184,0.3)"
+    }
+});
+</script>
+</body>
+</html>
