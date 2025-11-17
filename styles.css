@@ -86,5 +86,34 @@ header img:hover {
     0%, 100% { text-shadow: 0 0 6px rgba(112, 230, 184, 0.8); }
     50% { text-shadow: 0 0 12px rgba(112, 230, 184, 1); }
 }
+/* Navigation Bar */
+.navbar {
+    background-color: #0d3d27;      /* dark green to match your theme */
+    padding: 12px 0;
+    display: flex;
+    justify-content: center;
+    border-bottom: 2px solid #70e6b8;  /* Minty green accent */
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar ul li a {
+    color: #70e6b8;            /* Minty green text */
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 600;
+    transition: 0.2s ease;
+}
+
+.navbar ul li a:hover {
+    color: #ffffff;
+}
+
 
 
