@@ -86,16 +86,5 @@ header img:hover {
     0%, 100% { text-shadow: 0 0 6px rgba(112, 230, 184, 0.8); }
     50% { text-shadow: 0 0 12px rgba(112, 230, 184, 1); }
 }
-.minty-footer-tag {
-    position: absolute;
-    bottom: 19px;           /* safe distance from bottom */
-    left: 50%;
-    transform: translate(108%, 0); /* center horizontally */
-    color: #000000;        /* same green as your text */
-    font-size: 12px;
-    pointer-events: none;
-    white-space: nowrap;
-    text-shadow: 0 0 6px rgba(112, 230, 184, 0.8);
-    animation: pulse 2s infinite;
-}
+
 
