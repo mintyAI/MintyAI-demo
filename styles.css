@@ -1,63 +1,94 @@
-/* =========================================================
-   GLOBAL STYLES
-========================================================= */
-
+/* General body styling */
 body {
     margin: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #2f2f2f;
+    background-color: #2f2f2f; /* Discord-like dark grey */
     color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     min-height: 100vh;
-    overflow-x: hidden;
 }
 
-/* Ensure content always stacks normally */
-main, header, nav {
-    width: 100%;
-}
-
-/* =========================================================
-   HEADER
-========================================================= */
-
+/* Header styling */
 header {
+    width: 100%;
     padding: 20px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.5);
 }
 
 header img {
     width: 150px;
-    display: block;
-    margin: 0 auto;
-    transition: 0.3s ease;
+    transition: transform 0.3s ease;
 }
 
 header img:hover {
     transform: scale(1.1) rotate(-2deg);
 }
 
-/* =========================================================
-   NAVIGATION BAR
-========================================================= */
+/* Page title text (green) */
+.title-text {
+    color: #70e6b8; /* Mint green */
+    font-size: 20px;
+    margin-top: 10px;
+    text-align: center;
+    font-weight: 600;
+}
 
+/* Chat container with green gradient */
+.chat-container {
+    width: 100%;
+    max-width: 1200px;
+    height: 75vh;
+    margin-top: 20px;
+    position: relative;
+    background: linear-gradient(to bottom, #000000, #ffffff); /* Dark green to mint green */
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Iframe */
+#quickchat-embedded {
+    width: 95%;
+    height: 95%;
+    border-radius: 10px;
+    background-color: #FAF9F6 /* dark green inside chat */
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+    header img { width: 120px; }
+    .chat-container { height: 70vh; }
+}
+
+/* Animations */
+@keyframes pulse {
+    0%, 100% { text-shadow: 0 0 6px rgba(112, 230, 184, 0.8); }
+    50% { text-shadow: 0 0 12px rgba(112, 230, 184, 1); }
+}
+/* Smooth Minty Navigation Bar */
 .navbar {
-    background-color: #0d3d27;
+    background-color: #0d3d27;              /* deep green */
     padding: 12px 25px;
-    border-radius: 14px;
-    margin: 20px auto;
-    width: fit-content;
-    border: 2px solid #70e6b8;
-    box-shadow: 0 4px 12px rgba(112,230,184,0.25);
+    border-radius: 14px;                    /* rounded corners */
+    margin: 20px auto;                      /* center horizontally */
+    width: fit-content;                     /* shrink to content */
+    border: 2px solid #70e6b8;              /* mint border */
+    box-shadow: 0 4px 12px rgba(112, 230, 184, 0.25);
 }
 
 .navbar ul {
     list-style: none;
     display: flex;
     gap: 40px;
-    padding: 0;
     margin: 0;
+    padding: 0;
 }
 
 .navbar ul li a {
@@ -67,50 +98,25 @@ header img:hover {
     font-weight: 600;
     padding: 8px 14px;
     border-radius: 10px;
-    transition: 0.2s ease;
+    transition: all 0.25s ease;
 }
 
+/* Hover animation */
 .navbar ul li a:hover {
-    background-color: #1abc9c;
-    color: #0d3d27;
+    background-color: #1abc9c;             /* minty teal */
+    color: #0d3d27;                         /* dark text for contrast */
+    box-shadow: 0 2px 10px rgba(26, 188, 156, 0.35);
 }
-
-/* =========================================================
-   CHATBOT PAGE (index.html)
-========================================================= */
-
-.chat-container {
-    width: 100%;
-    max-width: 1200px;
-    min-height: 70vh !important;
-    background: linear-gradient(to bottom, #000000, #ffffff);
-    border-radius: 12px;
-    margin: 20px auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.6);
-}
-
-#quickchat-embedded {
-    width: 100% !important;
-    height: 100% !important;
-    border: none;
-    border-radius: 12px;
-}
-
-/* =========================================================
-   ABOUT PAGE
-========================================================= */
-
+/* Page Title */
 .page-title {
     font-size: 2rem;
     font-weight: 700;
-    margin: 30px auto 15px;
-    color: #98fbcb;
+    margin: 30px 0 15px;
+    color: #98fbcb; /* Mint color */
     text-align: center;
 }
 
+/* Paragraphs */
 .page-content {
     max-width: 700px;
     margin: 0 auto 20px;
@@ -119,13 +125,33 @@ header img:hover {
     color: #e5e5e5;
 }
 
-/* Back link */
+/* Lists */
+.page-content ul,
+ul.page-content {
+    max-width: 700px;
+    margin: 0 auto 25px;
+    padding-left: 20px;
+}
+
+.page-content li {
+    margin-bottom: 8px;
+    padding-left: 6px;
+}
+
+/* Fun Facts header */
+h2.page-title {
+    margin-top: 40px;
+    font-size: 1.7rem;
+}
+
+/* Back Link */
 .back-link {
     display: block;
     text-align: center;
     margin: 40px auto;
-    color: #2dd4bf;
+    font-size: 1rem;
     text-decoration: none;
+    color: #2dd4bf;
     transition: 0.2s;
 }
 
@@ -133,13 +159,17 @@ header img:hover {
     color: #5ef2dd;
 }
 
-/* =========================================================
-   SECRET CODE SECTION
-========================================================= */
+/* Better spacing for main */
+main {
+    padding: 20px;
+}
+/* ========================================================= */
+/* SECRET CODE SECTION — Matches main Minty dark green theme */
+/* ========================================================= */
 
 #secret-section {
-    background: rgba(13, 61, 39, 0.25);
-    padding: 18px;
+    background: rgba(13, 61, 39, 0.25); /* transparent minty green */
+    padding: 16px;
     border-radius: 12px;
     border: 2px solid #70e6b8;
     width: fit-content;
@@ -147,98 +177,120 @@ header img:hover {
     text-align: center;
 }
 
-#secret-section input {
-    padding: 10px;
-    width: 210px;
-    border-radius: 8px;
-    background: #0d3d27;
-    color: white;
-    border: 2px solid #70e6b8;
-    outline: none;
+#secret-section h2 {
+    color: #70e6b8;
     margin-bottom: 10px;
 }
 
+#secret-section input {
+    padding: 10px;
+    border-radius: 8px;
+    border: 2px solid #70e6b8;
+    background: #0d3d27;
+    color: #ffffff;
+    font-size: 1rem;
+    width: 200px;
+    outline: none;
+}
+
+#secret-section input::placeholder {
+    color: #b7ffe5;
+}
+
+/* BUTTONS — match navbar color */
 #secret-submit,
 #reset-theme {
     padding: 10px 15px;
+    margin: 8px 6px;
     border-radius: 8px;
     background: #0d3d27;
     color: #70e6b8;
     border: 2px solid #70e6b8;
-    cursor: pointer;
-    margin: 5px;
     font-weight: 600;
-    transition: 0.2s;
+    cursor: pointer;
+    transition: 0.25s ease;
 }
 
 #secret-submit:hover,
 #reset-theme:hover {
     background: #1abc9c;
     color: #0d3d27;
+    box-shadow: 0 2px 10px rgba(26, 188, 156, 0.35);
+}
+/* ========================================================= */
+/* THEME CLASS DEFINITIONS — REQUIRED FOR THEMES TO WORK     */
+/* ========================================================= */
+
+/* Transition effect */
+body.theme-transition {
+    transition: background 0.6s ease, color 0.6s ease;
+    filter: brightness(0.85);
 }
 
-/* =========================================================
-   DEVLOGS PAGE
-========================================================= */
-
-.dev-header {
-    text-align: center;
-    padding: 25px;
-}
-
-.dev-header h1 {
-    color: #98fbcb;
-}
-
-.devlogs-container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-.devlog-entry {
-    background: rgba(0,0,0,0.35);
-    padding: 20px;
-    border-radius: 12px;
-    border-left: 4px solid #70e6b8;
-    margin-bottom: 25px;
-}
-
-.devlog-entry h2 {
-    margin: 0;
-    color: #98fbcb;
-}
-
-.dev-date {
-    color: #b7ffe5;
-    font-size: 0.9rem;
-}
-
-/* =========================================================
-   THEMES
-========================================================= */
-
+/* --------------------------- */
+/* 🕷️ SPIDER-MAN THEME — KAREN */
+/* --------------------------- */
 body.karen-theme {
     background-color: #0B0F2A !important;
-    color: #fff;
+    color: #ffffff !important;
 }
 
+.karen-theme .navbar {
+    background-color: #C1121F !important;
+    border-color: #1976D2 !important;
+}
+
+.karen-theme h1,
+.karen-theme h2,
+.karen-theme a {
+    color: #1976D2 !important;
+}
+
+/* -------------------------- */
+/* 🟥 IRON MAN THEME — JARVIS */
+/* -------------------------- */
 body.jarvis-theme {
     background-color: #0A0A0A !important;
-    color: #00E5FF;
+    color: #00E5FF !important;
 }
 
+.jarvis-theme .navbar {
+    background-color: #B30000 !important;
+    border-color: #FFC400 !important;
+}
+
+.jarvis-theme h1,
+.jarvis-theme h2,
+.jarvis-theme a {
+    color: #FFC400 !important;
+}
+
+/* ---------------------------- */
+/* 🤍 DISCORD LIGHT — TALAL     */
+/* ---------------------------- */
 body.talal-theme {
     background-color: #F2F3F5 !important;
-    color: #2E3338;
+    color: #2E3338 !important;
 }
 
+.talal-theme .navbar {
+    background-color: #FFFFFF !important;
+    border-color: #5865F2 !important;
+}
+
+.talal-theme h1,
+.talal-theme h2,
+.talal-theme a {
+    color: #5865F2 !important;
+}
+
+/* Placeholder extra themes */
 body.nova-theme {
-    background-color: #080808 !important;
-    color: #39ff14;
+    background: #080808 !important;
+    color: #39ff14 !important;
 }
 
 body.titan-theme {
-    background-color: #1a1a1a !important;
-    color: #ffae00;
+    background: #1a1a1a !important;
+    color: #ffae00 !important;
 }
