@@ -40,7 +40,7 @@ function applyTheme(themeClass) {
     setTimeout(() => {
         Object.values(themes).forEach(t => body.classList.remove(t));
         body.classList.add(themeClass);
-    }, 20);
+    }, 50);
 
     setTimeout(() => {
         body.classList.remove("theme-transition");
@@ -58,6 +58,7 @@ document.getElementById("secret-submit").addEventListener("click", function () {
     const code = input.value.toLowerCase().trim();
 
     if (themes[code]) {
+        console.log("Applying theme:", themes[code]); // DEBUG
         applyTheme(themes[code]);
         message.textContent = `${code.toUpperCase()} theme activated!`;
         localStorage.setItem("site-theme", code);
