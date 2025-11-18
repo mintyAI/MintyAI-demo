@@ -1,22 +1,25 @@
+/* ========================================================= */
+/* QuickChat init — DO NOT TOUCH                             */
+/* ========================================================= */
 _quickchat_embedded("init", "mo6r8ou35i", {
     theme: {
         type: "dark",
-        primary: "#4acf95",           // minty green accent
-        background: "#4acf95",        // chat background (inside iframe)
+        primary: "#4acf95",
+        background: "#4acf95",
         text: "#ffffff",
         inputBackground: "#2a2a2a",
         inputText: "#ffffff",
         bubbleUser: "#2a2a2a",
-        bubbleAi: "#4acf95",          // AI messages
-        bubbleBorder: "#70e6b8",      // subtle border
+        bubbleAi: "#4acf95",
+        bubbleBorder: "#70e6b8",
         bubbleShadow: "0 2px 8px rgba(76,207,149,0.3)"
     }
 });
-const input = document.getElementById("secret-input");
-const message = document.getElementById("secret-message");
-const body = document.body;
 
-// Secret code system
+/* ========================================================= */
+/* Secret Theme System                                        */
+/* ========================================================= */
+
 const input = document.getElementById("secret-input");
 const message = document.getElementById("secret-message");
 const body = document.body;
@@ -37,8 +40,11 @@ function applyTheme(themeClass) {
     setTimeout(() => {
         Object.values(themes).forEach(t => body.classList.remove(t));
         body.classList.add(themeClass);
+    }, 20);
+
+    setTimeout(() => {
         body.classList.remove("theme-transition");
-    }, 300);
+    }, 600);
 }
 
 /* Load saved theme */
@@ -66,6 +72,3 @@ document.getElementById("reset-theme").addEventListener("click", function () {
     localStorage.removeItem("site-theme");
     message.textContent = "Theme reset to default.";
 });
-
-
-
