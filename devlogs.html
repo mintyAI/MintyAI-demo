@@ -1,52 +1,64 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Minty AI Devlogs</title>
 <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
 
+    <!-- Background Effect Overlay -->
+    <div id="bg-effects"></div>
 
-<div id="bg-effects"></div>
+    <!-- Logo -->
+    <header>
+        <a href="index.html">
+            <img src="minty.png" alt="Minty AI Logo">
+        </a>
+    </header>
 
+    <!-- Navigation -->
+    <nav class="navbar">
+        <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="index.html">Chatbot</a></li>
+            <li><a href="devlogs.html" class="active">Devlogs</a></li>
+        </ul>
+    </nav>
 
-<header>
-<a href="index.html"><img src="minty.png" alt="Minty AI Logo"></a>
-</header>
+    <!-- Devlogs Header -->
+    <header class="dev-header">
+        <h1>Minty AI Devlogs</h1>
+        <p>Updates, improvements, and behind-the-scenes progress.</p>
+    </header>
 
+    <!-- Devlog Entries -->
+    <main class="devlogs-container">
 
-<nav class="navbar">
-<ul>
-<li><a href="about.html">About</a></li>
-<li><a href="index.html">Chatbot</a></li>
-<li><a href="devlogs.html" class="active">Devlogs</a></li>
-</ul>
-</nav>
+        <section class="devlog-entry">
+            <h2>✨ Devlog #1 — Minty AI Multi-Tab Launch!</h2>
+            <p class="dev-date">17/11/2025</p>
+            <p>
+                Added multiple tabs (webpages) for the website!
+                I know it's already expected, but hey, it took us less than a week!
+                Along with that the webpage looks a lot cleaner now. But still planning to make it look nicer.
+            </p>
+        </section>
 
+        <section class="devlog-entry">
+            <h2>🌐 Devlog #2 — Hosting Issues</h2>
+            <p class="dev-date">17/11/2025</p>
+            <p>
+                Hosting started on Netlify, but updating GitHub through it was annoying.
+                Now hosting on GitHub Pages for faster and easier updates.
+            </p>
+        </section>
 
-<header class="dev-header">
-<h1>Minty AI Devlogs</h1>
-<p>Updates, improvements, and behind-the-scenes progress.</p>
-</header>
+    </main>
 
+    <script src="java.js" defer></script>
 
-<main class="devlogs-container">
-<section class="devlog-entry">
-<h2>✨ Devlog #1 — Launch</h2>
-<p class="dev-date">17/11/2025</p>
-<p>Added multi-tab support & cleaned UI.</p>
-</section>
-
-
-<section class="devlog-entry">
-<h2>🌐 Devlog #2 — Hosting Fix</h2>
-<p class="dev-date">17/11/2025</p>
-<p>Moved from Netlify → GitHub Pages for smoother deployment.</p>
-</section>
-</main>
-
-
-<script src="java.js" defer></script>
 </body>
 </html>
