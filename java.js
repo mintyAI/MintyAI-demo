@@ -68,24 +68,3 @@ else quickTheme = { type:"dark", primary:"#70e6b8", background:"#135a3c", text:"
 
 _quickchat_embedded("init", "mo6r8ou35i", { theme: quickTheme });
 }
-
-
-
-
-<!-- ===================== -->
-<!-- 📄 styles.css -->
-<!-- ===================== -->
-/* FIXED Background Layer */
-#bg-effects {
-position: fixed;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-z-index: -1;
-pointer-events: none;
-}
-
-
-/* Entire original CSS preserved */
-/* ... (rest of your styles remain unchanged) ... */
