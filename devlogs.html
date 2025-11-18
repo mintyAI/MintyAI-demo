@@ -1,79 +1,52 @@
-console.log("java.js loaded successfully");
-bgEffects.style.display = "none";
+<!DOCTYPE html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Minty AI Devlogs</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
 
 
-updateQuickChatTheme(themeName);
-}
+<div id="bg-effects"></div>
 
 
-// ================================
-// SECRET CODE HANDLER
-// ================================
-function handleSecret() {
-const code = input.value.trim().toLowerCase();
+<header>
+<a href="index.html"><img src="minty.png" alt="Minty AI Logo"></a>
+</header>
 
 
-if (code === "karen") {
-applyTheme("karen-theme");
-message.textContent = "🕷️ Karen (Spider-Man) theme activated!";
-}
-else if (code === "jarvis") {
-applyTheme("jarvis-theme");
-message.textContent = "🤖 Jarvis (Iron Man) theme activated!";
-}
-else if (code === "talal") {
-applyTheme("talal-theme");
-message.textContent = "✨ Talal (Discord Light) theme activated!";
-}
-else {
-message.textContent = "❌ Incorrect code. Try again.";
-}
-}
+<nav class="navbar">
+<ul>
+<li><a href="about.html">About</a></li>
+<li><a href="index.html">Chatbot</a></li>
+<li><a href="devlogs.html" class="active">Devlogs</a></li>
+</ul>
+</nav>
 
 
-// ================================
-// EVENT LISTENERS
-// ================================
-if (submitBtn && input) {
-submitBtn.addEventListener("click", handleSecret);
-}
+<header class="dev-header">
+<h1>Minty AI Devlogs</h1>
+<p>Updates, improvements, and behind-the-scenes progress.</p>
+</header>
 
 
-if (resetBtn) {
-resetBtn.addEventListener("click", () => {
-clearThemes();
-localStorage.removeItem("minty-theme");
-message.textContent = "Theme reset!";
-console.log("Theme reset");
+<main class="devlogs-container">
+<section class="devlog-entry">
+<h2>✨ Devlog #1 — Launch</h2>
+<p class="dev-date">17/11/2025</p>
+<p>Added multi-tab support & cleaned UI.</p>
+</section>
 
 
-// Option B — show background again
-bgEffects.style.display = "block";
+<section class="devlog-entry">
+<h2>🌐 Devlog #2 — Hosting Fix</h2>
+<p class="dev-date">17/11/2025</p>
+<p>Moved from Netlify → GitHub Pages for smoother deployment.</p>
+</section>
+</main>
 
 
-updateQuickChatTheme(null);
-});
-}
-
-
-// ================================
-// QUICKCHAT THEME UPDATE
-// ================================
-function updateQuickChatTheme(theme) {
-if (typeof _quickchat_embedded !== "function") return;
-
-
-console.log("Updating QuickChat theme:", theme);
-
-
-let quickTheme = {};
-
-
-if (theme === "karen-theme") {
-quickTheme = {
-type: "dark",
-primary: "#1976D2",
-background: "#0B0F2A",
-text: "#ffffff",
-bubbleAi: "#C1121F",
-bubbleUser: "#0a0a0a",
+<script src="java.js" defer></script>
+</body>
+</html>
