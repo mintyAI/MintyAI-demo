@@ -1,64 +1,79 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Minty AI Chatbot</title>
-<link rel="stylesheet" href="styles.css">
-</head>
-<div id="bg-effects"></div>
+
+
 <body>
-<div id="bg-effects"></div>
+<div class="finisher-header" id="bg-effects"></div>
+
+
 <header>
 <a href="index.html"><img src="minty.png" alt="Minty AI Logo"></a>
 </header>
+
+
 <nav class="navbar">
-    <ul>
-        <li><a href="about.html">About</a></li>
-        <li><a href="index.html">Chatbot</a></li>
-        <li><a href="devlogs.html">Devlogs</a></li>
-    </ul>
+<ul>
+<li><a href="about.html">About</a></li>
+<li><a href="index.html" class="active">Chatbot</a></li>
+<li><a href="devlogs.html">Devlogs</a></li>
+</ul>
 </nav>
 
 
 <h1 class="page-title">Minty AI: The AI that actually helps you understand.</h1>
+
+
 <div class="chat-container">
-    <div id="quickchat-embedded"></div>
+<div id="quickchat-embedded"></div>
 </div>
+
+
 <script>
-  (function(e,a,d,i,c,t=a.createElement(d)){e[c]=e[c]||function(){(e[c].q=e[c].q||[]).push(arguments)},t.src=i,t.async=1,a.body.insertAdjacentElement("beforeend",t)})(window,document,"script","https://widget.quickchat.ai/embed.js","_quickchat_embedded");
-  _quickchat_embedded("host", "app.quickchat.ai");
-  _quickchat_embedded("init", "mo6r8ou35i", {
-          theme: {
-        type: "dark",
-        primary: "#70e6b8",
-        background: "#135a3c",       // chat container green
-        text: "#ffffff",             // AI text
-        inputBackground: "#0d3d27",
-        inputText: "#ffffff",
-        bubbleUser: "#0a2a1d",
-        bubbleAi: "#1abc9c",
-        bubbleBorder: "#70e6b8",
-        bubbleShadow: "0 2px 8px rgba(112,230,184,0.3)"
-    }
+(function(e,a,d,i,c,t=a.createElement(d)){
+e[c]=e[c]||function(){(e[c].q=e[c].q||[]).push(arguments)};
+t.src=i; t.async=1;
+a.body.insertAdjacentElement("beforeend",t);
+})(window,document,"script","https://widget.quickchat.ai/embed.js","_quickchat_embedded");
+
+
+_quickchat_embedded("host", "app.quickchat.ai");
+_quickchat_embedded("init", "mo6r8ou35i", {
+theme: {
+type: "dark",
+primary: "#70e6b8",
+background: "#135a3c",
+text: "#ffffff",
+inputBackground: "#0d3d27",
+inputText: "#ffffff",
+bubbleUser: "#0a2a1d",
+bubbleAi: "#1abc9c",
+bubbleBorder: "#70e6b8",
+bubbleShadow: "0 2px 8px rgba(112,230,184,0.3)"
+}
 });
 </script>
+
+
+<script src="finisher-header.es5.min.js"></script>
 <script src="java.js" defer></script>
+
+
+<script>
+new FinisherHeader({
+"count": 5,
+"size": { "min": 900, "max": 1500, "pulse": 0 },
+"speed": { "x": {"min": 0, "max": 0.3}, "y": {"min": 0, "max": 0} },
+"colors": {
+"background": "#000000",
+"particles": ["#4b4b4b", "#737373", "#b7b7b7"]
+},
+"blending": "lighten",
+"opacity": { "center": 0.15, "edge": 0.05 },
+"skew": -2,
+"shapes": ["s"],
+"className": "finisher-header"
+});
+</script>
+
+
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
