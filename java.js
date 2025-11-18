@@ -16,51 +16,56 @@ const input = document.getElementById("secret-input");
 const message = document.getElementById("secret-message");
 const body = document.body;
 
-/* --- Define all secret codes + themes here --- */
+// Secret code system
+const input = document.getElementById("secret-input");
+const message = document.getElementById("secret-message");
+const body = document.body;
+
+/* --- All themes list --- */
 const themes = {
-  "jarvis": "jarvis-theme",
-  "karen": "karen-theme",
-  "nova": "nova-theme",
-  "titan": "titan-theme"
+    "jarvis": "jarvis-theme",  // Iron Man
+    "karen": "karen-theme",    // Spider-Man
+    "talal": "talal-theme",    // Discord Light
+    "nova": "nova-theme",
+    "titan": "titan-theme"
 };
 
-/* ------- Smooth Theme Transition Helper ------- */
+/* Smooth animated transition */
 function applyTheme(themeClass) {
-  body.classList.add("theme-transition");
+    body.classList.add("theme-transition");
 
-  setTimeout(() => {
-    // Remove old themes
-    Object.values(themes).forEach(t => body.classList.remove(t));
-    // Apply new theme
-    body.classList.add(themeClass);
-    // Stop animation glow
-    body.classList.remove("theme-transition");
-  }, 300); // length of fade
+    setTimeout(() => {
+        Object.values(themes).forEach(t => body.classList.remove(t));
+        body.classList.add(themeClass);
+        body.classList.remove("theme-transition");
+    }, 300);
 }
 
-/* ------- Load Saved Theme (localStorage) ------- */
+/* Load saved theme */
 const savedTheme = localStorage.getItem("site-theme");
 if (savedTheme && themes[savedTheme]) {
-  body.classList.add(themes[savedTheme]);
+    body.classList.add(themes[savedTheme]);
 }
 
-/* ------- Button: Submit Secret Code ------- */
+/* Submit code */
 document.getElementById("secret-submit").addEventListener("click", function () {
-  const code = input.value.toLowerCase().trim();
+    const code = input.value.toLowerCase().trim();
 
-  if (themes[code]) {
-    applyTheme(themes[code]);
-    message.textContent = `${code.toUpperCase()} theme activated!`;
-    localStorage.setItem("site-theme", code); // Remember theme
-  } else {
-    message.textContent = "Incorrect code. Try again.";
-  }
+    if (themes[code]) {
+        applyTheme(themes[code]);
+        message.textContent = `${code.toUpperCase()} theme activated!`;
+        localStorage.setItem("site-theme", code);
+    } else {
+        message.textContent = "Incorrect code. Try again.";
+    }
 });
 
-/* ------- Button: Reset Theme ------- */
+/* Reset theme */
 document.getElementById("reset-theme").addEventListener("click", function () {
-  Object.values(themes).forEach(t => body.classList.remove(t));
-  localStorage.removeItem("site-theme");
-  message.textContent = "Theme reset to default.";
+    Object.values(themes).forEach(t => body.classList.remove(t));
+    localStorage.removeItem("site-theme");
+    message.textContent = "Theme reset to default.";
 });
+
+
 
