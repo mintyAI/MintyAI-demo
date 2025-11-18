@@ -20,7 +20,7 @@ body {
     width: 100vw;
     height: 100vh;
     pointer-events: none;
-    z-index: -1;
+    z-index: 0;
 
     background-image: radial-gradient(circle, rgba(112, 230, 184, 0.22) 2px, transparent 2px);
     background-size: 140px 140px;
@@ -236,3 +236,4 @@ body.titan-theme { background: #1a1a1a !important; color: #ffae00 !important; }
     text-align: center;
     padding: 25px;
 }
+
