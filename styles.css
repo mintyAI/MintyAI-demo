@@ -167,6 +167,48 @@ main {
     list-style: disc;
     list-style-position: inside;
 }
+/* ---- Base Theme ---- */
+body {
+  background: #ffffff;
+  color: #222;
+  transition: background 0.6s ease, color 0.6s ease, filter 0.6s ease;
+}
+
+/* ---- Animated Fade ---- */
+body.theme-transition {
+  filter: brightness(0.6);
+}
+
+/* ---- Jarvis Theme ---- */
+body.jarvis-theme {
+  background: #0c0f26;
+  color: #00eaff;
+}
+
+/* ---- Karen Theme ---- */
+body.karen-theme {
+  background: #fff0f6;
+  color: #c4006c;
+}
+
+/* ---- Nova Theme (extra) ---- */
+body.nova-theme {
+  background: #080808;
+  color: #39ff14;
+}
+
+/* ---- Titan Theme (extra) ---- */
+body.titan-theme {
+  background: #1a1a1a;
+  color: #ffae00;
+}
+
+/* message styling */
+#secret-message {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
 
 
 
