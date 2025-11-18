@@ -164,76 +164,61 @@ main {
     padding: 20px;
 }
 /* ========================================================= */
-/* SECRET THEME SYSTEM (Safe Additions Only)                 */
+/* SECRET CODE SECTION — Matches main Minty dark green theme */
 /* ========================================================= */
 
-body.theme-transition {
-    transition: background 0.6s ease, color 0.6s ease;
-    filter: brightness(0.85);
+#secret-section {
+    background: rgba(13, 61, 39, 0.25); /* transparent minty green */
+    padding: 16px;
+    border-radius: 12px;
+    border: 2px solid #70e6b8;
+    width: fit-content;
+    margin: 25px auto;
+    text-align: center;
 }
 
-/* --------------------------------------------------------- */
-/* 🕷️ SPIDER-MAN THEME — KAREN                              */
-/* --------------------------------------------------------- */
-body.karen-theme {
-    background-color: #0B0F2A !important; /* deep NYC navy blue */
-    color: #ffffff !important;
+#secret-section h2 {
+    color: #70e6b8;
+    margin-bottom: 10px;
 }
 
-.karen-theme .navbar {
-    background-color: #C1121F !important; /* Spidey red */
-    border-color: #1976D2 !important;     /* Spidey blue */
+#secret-section input {
+    padding: 10px;
+    border-radius: 8px;
+    border: 2px solid #70e6b8;
+    background: #0d3d27;
+    color: #ffffff;
+    font-size: 1rem;
+    width: 200px;
+    outline: none;
 }
 
-.karen-theme h1,
-.karen-theme h2,
-.karen-theme a {
-    color: #1976D2 !important;
+#secret-section input::placeholder {
+    color: #b7ffe5;
 }
 
-/* --------------------------------------------------------- */
-/* 🟥 IRON MAN THEME — JARVIS                                */
-/* --------------------------------------------------------- */
-body.jarvis-theme {
-    background-color: #0A0A0A !important; /* dark HUD backdrop */
-    color: #00E5FF !important;            /* arc-reactor blue */
+/* BUTTONS — match navbar color */
+#secret-submit,
+#reset-theme {
+    padding: 10px 15px;
+    margin: 8px 6px;
+    border-radius: 8px;
+    background: #0d3d27;
+    color: #70e6b8;
+    border: 2px solid #70e6b8;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.25s ease;
 }
 
-.jarvis-theme .navbar {
-    background-color: #B30000 !important; /* hot rod red */
-    border-color: #FFC400 !important;     /* gold */
+#secret-submit:hover,
+#reset-theme:hover {
+    background: #1abc9c;
+    color: #0d3d27;
+    box-shadow: 0 2px 10px rgba(26, 188, 156, 0.35);
 }
 
-.jarvis-theme h1,
-.jarvis-theme h2,
-.jarvis-theme a {
-    color: #FFC400 !important;
-}
 
-/* --------------------------------------------------------- */
-/* 🤍 DISCORD LIGHT THEME — TALAL                            */
-/* --------------------------------------------------------- */
-body.talal-theme {
-    background-color: #F2F3F5 !important;
-    color: #2E3338 !important;
-}
-
-.talal-theme .navbar {
-    background-color: #FFFFFF !important;
-    border-color: #5865F2 !important; /* Discord blurple */
-}
-
-.talal-theme h1,
-.talal-theme h2,
-.talal-theme a {
-    color: #5865F2 !important;
-}
-
-/* Secret message style */
-#secret-message {
-    margin-top: 10px;
-    font-weight: bold;
-}
 
 
 
