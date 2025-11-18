@@ -294,3 +294,40 @@ body.titan-theme {
     background: #1a1a1a !important;
     color: #ffae00 !important;
 }
+/* =========================================================
+   DEVLOGS PAGE
+========================================================= */
+
+.dev-header {
+    text-align: center;
+    padding: 25px;
+}
+
+.dev-header h1 {
+    color: #98fbcb;
+}
+
+.devlogs-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.devlog-entry {
+    background: rgba(0,0,0,0.35);
+    padding: 20px;
+    border-radius: 12px;
+    border-left: 4px solid #70e6b8;
+    margin-bottom: 25px;
+}
+
+.devlog-entry h2 {
+    margin: 0;
+    color: #98fbcb;
+}
+
+.dev-date {
+    color: #b7ffe5;
+    font-size: 0.9rem;
+}
+
