@@ -53,20 +53,6 @@ header img:hover {
     align-items: center;
 }
 
-/* Minty AI footer tag */
-.minty-footer-tag {
-    position: absolute;
-    bottom: 8px;
-    left: 50%;
-    transform: translateX(60px);
-    color: #70e6b8;
-    font-size: 12px;
-    pointer-events: none;
-    white-space: nowrap;
-    text-shadow: 0 0 6px rgba(112, 230, 184, 0.8);
-    animation: pulse 2s infinite;
-}
-
 /* Iframe */
 #quickchat-embedded {
     width: 95%;
@@ -181,6 +167,7 @@ main {
     list-style: disc;
     list-style-position: inside;
 }
+
 
 
 
