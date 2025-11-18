@@ -1,6 +1,33 @@
 <!DOCTYPE html>
 
 
+<div id="bg-effects"></div>
+
+
+<header>
+<a href="index.html"><img src="minty.png" alt="Minty AI Logo"></a>
+</header>
+
+
+<nav class="navbar">
+<ul>
+<li><a href="about.html" class="active">About</a></li>
+<li><a href="index.html">Chatbot</a></li>
+<li><a href="devlogs.html">Devlogs</a></li>
+</ul>
+</nav>
+
+
+<main>
+<h1 class="page-title">About Minty AI</h1>
+
+
+<p class="page-content">
+Minty AI is an AI developed by Ahmed Aleid and Mohammed Albaiz.
+</p>
+
+
+<p class="page-content">Supported subjects:</p>
 <ul class="page-content">
 <li>English Grammar Book</li>
 <li>Chemistry</li>
@@ -10,49 +37,24 @@
 
 <h2 class="page-title">Fun Facts</h2>
 <ul class="page-content">
-<li>Minty AI is named after Mohammed’s mint plant, Minty.</li>
-<li>This project was revived for WAICY 2025.</li>
+<li>Minty is named after Mohammed’s mint plant.</li>
+<li>Originally started a year before WAICY’s 2025 announcement.</li>
 </ul>
 
 
 <section id="secret-section">
 <h2>Enter Secret Code</h2>
-
-
 <input type="text" id="secret-input" placeholder="Enter secret code..." />
 <button id="secret-submit">Submit</button>
 <button id="reset-theme">Reset Theme</button>
-
-
 <p id="secret-message"></p>
 </section>
 
 
-<a href="index.html" class="back-link">← Back to MintyAI</a>
+<a class="back-link" href="index.html">← Back to MintyAI</a>
 </main>
 
 
-<script src="finisher-header.es5.min.js"></script>
 <script src="java.js" defer></script>
-
-
-<script>
-new FinisherHeader({
-"count": 5,
-"size": { "min": 900, "max": 1500, "pulse": 0 },
-"speed": { "x": {"min": 0, "max": 0.3}, "y": {"min": 0, "max": 0} },
-"colors": {
-"background": "#000000",
-"particles": ["#4b4b4b", "#737373", "#b7b7b7"]
-},
-"blending": "lighten",
-"opacity": { "center": 0.15, "edge": 0.05 },
-"skew": -2,
-"shapes": ["s"],
-"className": "finisher-header"
-});
-</script>
-
-
 </body>
 </html>
