@@ -12,25 +12,27 @@ body {
     overflow-x: hidden;         /* hide horizontal overflow */
 }
 
-/* Particle background */
-body::before {
-    content: "";
+/* Background particle layer */
+#bg-effects {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: radial-gradient(circle, rgba(112, 230, 184, 0.2) 2px, transparent 2px);
-    background-size: 150px 150px;
-    opacity: 0.25;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
     z-index: -1;
-    animation: floatParticles 12s linear infinite;
+
+    background-image: radial-gradient(circle, rgba(112, 230, 184, 0.22) 2px, transparent 2px);
+    background-size: 140px 140px;
+    animation: floatingMint 14s linear infinite;
+    opacity: 0.35;
 }
 
-@keyframes floatParticles {
+@keyframes floatingMint {
     from { transform: translateY(0); }
-    to   { transform: translateY(-200px); }
+    to   { transform: translateY(-180px); }
 }
+
 
 /* Header styling */
 header {
@@ -316,6 +318,7 @@ body.titan-theme {
     background: #1a1a1a !important;
     color: #ffae00 !important;
 }
+
 
 
 
