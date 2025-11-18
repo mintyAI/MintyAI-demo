@@ -8,8 +8,8 @@ body {
     flex-direction: column;
     align-items: center;
     min-height: 100vh;
-    position: relative;         /* required for particle effect */
-    overflow-x: hidden;         /* hide horizontal overflow */
+    position: relative;
+    overflow-x: hidden;
 }
 
 /* Background particle layer */
@@ -33,6 +33,18 @@ body {
     to   { transform: translateY(-180px); }
 }
 
+/* ------------------------------- */
+/* Ensure ALL content is above bg  */
+/* ------------------------------- */
+header,
+.navbar,
+.dev-header,
+.devlogs-container,
+main,
+.chat-container {
+    position: relative;
+    z-index: 1;
+}
 
 /* Header styling */
 header {
@@ -52,23 +64,22 @@ header img:hover {
     transform: scale(1.1) rotate(-2deg);
 }
 
-/* Page title text (green) */
+/* Page title text */
 .title-text {
-    color: #70e6b8; /* Mint green */
+    color: #70e6b8;
     font-size: 20px;
     margin-top: 10px;
     text-align: center;
     font-weight: 600;
 }
 
-/* Chat container with green gradient */
+/* Chat container */
 .chat-container {
     width: 100%;
     max-width: 1200px;
     height: 75vh;
     margin-top: 20px;
-    position: relative;
-    background: linear-gradient(to bottom, #000000, #ffffff); /* Dark green to mint green */
+    background: linear-gradient(to bottom, #000000, #ffffff);
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
@@ -77,12 +88,11 @@ header img:hover {
     align-items: center;
 }
 
-/* Iframe */
 #quickchat-embedded {
     width: 95%;
     height: 95%;
     border-radius: 10px;
-    background-color: #FAF9F6 /* dark green inside chat */
+    background-color: #FAF9F6;
 }
 
 /* Responsive tweaks */
@@ -96,14 +106,15 @@ header img:hover {
     0%, 100% { text-shadow: 0 0 6px rgba(112, 230, 184, 0.8); }
     50% { text-shadow: 0 0 12px rgba(112, 230, 184, 1); }
 }
-/* Smooth Minty Navigation Bar */
+
+/* Navigation Bar */
 .navbar {
-    background-color: #0d3d27;              /* deep green */
+    background-color: #0d3d27;
     padding: 12px 25px;
-    border-radius: 14px;                    /* rounded corners */
-    margin: 20px auto;                      /* center horizontally */
-    width: fit-content;                     /* shrink to content */
-    border: 2px solid #70e6b8;              /* mint border */
+    border-radius: 14px;
+    margin: 20px auto;
+    width: fit-content;
+    border: 2px solid #70e6b8;
     box-shadow: 0 4px 12px rgba(112, 230, 184, 0.25);
 }
 
@@ -125,18 +136,18 @@ header img:hover {
     transition: all 0.25s ease;
 }
 
-/* Hover animation */
 .navbar ul li a:hover {
-    background-color: #1abc9c;             /* minty teal */
-    color: #0d3d27;                         /* dark text for contrast */
+    background-color: #1abc9c;
+    color: #0d3d27;
     box-shadow: 0 2px 10px rgba(26, 188, 156, 0.35);
 }
+
 /* Page Title */
 .page-title {
     font-size: 2rem;
     font-weight: 700;
     margin: 30px 0 15px;
-    color: #98fbcb; /* Mint color */
+    color: #98fbcb;
     text-align: center;
 }
 
@@ -162,13 +173,7 @@ ul.page-content {
     padding-left: 6px;
 }
 
-/* Fun Facts header */
-h2.page-title {
-    margin-top: 40px;
-    font-size: 1.7rem;
-}
-
-/* Back Link */
+/* Back link */
 .back-link {
     display: block;
     text-align: center;
@@ -183,16 +188,13 @@ h2.page-title {
     color: #5ef2dd;
 }
 
-/* Better spacing for main */
 main {
     padding: 20px;
 }
-/* ========================================================= */
-/* SECRET CODE SECTION — Matches main Minty dark green theme */
-/* ========================================================= */
 
+/* Secret section */
 #secret-section {
-    background: rgba(13, 61, 39, 0.25); /* transparent minty green */
+    background: rgba(13, 61, 39, 0.25);
     padding: 16px;
     border-radius: 12px;
     border: 2px solid #70e6b8;
@@ -201,142 +203,36 @@ main {
     text-align: center;
 }
 
-#secret-section h2 {
-    color: #70e6b8;
-    margin-bottom: 10px;
-}
-
-#secret-section input {
-    padding: 10px;
-    border-radius: 8px;
-    border: 2px solid #70e6b8;
-    background: #0d3d27;
-    color: #ffffff;
-    font-size: 1rem;
-    width: 200px;
-    outline: none;
-}
-
-#secret-section input::placeholder {
-    color: #b7ffe5;
-}
-
-/* BUTTONS — match navbar color */
+#secret-section input,
 #secret-submit,
 #reset-theme {
-    padding: 10px 15px;
-    margin: 8px 6px;
     border-radius: 8px;
-    background: #0d3d27;
-    color: #70e6b8;
-    border: 2px solid #70e6b8;
-    font-weight: 600;
-    cursor: pointer;
-    transition: 0.25s ease;
 }
 
-#secret-submit:hover,
-#reset-theme:hover {
-    background: #1abc9c;
-    color: #0d3d27;
-    box-shadow: 0 2px 10px rgba(26, 188, 156, 0.35);
-}
-/* ========================================================= */
-/* THEME CLASS DEFINITIONS — REQUIRED FOR THEMES TO WORK     */
-/* ========================================================= */
-
-/* Transition effect */
+/* Themes (unchanged) */
 body.theme-transition {
     transition: background 0.6s ease, color 0.6s ease;
     filter: brightness(0.85);
 }
 
-/* --------------------------- */
-/* 🕷️ SPIDER-MAN THEME — KAREN */
-/* --------------------------- */
-body.karen-theme {
-    background-color: #0B0F2A !important;
-    color: #ffffff !important;
-}
+body.karen-theme { background-color: #0B0F2A !important; color: #fff !important; }
+.karen-theme .navbar { background-color: #C1121F !important; border-color: #1976D2 !important; }
+.karen-theme h1, .karen-theme h2, .karen-theme a { color: #1976D2 !important; }
 
-.karen-theme .navbar {
-    background-color: #C1121F !important;
-    border-color: #1976D2 !important;
-}
+body.jarvis-theme { background-color: #0A0A0A !important; color: #00E5FF !important; }
+.jarvis-theme .navbar { background-color: #B30000 !important; border-color: #FFC400 !important; }
+.jarvis-theme h1, .jarvis-theme h2, .jarvis-theme a { color: #FFC400 !important; }
 
-.karen-theme h1,
-.karen-theme h2,
-.karen-theme a {
-    color: #1976D2 !important;
-}
+body.talal-theme { background-color: #F2F3F5 !important; color: #2E3338 !important; }
+.talal-theme .navbar { background-color: #FFFFFF !important; border-color: #5865F2 !important; }
+.talal-theme h1, .talal-theme h2, .talal-theme a { color: #5865F2 !important; }
 
-/* -------------------------- */
-/* 🟥 IRON MAN THEME — JARVIS */
-/* -------------------------- */
-body.jarvis-theme {
-    background-color: #0A0A0A !important;
-    color: #00E5FF !important;
-}
+body.nova-theme { background: #080808 !important; color: #39ff14 !important; }
+body.titan-theme { background: #1a1a1a !important; color: #ffae00 !important; }
 
-.jarvis-theme .navbar {
-    background-color: #B30000 !important;
-    border-color: #FFC400 !important;
-}
-
-.jarvis-theme h1,
-.jarvis-theme h2,
-.jarvis-theme a {
-    color: #FFC400 !important;
-}
-
-/* ---------------------------- */
-/* 🤍 DISCORD LIGHT — TALAL     */
-/* ---------------------------- */
-body.talal-theme {
-    background-color: #F2F3F5 !important;
-    color: #2E3338 !important;
-}
-
-.talal-theme .navbar {
-    background-color: #FFFFFF !important;
-    border-color: #5865F2 !important;
-}
-
-.talal-theme h1,
-.talal-theme h2,
-.talal-theme a {
-    color: #5865F2 !important;
-}
-
-/* Placeholder extra themes */
-body.nova-theme {
-    background: #080808 !important;
-    color: #39ff14 !important;
-}
-
-body.titan-theme {
-    background: #1a1a1a !important;
-    color: #ffae00 !important;
-}
+/* Devlog header */
 .dev-header {
     background: transparent !important;
     text-align: center;
     padding: 25px;
-    position: relative;
-    z-index: 1;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
