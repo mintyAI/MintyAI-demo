@@ -16,24 +16,18 @@ _quickchat_embedded("init", "mo6r8ou35i", {
     }
 });
 
-/* ========================================================= */
-/* Secret Theme System                                        */
-/* ========================================================= */
+/* ========== Secret Theme System ========== */
 
 const input = document.getElementById("secret-input");
 const message = document.getElementById("secret-message");
 const body = document.body;
 
-/* --- All themes list --- */
 const themes = {
-    "jarvis": "jarvis-theme",  // Iron Man
-    "karen": "karen-theme",    // Spider-Man
-    "talal": "talal-theme",    // Discord Light
-    "nova": "nova-theme",
-    "titan": "titan-theme"
+    jarvis: "jarvis-theme",
+    karen: "karen-theme",
+    talal: "talal-theme"
 };
 
-/* Smooth animated transition */
 function applyTheme(themeClass) {
     body.classList.add("theme-transition");
 
@@ -44,32 +38,30 @@ function applyTheme(themeClass) {
 
     setTimeout(() => {
         body.classList.remove("theme-transition");
-    }, 600);
+    }, 650);
 }
 
-/* Load saved theme */
 const savedTheme = localStorage.getItem("site-theme");
 if (savedTheme && themes[savedTheme]) {
     body.classList.add(themes[savedTheme]);
 }
 
-/* Submit code */
-document.getElementById("secret-submit").addEventListener("click", function () {
+document.getElementById("secret-submit").addEventListener("click", () => {
     const code = input.value.toLowerCase().trim();
 
     if (themes[code]) {
-        console.log("Applying theme:", themes[code]); // DEBUG
         applyTheme(themes[code]);
         message.textContent = `${code.toUpperCase()} theme activated!`;
         localStorage.setItem("site-theme", code);
     } else {
-        message.textContent = "Incorrect code. Try again.";
+        message.textContent = "Wrong code.";
     }
 });
 
-/* Reset theme */
-document.getElementById("reset-theme").addEventListener("click", function () {
+document.getElementById("reset-theme").addEventListener("click", () => {
     Object.values(themes).forEach(t => body.classList.remove(t));
     localStorage.removeItem("site-theme");
-    message.textContent = "Theme reset to default.";
+    message.textContent = "Theme reset.";
 });
+
+
