@@ -1,151 +1,64 @@
-/* ========================================================= */
-/* GLOBAL LAYOUT + BACKGROUND EFFECT                         */
-/* ========================================================= */
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Minty AI Devlogs</title>
+<link rel="stylesheet" href="styles.css">
+</head>
 
-body {
-    margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #2f2f2f;   /* solid page background */
-    color: #fff;
-    min-height: 100vh;
-    overflow-x: hidden;
-    position: relative;
-}
+<body>
 
-/* Floating mint particle grid ABOVE background but BELOW content */
-#bg-effects {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
+    <!-- Background Effect Overlay -->
+    <div id="bg-effects"></div>
 
-    pointer-events: none;
-    z-index: 0;
+    <!-- Logo -->
+    <header>
+        <a href="index.html">
+            <img src="minty.png" alt="Minty AI Logo">
+        </a>
+    </header>
 
-    background-image: radial-gradient(circle, rgba(112, 230, 184, 0.22) 2px, transparent 2px);
-    background-size: 140px 140px;
-    animation: floatingMint 14s linear infinite;
-    opacity: 0.35;
-}
+    <!-- Navigation -->
+    <nav class="navbar">
+        <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="index.html">Chatbot</a></li>
+            <li><a href="devlogs.html" class="active">Devlogs</a></li>
+        </ul>
+    </nav>
 
-@keyframes floatingMint {
-    from { transform: translateY(0); }
-    to   { transform: translateY(-180px); }
-}
+    <!-- Devlogs Header -->
+    <header class="dev-header">
+        <h1>Minty AI Devlogs</h1>
+        <p>Updates, improvements, and behind-the-scenes progress.</p>
+    </header>
 
-/* Ensure ALL content sits above the effect */
-header,
-.navbar,
-.dev-header,
-.devlogs-container,
-main {
-    position: relative;
-    z-index: 10;
-}
+    <!-- Devlog Entries -->
+    <main class="devlogs-container">
 
-/* ========================================================= */
-/* HEADER + NAVBAR                                            */
-/* ========================================================= */
+        <section class="devlog-entry">
+            <h2>✨ Devlog #1 — Minty AI Multi-Tab Launch!</h2>
+            <p class="dev-date">17/11/2025</p>
+            <p>
+                Added multiple tabs (webpages) for the website!
+                I know it's already expected, but hey, it took us less than a week!
+                Along with that the webpage looks a lot cleaner now. But still planning to make it look nicer.
+            </p>
+        </section>
 
-header {
-    width: 100%;
-    padding: 20px;
-    display: flex;
-    justify-content: center;
-    background: transparent;
-}
+        <section class="devlog-entry">
+            <h2>🌐 Devlog #2 — Hosting Issues</h2>
+            <p class="dev-date">17/11/2025</p>
+            <p>
+                Hosting started on Netlify, but updating GitHub through it was annoying.
+                Now hosting on GitHub Pages for faster and easier updates.
+            </p>
+        </section>
 
-header img {
-    width: 150px;
-    transition: 0.3s ease;
-}
+    </main>
 
-header img:hover {
-    transform: scale(1.1) rotate(-2deg);
-}
+    <script src="java.js" defer></script>
 
-.navbar {
-    background-color: #0d3d27;
-    padding: 12px 25px;
-    border-radius: 14px;
-    margin: 20px auto;
-    width: fit-content;
-    border: 2px solid #70e6b8;
-    box-shadow: 0 4px 12px rgba(112, 230, 184, 0.25);
-}
-
-.navbar ul {
-    list-style: none;
-    display: flex;
-    gap: 40px;
-    margin: 0;
-    padding: 0;
-}
-
-.navbar ul li a {
-    color: #70e6b8;
-    font-size: 1.15rem;
-    font-weight: 600;
-    padding: 8px 14px;
-    border-radius: 10px;
-    text-decoration: none;
-    transition: 0.25s ease;
-}
-
-.navbar ul li a:hover {
-    background-color: #1abc9c;
-    color: #0d3d27;
-}
-
-/* ========================================================= */
-/* DEVLOG PAGE STYLING                                       */
-/* ========================================================= */
-
-.dev-header {
-    text-align: center;
-    padding: 25px;
-}
-
-.dev-header h1 {
-    color: #98fbcb;
-    font-size: 2.2rem;
-}
-
-.dev-header p {
-    color: #e5e5e5;
-}
-
-.devlogs-container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-.devlog-entry {
-    background: rgba(0, 0, 0, 0.35);
-    padding: 20px;
-    border-radius: 12px;
-    border-left: 4px solid #70e6b8;
-    margin-bottom: 25px;
-}
-
-.devlog-entry h2 {
-    margin-top: 0;
-    color: #98fbcb;
-}
-
-.dev-date {
-    color: #b7ffe5;
-    font-size: 0.9rem;
-}
-
-/* ========================================================= */
-/* OPTIONAL: THEMES (same as before)                          */
-/* ========================================================= */
-
-body.karen-theme { background-color: #0B0F2A !important; }
-body.jarvis-theme { background-color: #0A0A0A !important; }
-body.talal-theme { background-color: #F2F3F5 !important; }
-body.nova-theme { background-color: #080808 !important; }
-body.titan-theme { background-color: #1a1a1a !important; }
+</body>
+</html>
