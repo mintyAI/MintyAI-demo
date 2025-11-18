@@ -1,51 +1,24 @@
 /* ========================================================= */
-/* GLOBAL LAYOUT + BACKGROUND EFFECT                         */
+/* GLOBAL LAYOUT                                             */
 /* ========================================================= */
 
 body {
     margin: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #2f2f2f;   /* solid page background */
+    background-color: #2f2f2f;
     color: #fff;
     min-height: 100vh;
     overflow-x: hidden;
+}
+
+/* Content wrapper (ensures layouts behave correctly) */
+main, header, nav, .dev-header, .devlogs-container {
     position: relative;
-}
-
-/* Floating mint particle grid ABOVE background but BELOW content */
-#bg-effects {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-
-    pointer-events: none;
-    z-index: 0;
-
-    background-image: radial-gradient(circle, rgba(112, 230, 184, 0.22) 2px, transparent 2px);
-    background-size: 140px 140px;
-    animation: floatingMint 14s linear infinite;
-    opacity: 0.35;
-}
-
-@keyframes floatingMint {
-    from { transform: translateY(0); }
-    to   { transform: translateY(-180px); }
-}
-
-/* Ensure ALL content sits above the effect */
-header,
-.navbar,
-.dev-header,
-.devlogs-container,
-main {
-    position: relative;
-    z-index: 10;
+    z-index: 1;
 }
 
 /* ========================================================= */
-/* HEADER + NAVBAR                                            */
+/* HEADER + NAVBAR                                           */
 /* ========================================================= */
 
 header {
@@ -53,7 +26,6 @@ header {
     padding: 20px;
     display: flex;
     justify-content: center;
-    background: transparent;
 }
 
 header img {
@@ -98,8 +70,60 @@ header img:hover {
     color: #0d3d27;
 }
 
+/* Active page */
+.navbar ul li a.active {
+    background-color: #70e6b8;
+    color: #0d3d27;
+}
+
 /* ========================================================= */
-/* DEVLOG PAGE STYLING                                       */
+/* PAGE TITLES & TEXT                                        */
+/* ========================================================= */
+
+.page-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 30px 0 15px;
+    color: #98fbcb;
+    text-align: center;
+}
+
+.page-content {
+    max-width: 700px;
+    margin: 0 auto 20px;
+    line-height: 1.6;
+    font-size: 1.05rem;
+    color: #e5e5e5;
+}
+
+ul.page-content,
+.page-content ul {
+    max-width: 700px;
+    margin: 0 auto 25px;
+    padding-left: 20px;
+}
+
+.page-content li {
+    margin-bottom: 8px;
+}
+
+/* Back link */
+.back-link {
+    display: block;
+    text-align: center;
+    margin: 40px auto;
+    font-size: 1rem;
+    text-decoration: none;
+    color: #2dd4bf;
+    transition: 0.2s;
+}
+
+.back-link:hover {
+    color: #5ef2dd;
+}
+
+/* ========================================================= */
+/* DEVLOG PAGE                                               */
 /* ========================================================= */
 
 .dev-header {
@@ -141,13 +165,50 @@ header img:hover {
 }
 
 /* ========================================================= */
-/* OPTIONAL: THEMES (same as before)                          */
+/* SECRET SECTION                                             */
 /* ========================================================= */
 
-body.karen-theme { background-color: #0B0F2A !important; }
-body.jarvis-theme { background-color: #0A0A0A !important; }
-body.talal-theme { background-color: #F2F3F5 !important; }
-body.nova-theme { background-color: #080808 !important; }
-body.titan-theme { background-color: #1a1a1a !important; }
+#secret-section {
+    background: rgba(13, 61, 39, 0.25);
+    padding: 16px;
+    border-radius: 12px;
+    border: 2px solid #70e6b8;
+    width: fit-content;
+    margin: 25px auto;
+    text-align: center;
+}
 
+#secret-section input,
+#secret-submit,
+#reset-theme {
+    border-radius: 8px;
+}
 
+/* ========================================================= */
+/* THEMES                                                    */
+/* ========================================================= */
+
+body.karen-theme {
+    background-color: #0B0F2A !important;
+    color: #ffffff !important;
+}
+
+body.jarvis-theme {
+    background-color: #0A0A0A !important;
+    color: #00E5FF !important;
+}
+
+body.talal-theme {
+    background-color: #F2F3F5 !important;
+    color: #2E3338 !important;
+}
+
+body.nova-theme {
+    background-color: #080808 !important;
+    color: #39ff14 !important;
+}
+
+body.titan-theme {
+    background-color: #1a1a1a !important;
+    color: #ffae00 !important;
+}
