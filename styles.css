@@ -163,52 +163,77 @@ h2.page-title {
 main {
     padding: 20px;
 }
-.page-content li {
-    list-style: disc;
-    list-style-position: inside;
-}
-/* ---- Base Theme ---- */
-body {
-  background: #ffffff;
-  color: #222;
-  transition: background 0.6s ease, color 0.6s ease, filter 0.6s ease;
-}
+/* ========================================================= */
+/* SECRET THEME SYSTEM (Safe Additions Only)                 */
+/* ========================================================= */
 
-/* ---- Animated Fade ---- */
 body.theme-transition {
-  filter: brightness(0.6);
+    transition: background 0.6s ease, color 0.6s ease;
+    filter: brightness(0.85);
 }
 
-/* ---- Jarvis Theme ---- */
-body.jarvis-theme {
-  background: #0c0f26;
-  color: #00eaff;
-}
-
-/* ---- Karen Theme ---- */
+/* --------------------------------------------------------- */
+/* 🕷️ SPIDER-MAN THEME — KAREN                              */
+/* --------------------------------------------------------- */
 body.karen-theme {
-  background: #fff0f6;
-  color: #c4006c;
+    background-color: #0B0F2A !important; /* deep NYC navy blue */
+    color: #ffffff !important;
 }
 
-/* ---- Nova Theme (extra) ---- */
-body.nova-theme {
-  background: #080808;
-  color: #39ff14;
+.karen-theme .navbar {
+    background-color: #C1121F !important; /* Spidey red */
+    border-color: #1976D2 !important;     /* Spidey blue */
 }
 
-/* ---- Titan Theme (extra) ---- */
-body.titan-theme {
-  background: #1a1a1a;
-  color: #ffae00;
+.karen-theme h1,
+.karen-theme h2,
+.karen-theme a {
+    color: #1976D2 !important;
 }
 
-/* message styling */
+/* --------------------------------------------------------- */
+/* 🟥 IRON MAN THEME — JARVIS                                */
+/* --------------------------------------------------------- */
+body.jarvis-theme {
+    background-color: #0A0A0A !important; /* dark HUD backdrop */
+    color: #00E5FF !important;            /* arc-reactor blue */
+}
+
+.jarvis-theme .navbar {
+    background-color: #B30000 !important; /* hot rod red */
+    border-color: #FFC400 !important;     /* gold */
+}
+
+.jarvis-theme h1,
+.jarvis-theme h2,
+.jarvis-theme a {
+    color: #FFC400 !important;
+}
+
+/* --------------------------------------------------------- */
+/* 🤍 DISCORD LIGHT THEME — TALAL                            */
+/* --------------------------------------------------------- */
+body.talal-theme {
+    background-color: #F2F3F5 !important;
+    color: #2E3338 !important;
+}
+
+.talal-theme .navbar {
+    background-color: #FFFFFF !important;
+    border-color: #5865F2 !important; /* Discord blurple */
+}
+
+.talal-theme h1,
+.talal-theme h2,
+.talal-theme a {
+    color: #5865F2 !important;
+}
+
+/* Secret message style */
 #secret-message {
-  margin-top: 10px;
-  font-weight: bold;
+    margin-top: 10px;
+    font-weight: bold;
 }
-
 
 
 
