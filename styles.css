@@ -318,6 +318,14 @@ body.titan-theme {
     background: #1a1a1a !important;
     color: #ffae00 !important;
 }
+.dev-header {
+    background: transparent !important;
+    text-align: center;
+    padding: 25px;
+    position: relative;
+    z-index: 1;
+}
+
 
 
 
