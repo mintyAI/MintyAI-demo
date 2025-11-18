@@ -1,76 +1,79 @@
-<!DOCTYPE html>
+console.log("java.js loaded successfully");
+bgEffects.style.display = "none";
 
 
-<div class="finisher-header" id="bg-effects"></div>
+updateQuickChatTheme(themeName);
+}
 
 
-<header>
-<a href="index.html">
-<img src="minty.png" alt="Minty AI Logo">
-</a>
-</header>
+// ================================
+// SECRET CODE HANDLER
+// ================================
+function handleSecret() {
+const code = input.value.trim().toLowerCase();
 
 
-<nav class="navbar">
-<ul>
-<li><a href="about.html">About</a></li>
-<li><a href="index.html">Chatbot</a></li>
-<li><a href="devlogs.html" class="active">Devlogs</a></li>
-</ul>
-</nav>
+if (code === "karen") {
+applyTheme("karen-theme");
+message.textContent = "🕷️ Karen (Spider-Man) theme activated!";
+}
+else if (code === "jarvis") {
+applyTheme("jarvis-theme");
+message.textContent = "🤖 Jarvis (Iron Man) theme activated!";
+}
+else if (code === "talal") {
+applyTheme("talal-theme");
+message.textContent = "✨ Talal (Discord Light) theme activated!";
+}
+else {
+message.textContent = "❌ Incorrect code. Try again.";
+}
+}
 
 
-<header class="dev-header">
-<h1>Minty AI Devlogs</h1>
-<p>Updates, improvements, and behind-the-scenes progress.</p>
-</header>
+// ================================
+// EVENT LISTENERS
+// ================================
+if (submitBtn && input) {
+submitBtn.addEventListener("click", handleSecret);
+}
 
 
-<main class="devlogs-container">
+if (resetBtn) {
+resetBtn.addEventListener("click", () => {
+clearThemes();
+localStorage.removeItem("minty-theme");
+message.textContent = "Theme reset!";
+console.log("Theme reset");
 
 
-<section class="devlog-entry">
-<h2>✨ Devlog #1 — Minty AI Multi-Tab Launch!</h2>
-<p class="dev-date">17/11/2025</p>
-<p>
-Added multiple tabs and polished layout!
-</p>
-</section>
+// Option B — show background again
+bgEffects.style.display = "block";
 
 
-<section class="devlog-entry">
-<h2>🌐 Devlog #2 — Hosting Issues</h2>
-<p class="dev-date">17/11/2025</p>
-<p>
-Switched from Netlify to GitHub Pages for easier updates.
-</p>
-</section>
-
-
-</main>
-
-
-<script src="finisher-header.es5.min.js"></script>
-<script src="java.js" defer></script>
-
-
-<script>
-new FinisherHeader({
-"count": 5,
-"size": { "min": 900, "max": 1500, "pulse": 0 },
-"speed": { "x": {"min": 0, "max": 0.3}, "y": {"min": 0, "max": 0} },
-"colors": {
-"background": "#000000",
-"particles": ["#4b4b4b", "#737373", "#b7b7b7"]
-},
-"blending": "lighten",
-"opacity": { "center": 0.15, "edge": 0.05 },
-"skew": -2,
-"shapes": ["s"],
-"className": "finisher-header"
+updateQuickChatTheme(null);
 });
-</script>
+}
 
 
-</body>
-</html>
+// ================================
+// QUICKCHAT THEME UPDATE
+// ================================
+function updateQuickChatTheme(theme) {
+if (typeof _quickchat_embedded !== "function") return;
+
+
+console.log("Updating QuickChat theme:", theme);
+
+
+let quickTheme = {};
+
+
+if (theme === "karen-theme") {
+quickTheme = {
+type: "dark",
+primary: "#1976D2",
+background: "#0B0F2A",
+text: "#ffffff",
+bubbleAi: "#C1121F",
+bubbleUser: "#0a0a0a",
