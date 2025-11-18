@@ -1,24 +1,25 @@
-/* General body styling */
+/* ========================================================= */
+/* GLOBAL LAYOUT + BACKGROUND EFFECT                         */
+/* ========================================================= */
+
 body {
     margin: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #2f2f2f;
+    background-color: #2f2f2f;   /* solid page background */
     color: #fff;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     min-height: 100vh;
-    position: relative;
     overflow-x: hidden;
+    position: relative;
 }
 
-/* Background particle layer */
+/* Floating mint particle grid ABOVE background but BELOW content */
 #bg-effects {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
+
     pointer-events: none;
     z-index: 0;
 
@@ -33,81 +34,37 @@ body {
     to   { transform: translateY(-180px); }
 }
 
-/* ------------------------------- */
-/* Ensure ALL content is above bg  */
-/* ------------------------------- */
+/* Ensure ALL content sits above the effect */
 header,
 .navbar,
 .dev-header,
 .devlogs-container,
-main,
-.chat-container {
+main {
     position: relative;
-    z-index: 1;
+    z-index: 10;
 }
 
-/* Header styling */
+/* ========================================================= */
+/* HEADER + NAVBAR                                            */
+/* ========================================================= */
+
 header {
     width: 100%;
     padding: 20px;
     display: flex;
     justify-content: center;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    background: transparent;
 }
 
 header img {
     width: 150px;
-    transition: transform 0.3s ease;
+    transition: 0.3s ease;
 }
 
 header img:hover {
     transform: scale(1.1) rotate(-2deg);
 }
 
-/* Page title text */
-.title-text {
-    color: #70e6b8;
-    font-size: 20px;
-    margin-top: 10px;
-    text-align: center;
-    font-weight: 600;
-}
-
-/* Chat container */
-.chat-container {
-    width: 100%;
-    max-width: 1200px;
-    height: 75vh;
-    margin-top: 20px;
-    background: linear-gradient(to bottom, #000000, #ffffff);
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#quickchat-embedded {
-    width: 95%;
-    height: 95%;
-    border-radius: 10px;
-    background-color: #FAF9F6;
-}
-
-/* Responsive tweaks */
-@media (max-width: 768px) {
-    header img { width: 120px; }
-    .chat-container { height: 70vh; }
-}
-
-/* Animations */
-@keyframes pulse {
-    0%, 100% { text-shadow: 0 0 6px rgba(112, 230, 184, 0.8); }
-    50% { text-shadow: 0 0 12px rgba(112, 230, 184, 1); }
-}
-
-/* Navigation Bar */
 .navbar {
     background-color: #0d3d27;
     padding: 12px 25px;
@@ -128,112 +85,67 @@ header img:hover {
 
 .navbar ul li a {
     color: #70e6b8;
-    text-decoration: none;
     font-size: 1.15rem;
     font-weight: 600;
     padding: 8px 14px;
     border-radius: 10px;
-    transition: all 0.25s ease;
+    text-decoration: none;
+    transition: 0.25s ease;
 }
 
 .navbar ul li a:hover {
     background-color: #1abc9c;
     color: #0d3d27;
-    box-shadow: 0 2px 10px rgba(26, 188, 156, 0.35);
 }
 
-/* Page Title */
-.page-title {
-    font-size: 2rem;
-    font-weight: 700;
-    margin: 30px 0 15px;
-    color: #98fbcb;
-    text-align: center;
-}
+/* ========================================================= */
+/* DEVLOG PAGE STYLING                                       */
+/* ========================================================= */
 
-/* Paragraphs */
-.page-content {
-    max-width: 700px;
-    margin: 0 auto 20px;
-    line-height: 1.6;
-    font-size: 1.05rem;
-    color: #e5e5e5;
-}
-
-/* Lists */
-.page-content ul,
-ul.page-content {
-    max-width: 700px;
-    margin: 0 auto 25px;
-    padding-left: 20px;
-}
-
-.page-content li {
-    margin-bottom: 8px;
-    padding-left: 6px;
-}
-
-/* Back link */
-.back-link {
-    display: block;
-    text-align: center;
-    margin: 40px auto;
-    font-size: 1rem;
-    text-decoration: none;
-    color: #2dd4bf;
-    transition: 0.2s;
-}
-
-.back-link:hover {
-    color: #5ef2dd;
-}
-
-main {
-    padding: 20px;
-}
-
-/* Secret section */
-#secret-section {
-    background: rgba(13, 61, 39, 0.25);
-    padding: 16px;
-    border-radius: 12px;
-    border: 2px solid #70e6b8;
-    width: fit-content;
-    margin: 25px auto;
-    text-align: center;
-}
-
-#secret-section input,
-#secret-submit,
-#reset-theme {
-    border-radius: 8px;
-}
-
-/* Themes (unchanged) */
-body.theme-transition {
-    transition: background 0.6s ease, color 0.6s ease;
-    filter: brightness(0.85);
-}
-
-body.karen-theme { background-color: #0B0F2A !important; color: #fff !important; }
-.karen-theme .navbar { background-color: #C1121F !important; border-color: #1976D2 !important; }
-.karen-theme h1, .karen-theme h2, .karen-theme a { color: #1976D2 !important; }
-
-body.jarvis-theme { background-color: #0A0A0A !important; color: #00E5FF !important; }
-.jarvis-theme .navbar { background-color: #B30000 !important; border-color: #FFC400 !important; }
-.jarvis-theme h1, .jarvis-theme h2, .jarvis-theme a { color: #FFC400 !important; }
-
-body.talal-theme { background-color: #F2F3F5 !important; color: #2E3338 !important; }
-.talal-theme .navbar { background-color: #FFFFFF !important; border-color: #5865F2 !important; }
-.talal-theme h1, .talal-theme h2, .talal-theme a { color: #5865F2 !important; }
-
-body.nova-theme { background: #080808 !important; color: #39ff14 !important; }
-body.titan-theme { background: #1a1a1a !important; color: #ffae00 !important; }
-
-/* Devlog header */
 .dev-header {
-    background: transparent !important;
     text-align: center;
     padding: 25px;
 }
 
+.dev-header h1 {
+    color: #98fbcb;
+    font-size: 2.2rem;
+}
+
+.dev-header p {
+    color: #e5e5e5;
+}
+
+.devlogs-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.devlog-entry {
+    background: rgba(0, 0, 0, 0.35);
+    padding: 20px;
+    border-radius: 12px;
+    border-left: 4px solid #70e6b8;
+    margin-bottom: 25px;
+}
+
+.devlog-entry h2 {
+    margin-top: 0;
+    color: #98fbcb;
+}
+
+.dev-date {
+    color: #b7ffe5;
+    font-size: 0.9rem;
+}
+
+/* ========================================================= */
+/* OPTIONAL: THEMES (same as before)                          */
+/* ========================================================= */
+
+body.karen-theme { background-color: #0B0F2A !important; }
+body.jarvis-theme { background-color: #0A0A0A !important; }
+body.talal-theme { background-color: #F2F3F5 !important; }
+body.nova-theme { background-color: #080808 !important; }
+body.titan-theme { background-color: #1a1a1a !important; }
