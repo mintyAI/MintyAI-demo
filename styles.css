@@ -165,24 +165,83 @@ ul.page-content,
 }
 
 /* ========================================================= */
-/* SECRET SECTION                                             */
+/* SECRET CODE SECTION – FULL RESTORED STYLING               */
 /* ========================================================= */
 
 #secret-section {
-    background: rgba(13, 61, 39, 0.25);
-    padding: 16px;
-    border-radius: 12px;
+    background: rgba(13, 61, 39, 0.35);
+    padding: 20px;
+    border-radius: 14px;
     border: 2px solid #70e6b8;
-    width: fit-content;
-    margin: 25px auto;
+    width: 320px;
+    margin: 35px auto;
     text-align: center;
+    backdrop-filter: blur(4px);
+    box-shadow: 0 4px 12px rgba(0, 255, 170, 0.15);
 }
 
-#secret-section input,
+#secret-section h2 {
+    margin-top: 0;
+    color: #98fbcb;
+}
+
+/* Input box */
+#secret-input {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 12px;
+
+    background: rgba(0, 0, 0, 0.3);
+    border: 2px solid #70e6b8;
+    border-radius: 10px;
+
+    font-size: 1rem;
+    color: #d4fff1;
+
+    transition: 0.25s ease;
+}
+
+#secret-input:focus {
+    outline: none;
+    border-color: #5ef2dd;
+    background: rgba(0, 0, 0, 0.45);
+    box-shadow: 0 0 6px #70e6b8;
+}
+
+/* Buttons (submit + reset) */
 #secret-submit,
 #reset-theme {
-    border-radius: 8px;
+    width: 45%;
+    padding: 10px;
+    margin: 6px 4px;
+
+    background: #70e6b8;
+    color: #0d3d27;
+
+    border: none;
+    border-radius: 10px;
+
+    font-size: 0.95rem;
+    font-weight: 600;
+
+    cursor: pointer;
+    transition: 0.25s ease;
 }
+
+#secret-submit:hover,
+#reset-theme:hover {
+    background: #5ef2dd;
+    box-shadow: 0 2px 10px rgba(112, 230, 184, 0.3);
+}
+
+/* Feedback text */
+#secret-message {
+    margin-top: 10px;
+    font-size: 0.95rem;
+    color: #98fbcb;
+    min-height: 18px; /* prevents layout shift */
+}
+
 
 /* ========================================================= */
 /* THEMES                                                    */
@@ -212,3 +271,4 @@ body.titan-theme {
     background-color: #1a1a1a !important;
     color: #ffae00 !important;
 }
+
