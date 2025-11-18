@@ -1,59 +1,62 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Minty AI</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
 
-
+<body>
 <div id="bg-effects"></div>
-
-
 <header>
-<a href="index.html"><img src="minty.png" alt="Minty AI Logo"></a>
+    <a href="index.html">
+        <img src="minty.png" alt="Minty AI Logo">
+    </a>
 </header>
 
-
 <nav class="navbar">
-<ul>
-<li><a href="about.html" class="active">About</a></li>
-<li><a href="index.html">Chatbot</a></li>
-<li><a href="devlogs.html">Devlogs</a></li>
-</ul>
+    <ul>
+        <li><a href="about.html" class="active">About</a></li>
+        <li><a href="index.html">Chatbot</a></li>
+        <li><a href="devlogs.html">Devlogs</a></li>
+    </ul>
 </nav>
 
-
 <main>
-<h1 class="page-title">About Minty AI</h1>
+    <h1 class="page-title">About Minty AI</h1>
 
+    <p class="page-content">
+        Minty AI is an AI developed by Ahmed Aleid and Mohammed Albaiz. Its main goal is to help you understand the curriculum in a clearer and simpler way.
+    </p>
 
-<p class="page-content">
-Minty AI is an AI developed by Ahmed Aleid and Mohammed Albaiz.
-</p>
+    <p class="page-content">Supported subjects:</p>
 
+    <ul class="page-content">
+        <li>English Grammar Book</li>
+        <li>Chemistry</li>
+        <li>Biology</li>
+    </ul>
 
-<p class="page-content">Supported subjects:</p>
-<ul class="page-content">
-<li>English Grammar Book</li>
-<li>Chemistry</li>
-<li>Biology</li>
-</ul>
+    <h2 class="page-title">Fun Facts</h2>
 
-
-<h2 class="page-title">Fun Facts</h2>
-<ul class="page-content">
-<li>Minty is named after Mohammed’s mint plant.</li>
-<li>Originally started a year before WAICY’s 2025 announcement.</li>
-</ul>
-
-
+    <ul class="page-content">
+        <li>Minty AI is named after Mohammed’s mint plant, Minty.</li>
+        <li>This project originally started last year, not because of WAICY. The idea came back after seeing WAICY announce their 2025 competition, which encouraged us to update it and improve it.</li>
+    </ul>
+    
 <section id="secret-section">
-<h2>Enter Secret Code</h2>
-<input type="text" id="secret-input" placeholder="Enter secret code..." />
-<button id="secret-submit">Submit</button>
-<button id="reset-theme">Reset Theme</button>
-<p id="secret-message"></p>
+    <h2>Enter Secret Code</h2>
+
+    <input type="text" id="secret-input" placeholder="Enter secret code..." />
+    <button id="secret-submit">Submit</button>
+    <button id="reset-theme">Reset Theme</button>
+
+    <p id="secret-message"></p>
 </section>
 
-
-<a class="back-link" href="index.html">← Back to MintyAI</a>
+    <a href="index.html" class="back-link">← Back to MintyAI</a>
 </main>
-
 
 <script src="java.js" defer></script>
 </body>
