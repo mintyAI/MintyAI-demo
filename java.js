@@ -77,6 +77,10 @@ function handleSecret() {
     }
     else if (code === "talal") {
         applyTheme("talal-theme");
+        message.textContent = "✨ Talal theme activated!";
+    }
+    else if (code === "titan") {
+        applyTheme("talal-theme");
         message.textContent = "✨ Talal (Discord Light) theme activated!";
     }
     else {
@@ -159,3 +163,4 @@ function updateQuickChatTheme(theme) {
 
     _quickchat_embedded("init", "mo6r8ou35i", { theme: quickTheme });
 }
+
