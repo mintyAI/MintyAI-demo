@@ -1,13 +1,15 @@
 console.log("java.js loaded successfully");
 
 // ================================
-//  ELEMENTS (safe on all pages)
+//  ELEMENTS
 // ================================
 const input = document.getElementById("secret-input");
 const submitBtn = document.getElementById("secret-submit");
 const resetBtn = document.getElementById("reset-theme");
 const message = document.getElementById("secret-message");
 
+const video = document.getElementById("bg-video");
+const source = document.getElementById("bg-source");
 
 // ================================
 //  APPLY SAVED THEME
@@ -25,9 +27,8 @@ function applySavedTheme() {
 
 applySavedTheme();
 
-
 // ================================
-//  CLEAR ALL THEMES
+//  CLEAR ALL THEMES (fixed)
 // ================================
 function clearThemes() {
     document.body.classList.remove(
@@ -35,31 +36,44 @@ function clearThemes() {
         "jarvis-theme",
         "talal-theme",
         "nova-theme",
-        "titan-theme"
+        "titan-theme",
+        "bg1-theme",
+        "bg2-theme",
+        "bg3-theme",
+        "bg4-theme"
     );
 }
 
-
 // ================================
-//  APPLY NEW THEME
+//  APPLY NEW NORMAL THEME
 // ================================
 function applyTheme(themeName) {
     clearThemes();
-
-    document.body.classList.add("theme-transition");
-
-    setTimeout(() => {
-        document.body.classList.remove("theme-transition");
-    }, 600);
+    video.style.display = "none"; // hide animated backgrounds
 
     document.body.classList.add(themeName);
-
     localStorage.setItem("minty-theme", themeName);
-    console.log("Applied theme:", themeName);
 
     updateQuickChatTheme(themeName);
 }
 
+// ================================
+//  BACKGROUND VIDEO THEMES (fixed)
+// ================================
+function setBackgroundTheme(num) {
+    clearThemes();
+
+    const file = `background${num}.mp4`;
+
+    source.src = file;
+    video.style.display = "block";
+    video.load();
+    video.play();
+
+    document.body.classList.add(`bg${num}-theme`);
+
+    localStorage.setItem("minty-theme", `bg${num}-theme`);
+}
 
 // ================================
 //  SECRET CODE HANDLER
@@ -79,43 +93,30 @@ function handleSecret() {
         applyTheme("talal-theme");
         message.textContent = "✨ Talal theme activated!";
     }
-    else if (code === "titan") {
-        applyTheme("talal-theme");
-        message.textContent = "✨ Talal (Discord Light) theme activated!";
-    }
     else {
         message.textContent = "❌ Incorrect code. Try again.";
     }
 }
 
-
 // ================================
-//  EVENT LISTENERS (safe)
+//  EVENT LISTENERS
 // ================================
-if (submitBtn && input) {
-    submitBtn.addEventListener("click", handleSecret);
-}
+if (submitBtn) submitBtn.addEventListener("click", handleSecret);
 
 if (resetBtn) {
     resetBtn.addEventListener("click", () => {
         clearThemes();
         localStorage.removeItem("minty-theme");
         message.textContent = "Theme reset!";
-        console.log("Theme reset");
-
-        updateQuickChatTheme(null);
+        video.style.display = "none";
     });
 }
 
-
 // ================================
-//  QUICKCHAT THEME UPDATE (optional)
-//  Runs ONLY if QuickChat exists
+//  QUICKCHAT THEME UPDATE (unchanged)
 // ================================
 function updateQuickChatTheme(theme) {
-    if (typeof _quickchat_embedded !== "function") {
-        return; // QuickChat not on this page
-    }
+    if (typeof _quickchat_embedded !== "function") return;
 
     console.log("Updating QuickChat theme:", theme);
 
@@ -152,28 +153,13 @@ function updateQuickChatTheme(theme) {
         };
     }
     else {
-        // default Minty theme
         quickTheme = {
             type: "dark",
             primary: "#70e6b8",
             background: "#135a3c",
-            text: "#ffffff"
+            text: "#ffffff",
         };
     }
 
     _quickchat_embedded("init", "mo6r8ou35i", { theme: quickTheme });
 }
-<script>
-function setBackgroundTheme(bgNumber) {
-    document.body.className = ""; // reset all themes
-
-    const video = document.getElementById("bg-video");
-    const source = document.getElementById("bg-source");
-
-    source.src = "background" + bgNumber + ".mp4";  
-    video.load();
-    video.play();
-}
-</script>
-
-
