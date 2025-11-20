@@ -330,10 +330,5 @@ body.titan-theme {
     color: #b7ffe5;
     font-size: 0.9rem;
 }
-body {
-  margin: 0;
-  padding: 0;
-  background: url("background1.gif") no-repeat center center fixed;
-  background-size: cover;
-}
+
 
