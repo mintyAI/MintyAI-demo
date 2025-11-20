@@ -6,16 +6,18 @@
 <title>Minty AI Chatbot</title>
 <link rel="stylesheet" href="styles.css">
 </head>
-<div id="bg-effects"></div>
+
 <body>
-<!-- Hidden video background -->
+
+<!-- Background video (starts hidden, controlled ONLY by java.js) -->
 <video id="bg-video" class="video-bg" autoplay muted loop playsinline style="display:none;">
     <source id="bg-source" src="" type="video/mp4">
 </video>
-<div id="bg-effects"></div>
+
 <header>
-<a href="index.html"><img src="minty.png" alt="Minty AI Logo"></a>
+    <a href="index.html"><img src="minty.png" alt="Minty AI Logo"></a>
 </header>
+
 <nav class="navbar">
     <ul>
         <li><a href="about.html">About</a></li>
@@ -25,20 +27,27 @@
     </ul>
 </nav>
 
-
 <h1 class="page-title">Minty AI: The AI that actually helps you understand.</h1>
+
 <div class="chat-container">
     <div id="quickchat-embedded"></div>
 </div>
+
+<!-- QuickChat Widget -->
 <script>
-  (function(e,a,d,i,c,t=a.createElement(d)){e[c]=e[c]||function(){(e[c].q=e[c].q||[]).push(arguments)},t.src=i,t.async=1,a.body.insertAdjacentElement("beforeend",t)})(window,document,"script","https://widget.quickchat.ai/embed.js","_quickchat_embedded");
-  _quickchat_embedded("host", "app.quickchat.ai");
-  _quickchat_embedded("init", "mo6r8ou35i", {
-          theme: {
+(function(e,a,d,i,c,t=a.createElement(d)){
+    e[c]=e[c]||function(){(e[c].q=e[c].q||[]).push(arguments)};
+    t.src=i; t.async=1;
+    a.body.insertAdjacentElement("beforeend",t)
+})(window,document,"script","https://widget.quickchat.ai/embed.js","_quickchat_embedded");
+
+_quickchat_embedded("host", "app.quickchat.ai");
+_quickchat_embedded("init", "mo6r8ou35i", {
+    theme: {
         type: "dark",
         primary: "#70e6b8",
-        background: "#135a3c",       // chat container green
-        text: "#ffffff",             // AI text
+        background: "#135a3c",
+        text: "#ffffff",
         inputBackground: "#0d3d27",
         inputText: "#ffffff",
         bubbleUser: "#0a2a1d",
@@ -48,54 +57,9 @@
     }
 });
 </script>
+
+<!-- Your main theme/background logic -->
 <script src="java.js" defer></script>
-<script>
-const video = document.getElementById("bg-video");
-const source = document.getElementById("bg-source");
-
-const allThemes = [
-    "karen-theme", "jarvis-theme", "talal-theme",
-    "nova-theme", "titan-theme",
-    "bg1-theme", "bg2-theme", "bg3-theme", "bg4-theme"
-];
-
-// Remove all theme classes
-function clearThemes() {
-    allThemes.forEach(t => document.body.classList.remove(t));
-}
-
-// Switch animated background themes
-function setBackgroundTheme(num) {
-    clearThemes();
-
-    let file = `background${num}.mp4`;
-
-    source.src = file;
-    video.style.display = "block"; // show video
-    video.load();
-
-    document.body.classList.add(`bg${num}-theme`);
-}
-
-// Switch normal color themes
-function setColorTheme(name) {
-    clearThemes();
-    video.style.display = "none"; // hide video for normal themes
-    document.body.classList.add(`${name}-theme`);
-}
-
-// SECRET CODE HANDLER (your old system)
-function applySecretCode(code) {
-    if (code === "karen") setColorTheme("karen");
-    if (code === "jarvis") setColorTheme("jarvis");
-    if (code === "talal") setColorTheme("talal");
-}
-</script>
 
 </body>
 </html>
-
-
-
-
-
