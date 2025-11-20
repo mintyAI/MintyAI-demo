@@ -163,4 +163,17 @@ function updateQuickChatTheme(theme) {
 
     _quickchat_embedded("init", "mo6r8ou35i", { theme: quickTheme });
 }
+<script>
+function setBackgroundTheme(bgNumber) {
+    document.body.className = ""; // reset all themes
+
+    const video = document.getElementById("bg-video");
+    const source = document.getElementById("bg-source");
+
+    source.src = "background" + bgNumber + ".mp4";  
+    video.load();
+    video.play();
+}
+</script>
+
 
