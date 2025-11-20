@@ -2,7 +2,6 @@
 body {
     margin: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #2f2f2f; /* Discord-like dark grey */
     color: #fff;
     display: flex;
     flex-direction: column;
@@ -334,6 +333,7 @@ body {
     background: url("background1.gif") no-repeat center center fixed;
     background-size: cover;
 }
+
 
 
 
