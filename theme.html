@@ -8,11 +8,8 @@
 </head>
 
 <body>
-    <!-- Hidden video background -->
-<video id="bg-video" class="video-bg" autoplay muted loop playsinline style="display:none;">
-    <source id="bg-source" src="" type="video/mp4">
-</video>
 
+<!-- Single video background -->
 <video id="bg-video" class="video-bg" autoplay muted loop playsinline>
     <source id="bg-source" src="background1.mp4" type="video/mp4">
 </video>
@@ -31,80 +28,35 @@
 </nav>
 
 <main>
-    <div class="navbar">
-    <ul>
-    <li><a href="#" onclick="setBackgroundTheme(1)">Background 1</a></li>
-    <li><a href="#" onclick="setBackgroundTheme(2)">Background 2</a></li>
-    <li><a href="#" onclick="setBackgroundTheme(3)">Background 3</a></li>
-    <li><a href="#" onclick="setBackgroundTheme(4)">Background 4</a></li>
 
+<!-- Background selector -->
+<div class="navbar">
+    <ul>
+        <li><a href="#" onclick="setBackgroundTheme(1)">Background 1</a></li>
+        <li><a href="#" onclick="setBackgroundTheme(2)">Background 2</a></li>
+        <li><a href="#" onclick="setBackgroundTheme(3)">Background 3</a></li>
+        <li><a href="#" onclick="setBackgroundTheme(4)">Background 4</a></li>
     </ul>
 </div>
 
-    <h1 class="page-title">Choose a Theme</h1>
+<h1 class="page-title">Choose a Theme</h1>
 
 <div id="secret-section">
     <h2>Enter Secret Code</h2>
 
     <input type="text" id="secret-input" placeholder="Enter code...">
 
-    <!-- Secret code button (corrected) -->
-    <button onclick="applySecretCode(document.getElementById('secret-input').value)">
-        Submit Code
-    </button>
+    <!-- FIX: this button now matches java.js -->
+    <button id="secret-submit">Submit Code</button>
 
-    <!-- Your reset button stays the same -->
-    <button id="reset-theme">
-        Reset Theme
-    </button>
+    <button id="reset-theme">Reset Theme</button>
+
+    <p id="secret-message"></p>
 </div>
 
 </main>
 
 <script src="java.js" defer></script>
-<script>
-const video = document.getElementById("bg-video");
-const source = document.getElementById("bg-source");
-
-const allThemes = [
-    "karen-theme", "jarvis-theme", "talal-theme",
-    "nova-theme", "titan-theme",
-    "bg1-theme", "bg2-theme", "bg3-theme", "bg4-theme"
-];
-
-// Remove all theme classes
-function clearThemes() {
-    allThemes.forEach(t => document.body.classList.remove(t));
-}
-
-// Switch animated background themes
-function setBackgroundTheme(num) {
-    clearThemes();
-
-    let file = `background${num}.mp4`;
-
-    source.src = file;
-    video.style.display = "block"; // show video
-    video.load();
-
-    document.body.classList.add(`bg${num}-theme`);
-}
-
-// Switch normal color themes
-function setColorTheme(name) {
-    clearThemes();
-    video.style.display = "none"; // hide video for normal themes
-    document.body.classList.add(`${name}-theme`);
-}
-
-// SECRET CODE HANDLER (your old system)
-function applySecretCode(code) {
-    if (code === "karen") setColorTheme("karen");
-    if (code === "jarvis") setColorTheme("jarvis");
-    if (code === "talal") setColorTheme("talal");
-}
-</script>
 
 </body>
 </html>
-
