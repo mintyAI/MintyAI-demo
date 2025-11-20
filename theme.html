@@ -43,13 +43,21 @@
 
     <h1 class="page-title">Choose a Theme</h1>
 
-    <section id="secret-section">
-        <h2>Enter Secret Code</h2>
-        <input type="text" id="secret-input" placeholder="Enter secret code...">
-        <button id="secret-submit">Submit</button>
-        <button id="reset-theme">Reset Theme</button>
-        <p id="secret-message"></p>
-    </section>
+<div id="secret-section">
+    <h2>Enter Secret Code</h2>
+
+    <input type="text" id="secret-input" placeholder="Enter code...">
+
+    <!-- Secret code button (corrected) -->
+    <button onclick="applySecretCode(document.getElementById('secret-input').value)">
+        Submit Code
+    </button>
+
+    <!-- Your reset button stays the same -->
+    <button id="reset-theme">
+        Reset Theme
+    </button>
+</div>
 
 </main>
 
