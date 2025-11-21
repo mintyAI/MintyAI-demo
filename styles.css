@@ -1,171 +1,16 @@
-/* ================================================
-   GENERAL PAGE LAYOUT
-================================================ */
-body {
-    margin: 0;
-    background: #2f2f2f !important;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #fff;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 100vh;
-}
-
-/* ================================================
-   HEADER
-================================================ */
-header {
-    width: 100%;
-    padding: 20px;
-    display: flex;
-    justify-content: center;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.5);
-}
-
-header img {
-    width: 150px;
-    transition: transform 0.3s ease;
-}
-
-header img:hover {
-    transform: scale(1.1) rotate(-2deg);
-}
-
-/* ================================================
-   MAIN NAVBAR
-================================================ */
-.navbar {
-    background-color: #0d3d27;
-    padding: 12px 25px;
-    border-radius: 14px;
-    margin: 20px auto;
-    width: fit-content;
-    border: 2px solid #70e6b8;
-    box-shadow: 0 4px 12px rgba(112, 230, 184, 0.25);
-}
-
-.navbar ul {
-    list-style: none;
-    display: flex;
-    gap: 40px;
+/* ---------------- GLOBAL SETTINGS ---------------- */
+body, html {
     margin: 0;
     padding: 0;
-}
-
-.navbar ul li a {
-    color: #70e6b8;
-    text-decoration: none;
-    font-size: 1.15rem;
-    font-weight: 600;
-    padding: 8px 14px;
-    border-radius: 10px;
-    transition: all 0.25s ease;
-}
-
-.navbar ul li a:hover {
-    background-color: #1abc9c;
-    color: #0d3d27;
-    box-shadow: 0 2px 10px rgba(26,188,156,0.35);
-}
-
-/* ================================================
-   PAGE TITLES & CONTENT
-================================================ */
-.page-title {
-    font-size: 2rem;
-    font-weight: 700;
-    margin: 30px 0 15px;
-    color: #98fbcb;
-    text-align: center;
-}
-
-.page-content {
-    max-width: 700px;
-    margin: 0 auto 20px;
-    line-height: 1.6;
-    font-size: 1.05rem;
-    color: #e5e5e5;
-}
-
-.page-content ul,
-ul.page-content {
-    max-width: 700px;
-    padding-left: 20px;
-}
-
-.page-content li {
-    margin-bottom: 8px;
-}
-
-/* ================================================
-   CHAT / QUICKCHAT CONTAINER
-================================================ */
-.chat-container {
     width: 100%;
-    max-width: 1200px;
-    height: 75vh;
-    margin-top: 20px;
-    position: relative;
-    background: linear-gradient(to bottom, #000000, #ffffff);
-    border-radius: 12px;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    height: 100%;
+    overflow-x: hidden;
+    background: #2f2f2f;
+    font-family: Arial, sans-serif;
+    color: white;
 }
 
-#quickchat-embedded {
-    width: 95%;
-    height: 95%;
-    border-radius: 10px;
-    background-color: #FAF9F6;
-}
-
-/* ================================================
-   SECRET CODE SECTION
-================================================ */
-#secret-section {
-    background: rgba(13,61,39,0.25);
-    padding: 16px;
-    border-radius: 12px;
-    border: 2px solid #70e6b8;
-    width: fit-content;
-    margin: 25px auto;
-    text-align: center;
-}
-
-#secret-section input {
-    padding: 10px;
-    border-radius: 8px;
-    border: 2px solid #70e6b8;
-    background: #0d3d27;
-    color: #fff;
-    width: 200px;
-}
-
-#secret-submit,
-#reset-theme {
-    padding: 10px 15px;
-    margin: 8px 6px;
-    border-radius: 8px;
-    background: #0d3d27;
-    color: #70e6b8;
-    border: 2px solid #70e6b8;
-    font-weight: 600;
-    cursor: pointer;
-    transition: 0.25s ease;
-}
-
-#secret-submit:hover,
-#reset-theme:hover {
-    background: #1abc9c;
-    color: #0d3d27;
-}
-
-/* ================================================
-   BACKGROUND VIDEO
-================================================ */
+/* Background video */
 .video-bg {
     position: fixed;
     top: 0;
@@ -174,85 +19,98 @@ ul.page-content {
     height: 100%;
     object-fit: cover;
     z-index: -1;
-    pointer-events: none;
-    opacity: 1;
+    display: none; /* Default hidden because default theme = #2f2f2f */
 }
 
-body.bg1-theme,
-body.bg2-theme,
-body.bg3-theme,
-body.bg4-theme {
-    background: none !important;
+/* ---------------- NAVBAR ---------------- */
+.minty-nav {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 92%;
+    max-width: 1000px;
+    padding: 12px 24px;
+
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 9999;
 }
 
-/* ================================================
-   THEMES (Karen, Jarvis, Talal, etc.)
-================================================ */
-body.karen-theme {
-    background-color: #0B0F2A !important;
-    color: #fff !important;
+.nav-logo img {
+    height: 40px;
 }
 
-body.jarvis-theme {
-    background-color: #0A0A0A !important;
-    color: #00E5FF !important;
+.nav-links {
+    display: flex;
+    gap: 24px;
+    list-style: none;
 }
 
-body.talal-theme {
-    background-color: #F2F3F5 !important;
-    color: #2E3338 !important;
+.nav-links li { list-style: none; }
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.05rem;
+    transition: 0.2s;
 }
 
-/* ================================================
-   MOBILE RESPONSIVE FIXES (FULLY WORKING)
-================================================ */
+.nav-links a:hover,
+.nav-links a.active {
+    color: #7fffd4;
+}
+
+.hamburger {
+    display: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: white;
+}
+
+/* ---------------- MOBILE NAV ---------------- */
 @media (max-width: 768px) {
 
-    header img {
-        width: 140px;
-    }
-
-    .page-title {
-        font-size: 1.6rem;
-        padding: 0 10px;
-    }
-
-    .page-content {
-        font-size: 1rem;
-        padding: 0 10px;
-    }
-
-    .chat-container {
-        width: 95%;
-        height: 70vh;
-    }
-
-    /* Mobile navbar */
     .hamburger {
         display: block;
-        font-size: 30px;
-        margin: 10px;
-        cursor: pointer;
     }
 
-    nav ul {
+    .nav-links {
         display: none;
         flex-direction: column;
-        background: rgba(0,0,0,0.7);
+        text-align: center;
+        gap: 18px;
+
         position: absolute;
-        top: 80px;
-        right: 10px;
-        width: 200px;
-        padding: 20px;
-        border-radius: 15px;
+        top: 70px;
+        left: 0;
+        width: 100%;
+
+        padding: 20px 0;
+        background: rgba(0,0,0,0.65);
+        border-radius: 0 0 18px 18px;
     }
 
-    nav ul.open {
+    .nav-links.active {
         display: flex;
     }
+}
 
-    /* Hide video on mobile (browser limitations) */
-    #bg-video {
-        display: none !important;
-    }
+/* -------- PAGE BASICS ---------- */
+main {
+    padding-top: 120px;
+    text-align: center;
+}
+
+.page-title {
+    margin-top: 40px;
+    font-size: 2.3rem;
+    color: #7fffd4;
 }
