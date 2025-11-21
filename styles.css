@@ -147,3 +147,98 @@ body.talal-theme { background:#F2F3F5; color:#2E3338; }
   .theme-selector ul { flex-direction:column; }
   #bg-video { display:none !important; } /* many mobiles block autoplay */
 }
+/* ============================
+   THEMES PAGE LAYOUT FIX
+============================ */
+.theme-container {
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    padding: 20px;
+}
+
+/* Grid for theme buttons */
+.theme-buttons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 20px;
+    width: 100%;
+}
+
+.theme-buttons button {
+    padding: 14px;
+    background: #0d3d27;
+    border: 2px solid #70e6b8;
+    border-radius: 12px;
+    color: #70e6b8;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    transition: 0.25s ease;
+}
+
+.theme-buttons button:hover {
+    background: #1abc9c;
+    color: #0d3d27;
+}
+
+/* ============================
+   SECRET CODE + RESET SECTION
+============================ */
+#secret-section {
+    background: rgba(13,61,39,0.25);
+    padding: 20px;
+    border-radius: 12px;
+    border: 2px solid #70e6b8;
+    width: 100%;
+    max-width: 350px;
+    margin: 10px auto 30px;
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#secret-section input {
+    padding: 10px;
+    border-radius: 8px;
+    border: 2px solid #70e6b8;
+    background: #0d3d27;
+    color: #fff;
+    width: 100%;
+}
+
+#secret-submit,
+#reset-theme {
+    padding: 10px 15px;
+    border-radius: 8px;
+    background: #0d3d27;
+    color: #70e6b8;
+    border: 2px solid #70e6b8;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.25s ease;
+    width: 100%;
+}
+
+#secret-submit:hover,
+#reset-theme:hover {
+    background: #1abc9c;
+    color: #0d3d27;
+}
+
+/* ============================
+   MOBILE FIXES
+============================ */
+@media (max-width: 768px) {
+    .theme-buttons {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
