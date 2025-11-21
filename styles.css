@@ -399,7 +399,18 @@ body.bg4-theme {
         font-size: 1rem;
         padding: 0 10px;
     }
+header img {
+    max-width: 180px;
+    width: 40%;
 }
+
+@media (max-width: 768px) {
+    header img {
+        max-width: 140px;
+    }
+}
+
+
 
 
 
