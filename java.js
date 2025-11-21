@@ -53,6 +53,25 @@ function toggleMenu() {
     document.querySelector('.nav-links').classList.toggle('open');
 }
 </script>
+function setBackgroundTheme(id) {
+    const video = document.getElementById("bg-video");
+    document.body.className = ""; // reset themes
+
+    // If theme id is 1-4 → video theme
+    if ([1,2,3,4].includes(id)) {
+        document.body.classList.add(`bg${id}-theme`);
+        video.style.display = "block";
+        video.src = `bg${id}.mp4`; // MAKE SURE filenames match here
+        video.play().catch(() => {});
+        return;
+    }
+
+    // If not video → hide the video
+    video.style.display = "none";
+    video.pause();
+    video.src = "";
+}
+
 
 
 
