@@ -1,357 +1,312 @@
-/* ---------------- GLOBAL ---------------- */
-:root {
+/* ======================================================
+   Minty AI — Cleaned & Merged styles.css
+   - Keeps your original layout (Option 3)
+   - Video backgrounds allowed on mobile (muted/playsinline required)
+   - Fixed duplicates, broken braces, and JS-in-CSS issues
+   - Centered theme buttons + consistent hover styles
+====================================================== */
+
+/* ---------------- ROOT / VARIABLES ---------------- */
+:root{
   --minty: #70e6b8;
   --minty-strong: #1abc9c;
   --deep: #0d3d27;
   --bg-dark: #2f2f2f;
   --panel: rgba(13,61,39,0.25);
+  --text-light: #e5e5e5;
 }
 
-* { box-sizing: border-box; }
-html,body { height:100%; }
-body {
+/* ---------------- GLOBAL ---------------- */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
   margin:0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color:#fff;
-  background: var(--bg-dark);
+  background:var(--bg-dark);
   display:flex;
   flex-direction:column;
   align-items:center;
   min-height:100vh;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
 }
 
-/* video background */
-.video-bg {
-  position: fixed;
-  inset: 0;
+/* ---------------- VIDEO BACKGROUND ----------------
+   The video element is behind everything. JS will show it when needed.
+   Keep z-index negative so content remains interactable.
+--------------------------------------------------- */
+.video-bg{
+  position:fixed;
+  inset:0;
   width:100%;
   height:100%;
   object-fit:cover;
-  z-index:-1;
-  display:none; /* JS shows it */
+  z-index:-1;            /* BEHIND everything */
+  display:none;          /* shown by JS */
+  pointer-events:none;
 }
 
-/* ---------------- NAVBAR (compact, no big gap) ---------------- */
-/* navbar is fixed near top but compact */
-.minty-nav {
-  width: 92%;
+/* ---------------- NAVBAR (desktop + mobile tidy) ----------------
+   Keeps your current layout (Option 3) but fixes spacing and responsiveness.
+--------------------------------------------------------------------- */
+.minty-nav{
+  width:92%;
   max-width:1100px;
-  margin: 12px auto 0;
+  margin:12px auto 0;
   padding:10px 18px;
   display:flex;
   align-items:center;
   justify-content:space-between;
   gap:12px;
-  background: var(--deep);
-  border: 2px solid var(--minty);
-  border-radius: 12px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.35);
-  position: sticky;
-  top: 8px; /* small gap */
-  z-index: 9999;
+  background:var(--deep);
+  border:2px solid var(--minty);
+  border-radius:12px;
+  box-shadow:0 6px 20px rgba(0,0,0,0.35);
+  position:sticky;
+  top:8px;
+  z-index:50; /* above video, below overlays */
 }
 
-/* logo inside nav (left) */
-.nav-left { display:flex; align-items:center; gap:10px; }
-.nav-logo img { height:44px; display:block; }
+/* left block (logo etc) */
+.nav-left{display:flex;align-items:center;gap:10px}
+.nav-logo img{height:44px; display:block;}
 
-/* nav right: links + hamburger */
-.nav-right { display:flex; align-items:center; gap:14px; }
+/* right block (links + hamburger) */
+.nav-right{display:flex;align-items:center;gap:14px}
 
 /* links */
-.nav-links { display:flex; gap:28px; list-style:none; margin:0; padding:0; align-items:center; }
-.nav-links li a {
-  color: var(--minty);
+.nav-links{
+  display:flex;
+  gap:28px;
+  list-style:none;
+  margin:0;
+  padding:0;
+  align-items:center;
+}
+.nav-links li{margin:0}
+.nav-links li a{
+  color:var(--minty);
   text-decoration:none;
   font-weight:600;
   padding:6px 10px;
   border-radius:8px;
-  transition: all 0.18s ease;
+  transition:all 0.18s ease;
+  display:inline-block;
 }
-.nav-links li a:hover { background:var(--minty-strong); color: var(--deep); }
+.nav-links li a:hover,
+.nav-links li a:focus,
+.nav-links li a.active{
+  background:var(--minty-strong);
+  color:var(--deep);
+  outline: none;
+}
 
 /* hamburger (hidden desktop) */
-.hamburger { display:none; font-size:28px; color:var(--minty); cursor:pointer; padding:6px; border-radius:8px; }
+.hamburger{
+  display:none;
+  font-size:28px;
+  color:var(--minty);
+  cursor:pointer;
+  padding:6px;
+  border-radius:8px;
+  user-select:none;
+}
 
-/* ---------------- PAGE CONTENT ---------------- */
-main { width:100%; max-width:1200px; padding:24px; margin-top:10px; }
-.page-title { font-size:2rem; color:#98fbcb; text-align:center; margin:22px 0; }
-.page-content { max-width:700px; margin:0 auto 20px; color:#e5e5e5; line-height:1.6; }
+/* ---------------- HEADER + LOGO (above nav if present) ------------- */
+header{
+  width:100%;
+  padding:20px;
+  display:flex;
+  justify-content:center;
+  box-shadow:0 2px 10px rgba(0,0,0,0.5);
+  background:transparent;
+}
+header img{width:150px; transition:transform .3s ease}
+header img:hover{transform:scale(1.1) rotate(-2deg)}
 
-/* chat container */
-.chat-container {
+/* ---------------- PAGE CONTENT / MAIN ---------------- */
+main{
+  width:100%;
+  max-width:1200px;
+  padding:24px;
+  margin-top:18px;
+}
+.page-title{
+  font-size:2rem;
+  color:#98fbcb;
+  text-align:center;
+  margin:22px 0;
+}
+.page-content{
+  max-width:700px;
+  margin:0 auto 20px;
+  color:var(--text-light);
+  line-height:1.6;
+}
+
+/* ---------------- CHAT CONTAINER ---------------- */
+.chat-container{
   width:100%;
   max-width:1200px;
   height:75vh;
-  margin: 20px auto;
+  margin:20px auto;
   border-radius:12px;
   overflow:hidden;
-  background: linear-gradient(to bottom, #000000, #ffffff);
-  display:flex; align-items:center; justify-content:center;
+  background:linear-gradient(to bottom,#000000,#ffffff);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 4px 16px rgba(0,0,0,0.4);
 }
 
-/* secret code section */
-#secret-section {
-  background: var(--panel);
+#quickchat-embedded{
+  width:95%;
+  height:95%;
+  border-radius:10px;
+  background:#FAF9F6;
+}
+
+/* ---------------- SECRET / THEME UI ---------------- */
+#secret-section{
+  background:var(--panel);
   padding:16px;
   border-radius:12px;
   border:2px solid var(--minty);
-  width:fit-content;
+  width:100%;
+  max-width:380px;
   margin:20px auto;
   text-align:center;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
 }
-#secret-section input { padding:10px; border-radius:8px; border:2px solid var(--minty); background:#0d3d27; color:#fff; width:200px; }
-
-/* theme selector (theme page) */
-.theme-selector {
-  display:inline-block;
-  background: #0d3d27;
-  padding:12px 18px;
-  border-radius:12px;
+#secret-section h2{color:var(--minty); margin:0}
+#secret-section input{
+  padding:10px;
+  border-radius:8px;
   border:2px solid var(--minty);
-  box-shadow: 0 4px 10px rgba(112,230,184,0.08);
-  margin:12px 0;
+  background:#0d3d27;
+  color:#fff;
+  width:100%;
+  outline:none;
 }
-.theme-selector ul { display:flex; gap:12px; margin:0; padding:0; list-style:none; }
-.theme-selector a { color:var(--minty); padding:8px 10px; border-radius:8px; text-decoration:none; }
+#secret-submit,#reset-theme{
+  padding:10px 15px;
+  border-radius:8px;
+  background:#0d3d27;
+  color:var(--minty);
+  border:2px solid var(--minty);
+  font-weight:600;
+  cursor:pointer;
+  transition:all .18s ease;
+  width:100%;
+  text-align:center;
+}
+#secret-submit:hover,#reset-theme:hover,
+#secret-submit:focus,#reset-theme:focus{
+  background:var(--minty-strong);
+  color:var(--deep);
+  outline:none;
+}
 
-/* devlogs */
-.devlogs-container { max-width:900px; margin:0 auto; padding:20px; }
-.devlog-entry { background: rgba(0,0,0,0.35); padding:20px; border-radius:12px; border-left:4px solid var(--minty); margin-bottom:20px; color:#e5e5e5; }
-.devlog-entry h2 { color:#98fbcb; margin:0 0 6px 0; }
-.dev-date { color:#b7ffe5; font-size:0.9rem; }
+/* ---------------- THEME SELECTOR (Themes page) ---------------- */
+.theme-container{
+  width:100%;
+  max-width:700px;
+  margin:0 auto;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:20px;
+  padding:12px;
+}
+.theme-buttons{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:20px;
+  width:100%;
+  justify-items:stretch;
+}
+.theme-buttons button{
+  padding:14px;
+  background:#0d3d27;
+  border:2px solid var(--minty);
+  border-radius:12px;
+  color:var(--minty);
+  font-size:1.05rem;
+  font-weight:600;
+  cursor:pointer;
+  width:100%;
+  transition:all .18s ease;
+}
+.theme-buttons button:hover,
+.theme-buttons button:focus{
+  background:var(--minty-strong);
+  color:var(--deep);
+  outline:none;
+}
 
-/* background theme classes (left empty; JS shows video) */
+/* ---------------- DEVLOGS ---------------- */
+.devlogs-container{max-width:900px;margin:0 auto;padding:20px}
+.devlog-entry{background:rgba(0,0,0,0.35);padding:20px;border-radius:12px;border-left:4px solid var(--minty);margin-bottom:20px;color:var(--text-light)}
+.devlog-entry h2{color:#98fbcb;margin:0 0 6px 0}
+.dev-date{color:#b7ffe5;font-size:.9rem}
+
+/* ---------------- THEME CLASSES (left purposely simple) ---------------- */
+/* When JS shows video, these classes tell the site not to force color background */
 body.bg1-theme, body.bg2-theme, body.bg3-theme, body.bg4-theme {}
 
-/* named color themes */
-body.karen-theme { background:#0B0F2A; color:#fff; }
-body.jarvis-theme { background:#0A0A0A; color:#00E5FF; }
-body.talal-theme { background:#F2F3F5; color:#2E3338; }
+/* color themes */
+body.karen-theme{background:#0B0F2A;color:#fff}
+body.jarvis-theme{background:#0A0A0A;color:#00E5FF}
+body.talal-theme{background:#F2F3F5;color:#2E3338}
 
-/* small helpers */
-#quickchat-embedded { width:95%; height:95%; border-radius:10px; background:#FAF9F6; }
+/* ---------------- HELPERS ---------------- */
+#quickchat-embedded{border-radius:10px;overflow:hidden}
 
-/* ---------------- RESPONSIVE ---------------- */
-@media (max-width: 880px) {
-  .nav-links { gap:16px; }
-  .nav-logo img { height:38px; }
+/* ---------------- RESPONSIVE / MOBILE ---------------- */
+@media (max-width: 880px){
+  .nav-links{gap:16px}
+  .nav-logo img{height:38px}
 }
-@media (max-width: 768px) {
-  .nav-links { display:none; position:absolute; top:64px; right:12px; width:220px; background:#0d3d27; padding:12px; border-radius:10px; flex-direction:column; gap:12px; border:2px solid var(--minty); box-shadow:0 8px 18px rgba(0,0,0,0.35); }
-  .nav-links.open { display:flex; }
-  .hamburger { display:block; }
-  .minty-nav { padding:10px 12px; top:6px; }
-  main { padding:16px; margin-top:8px; }
-  .chat-container { height:60vh; }
-  .theme-selector ul { flex-direction:column; }
-  #bg-video { display:none !important; } /* many mobiles block autoplay */
-}
-/* ============================
-   THEMES PAGE LAYOUT FIX
-============================ */
-.theme-container {
-    width: 100%;
-    max-width: 700px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 25px;
-    padding: 20px;
-}
+@media (max-width: 768px){
+  /* navbar adjustments */
+  .minty-nav{padding:10px 12px; top:6px}
+  .nav-links{
+    display:none;
+    position:absolute;
+    top:64px;
+    right:12px;
+    width:220px;
+    background:#0d3d27;
+    padding:12px;
+    border-radius:10px;
+    flex-direction:column;
+    gap:12px;
+    border:2px solid var(--minty);
+    box-shadow:0 8px 18px rgba(0,0,0,0.35);
+  }
+  .nav-links.open{display:flex}
+  .hamburger{display:block}
+  main{padding:16px;margin-top:8px}
+  .chat-container{height:60vh}
 
-/* Grid for theme buttons */
-.theme-buttons {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: 20px;
-    width: 100%;
-}
+  /* theme buttons responsive */
+  .theme-buttons{grid-template-columns:repeat(2,1fr)}
+  .theme-buttons button{font-size:1rem}
 
-.theme-buttons button {
-    padding: 14px;
-    background: #0d3d27;
-    border: 2px solid #70e6b8;
-    border-radius: 12px;
-    color: #70e6b8;
-    font-size: 1.1rem;
-    font-weight: 600;
-    cursor: pointer;
-    width: 100%;
-    transition: 0.25s ease;
+  /* secret area shrink */
+  #secret-section{max-width:320px;padding:16px}
+
+  /* keep video allowed, but note many mobiles block autoplay
+     JS handles starting after user interaction when necessary. */
+  .video-bg{display:block} /* allow JS to manage visibility - JS may toggle display to none when not desired */
 }
 
-.theme-buttons button:hover {
-    background: #1abc9c;
-    color: #0d3d27;
-}
+/* small utility */
+.center-block{text-align:center}
 
-/* ============================
-   SECRET CODE + RESET SECTION
-============================ */
-#secret-section {
-    background: rgba(13,61,39,0.25);
-    padding: 20px;
-    border-radius: 12px;
-    border: 2px solid #70e6b8;
-    width: 100%;
-    max-width: 350px;
-    margin: 10px auto 30px;
-    text-align: center;
-
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-#secret-section input {
-    padding: 10px;
-    border-radius: 8px;
-    border: 2px solid #70e6b8;
-    background: #0d3d27;
-    color: #fff;
-    width: 100%;
-}
-
-#secret-submit,
-#reset-theme {
-    padding: 10px 15px;
-    border-radius: 8px;
-    background: #0d3d27;
-    color: #70e6b8;
-    border: 2px solid #70e6b8;
-    font-weight: 600;
-    cursor: pointer;
-    transition: 0.25s ease;
-    width: 100%;
-}
-
-#secret-submit:hover,
-#reset-theme:hover {
-    background: #1abc9c;
-    color: #0d3d27;
-}
-
-/* ============================
-   MOBILE FIXES
-============================ */
-@media (max-width: 768px) {
-    .theme-buttons {
-        grid-template-columns: 1fr 1fr;
-    }
-/* ============================
-   THEMES PAGE (CENTERED + FIXED)
-============================ */
-.theme-container {
-    width: 100%;
-    max-width: 700px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 25px;
-    padding: 20px;
-}
-
-/* Perfectly centered grid */
-.theme-buttons {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    justify-items: center;   /* centers items horizontally */
-    align-items: center;
-    gap: 20px;
-    width: 100%;
-}
-
-/* Buttons match navbar hover + style */
-.theme-buttons button {
-    padding: 14px;
-    background: #0d3d27;
-    border: 2px solid var(--minty);
-    border-radius: 12px;
-    color: var(--minty);
-    font-size: 1.1rem;
-    font-weight: 600;
-    cursor: pointer;
-    width: 100%;
-    transition: all 0.18s ease; /* matches nav */
-}
-
-.theme-buttons button:hover {
-    background: var(--minty-strong);
-    color: var(--deep);
-}
-
-/* ============================
-   SECRET CODE + RESET BUTTONS FIX
-============================ */
-#secret-section {
-    background: rgba(13,61,39,0.25);
-    padding: 20px;
-    border-radius: 12px;
-    border: 2px solid var(--minty);
-    width: 100%;
-    max-width: 380px;
-    margin: 20px auto 30px;
-    text-align: center;
-
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-#secret-section input {
-    padding: 10px;
-    border-radius: 8px;
-    border: 2px solid var(--minty);
-    background: #0d3d27;
-    color: #fff;
-    width: 100%;
-}
-
-#secret-submit,
-#reset-theme {
-    padding: 10px 15px;
-    border-radius: 8px;
-    background: #0d3d27;
-    color: var(--minty);
-    border: 2px solid var(--minty);
-    font-weight: 600;
-    cursor: pointer;
-    width: 100%;
-    transition: all 0.18s ease; /* matches nav hover */
-}
-
-#secret-submit:hover,
-#reset-theme:hover {
-    background: var(--minty-strong);
-    color: var(--deep);
-}
-
-/* ============================
-   MOBILE FIXES
-============================ */
-@media (max-width: 768px) {
-    .theme-buttons {
-        grid-template-columns: 1fr 1fr;
-    }
-
-// ---------------- Hamburger Menu ----------------
-function toggleMenu() {
-  const menu = document.getElementById("mobileMenu");
-  menu?.classList.toggle("open");
-}
-#bg-video {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  object-fit: cover;
-  z-index: 1;      /* THIS! Makes it behind everything */
-  pointer-events: none;
-}
-
-
-
+/* ======================================================
+   END of CSS
+====================================================== */
