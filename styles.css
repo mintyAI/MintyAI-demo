@@ -1,16 +1,191 @@
-/* ---------------- GLOBAL SETTINGS ---------------- */
-body, html {
+/* ======================================================
+   GLOBAL PAGE LAYOUT (Your original untouched)
+====================================================== */
+body {
     margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-    overflow-x: hidden;
-    background: #2f2f2f;
-    font-family: Arial, sans-serif;
-    color: white;
+    background: #2f2f2f !important;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
 }
 
-/* Background video */
+/* ======================================================
+   HEADER
+====================================================== */
+header {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+header img {
+    width: 150px;
+    transition: transform 0.3s ease;
+}
+
+header img:hover {
+    transform: scale(1.1) rotate(-2deg);
+}
+
+/* ======================================================
+   NEW WORKING NAVBAR (Styled to match Minty theme)
+====================================================== */
+.minty-nav {
+    width: 100%;
+    padding: 12px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background: #0d3d27;
+    border-bottom: 2px solid #70e6b8;
+    box-shadow: 0 4px 12px rgba(112, 230, 184, 0.25);
+
+    z-index: 9999;
+}
+
+.nav-logo img {
+    width: 60px;
+}
+
+/* Right side group */
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Desktop menu */
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 35px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li a {
+    color: #70e6b8;
+    text-decoration: none;
+    font-size: 1.15rem;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 10px;
+    transition: 0.25s ease;
+}
+
+.nav-links li a:hover {
+    background: #1abc9c;
+    color: #0d3d27;
+}
+
+/* Hamburger icon */
+.hamburger {
+    display: none;
+    font-size: 34px;
+    cursor: pointer;
+    color: #70e6b8;
+    font-weight: bold;
+    padding: 4px 10px;
+    border-radius: 10px;
+}
+
+/* ======================================================
+   PAGE TITLE + CONTENT (Your original)
+====================================================== */
+.page-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 30px 0 15px;
+    color: #98fbcb;
+    text-align: center;
+}
+
+.page-content {
+    max-width: 700px;
+    margin: 0 auto 20px;
+    line-height: 1.6;
+    font-size: 1.05rem;
+    color: #e5e5e5;
+}
+
+.page-content li {
+    margin-bottom: 8px;
+}
+
+/* ======================================================
+   CHAT CONTAINER (Your original)
+====================================================== */
+.chat-container {
+    width: 100%;
+    max-width: 1200px;
+    height: 75vh;
+    margin-top: 20px;
+    position: relative;
+    background: linear-gradient(to bottom, #000000, #ffffff);
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#quickchat-embedded {
+    width: 95%;
+    height: 95%;
+    border-radius: 10px;
+    background-color: #FAF9F6;
+}
+
+/* ======================================================
+   SECRET CODE SECTION (Your original)
+====================================================== */
+#secret-section {
+    background: rgba(13,61,39,0.25);
+    padding: 16px;
+    border-radius: 12px;
+    border: 2px solid #70e6b8;
+    width: fit-content;
+    margin: 25px auto;
+    text-align: center;
+}
+
+#secret-section input {
+    padding: 10px;
+    border-radius: 8px;
+    border: 2px solid #70e6b8;
+    background: #0d3d27;
+    color: #fff;
+    width: 200px;
+}
+
+#secret-submit,
+#reset-theme {
+    padding: 10px 15px;
+    margin: 8px 6px;
+    border-radius: 8px;
+    background: #0d3d27;
+    color: #70e6b8;
+    border: 2px solid #70e6b8;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+#secret-submit:hover,
+#reset-theme:hover {
+    background: #1abc9c;
+    color: #0d3d27;
+}
+
+/* ======================================================
+   BACKGROUND VIDEO
+====================================================== */
 .video-bg {
     position: fixed;
     top: 0;
@@ -19,97 +194,69 @@ body, html {
     height: 100%;
     object-fit: cover;
     z-index: -1;
-    display: none;
 }
 
-/* ---------------- NAVBAR ---------------- */
-.minty-nav {
-    position: fixed;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 92%;
-    max-width: 1000px;
-    padding: 12px 25px;
-
-    background: rgba(255,255,255,0.08);
-    backdrop-filter: blur(12px);
-    border-radius: 20px;
-    border: 1px solid rgba(255,255,255,0.12);
-    box-shadow: 0 4px 20px rgba(0,0,0,0.35);
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 9999;
+/* ======================================================
+   THEMES (Your original)
+====================================================== */
+body.bg1-theme,
+body.bg2-theme,
+body.bg3-theme,
+body.bg4-theme {
+    background: none !important;
 }
 
-/* Logo */
-.nav-logo img {
-    height: 45px;
-}
+body.karen-theme { background-color: #0B0F2A !important; }
+body.jarvis-theme { background-color: #0A0A0A !important; color: #00E5FF !important; }
+body.talal-theme { background-color: #F2F3F5 !important; color: #2E3338 !important; }
 
-/* Right section */
-.nav-right {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
-
-/* Desktop nav links */
-.nav-links {
-    display: flex;
-    list-style: none;
-    gap: 30px;
-}
-
-.nav-links li a {
-    color: #7fffd4;
-    text-decoration: none;
-    font-size: 1.1rem;
-    font-weight: 600;
-    padding: 6px 12px;
-    border-radius: 10px;
-    transition: 0.25s ease;
-}
-
-.nav-links li a:hover {
-    background: #7fffd4;
-    color: #0d3d27;
-}
-
-/* Hamburger (desktop hidden) */
-.hamburger {
-    display: none;
-    font-size: 34px;
-    cursor: pointer;
-    color: #7fffd4;
-    padding: 5px 10px;
-}
-
-/* ---------------- MOBILE VERSION ---------------- */
+/* ======================================================
+   MOBILE RESPONSIVE SECTION (Fixed, merged, clean)
+====================================================== */
 @media (max-width: 768px) {
 
+    header img {
+        width: 140px;
+    }
+
+    .page-title {
+        font-size: 1.6rem;
+        padding: 0 10px;
+    }
+
+    .page-content {
+        font-size: 1rem;
+        padding: 0 10px;
+    }
+
+    .chat-container {
+        width: 95%;
+        height: 70vh;
+    }
+
+    /* Mobile hamburger */
     .hamburger {
         display: block;
     }
 
+    /* Mobile dropdown */
     .nav-links {
         display: none;
         flex-direction: column;
         position: absolute;
         top: 80px;
         right: 20px;
+
         background: rgba(13,61,39,0.95);
         width: 220px;
         padding: 20px;
-        border-radius: 16px;
-        border: 2px solid #7fffd4;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
         gap: 20px;
+
+        border-radius: 16px;
+        border: 2px solid #70e6b8;
+        box-shadow: 0 4px 12px rgba(112,230,184,0.25);
     }
 
-    /* This is what opens the menu */
     .nav-links.open {
         display: flex;
     }
@@ -117,18 +264,12 @@ body, html {
     .nav-links li a {
         font-size: 1.2rem;
         padding: 10px;
-        display: block;
+        width: 100%;
+        text-align: center;
     }
-}
 
-/* -------- PAGE BASICS ---------- */
-main {
-    padding-top: 120px;
-    text-align: center;
-}
-
-.page-title {
-    margin-top: 40px;
-    font-size: 2.3rem;
-    color: #7fffd4;
+    /* Hide video on mobile */
+    #bg-video {
+        display: none !important;
+    }
 }
