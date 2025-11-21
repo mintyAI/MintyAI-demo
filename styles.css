@@ -1,9 +1,5 @@
 /* ======================================================
-   Minty AI — Cleaned & Merged styles.css
-   - Keeps your original layout (Option 3)
-   - Video backgrounds allowed on mobile (muted/playsinline required)
-   - Fixed duplicates, broken braces, and JS-in-CSS issues
-   - Centered theme buttons + consistent hover styles
+   Minty AI — Clean, Fixed, Fully Updated styles.css
 ====================================================== */
 
 /* ---------------- ROOT / VARIABLES ---------------- */
@@ -29,27 +25,21 @@ body{
   align-items:center;
   min-height:100vh;
   -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
 }
 
-/* ---------------- VIDEO BACKGROUND ----------------
-   The video element is behind everything. JS will show it when needed.
-   Keep z-index negative so content remains interactable.
---------------------------------------------------- */
+/* ---------------- VIDEO BACKGROUND ---------------- */
 .video-bg{
   position:fixed;
   inset:0;
   width:100%;
   height:100%;
   object-fit:cover;
-  z-index:-1;            /* BEHIND everything */
-  display:none;          /* shown by JS */
+  z-index:-1;
+  display:none; /* JS shows when needed */
   pointer-events:none;
 }
 
-/* ---------------- NAVBAR (desktop + mobile tidy) ----------------
-   Keeps your current layout (Option 3) but fixes spacing and responsiveness.
---------------------------------------------------------------------- */
+/* ---------------- NAVBAR ---------------- */
 .minty-nav{
   width:92%;
   max-width:1100px;
@@ -65,17 +55,14 @@ body{
   box-shadow:0 6px 20px rgba(0,0,0,0.35);
   position:sticky;
   top:8px;
-  z-index:50; /* above video, below overlays */
+  z-index:50;
 }
 
-/* left block (logo etc) */
 .nav-left{display:flex;align-items:center;gap:10px}
 .nav-logo img{height:44px; display:block;}
 
-/* right block (links + hamburger) */
 .nav-right{display:flex;align-items:center;gap:14px}
 
-/* links */
 .nav-links{
   display:flex;
   gap:28px;
@@ -84,25 +71,20 @@ body{
   padding:0;
   align-items:center;
 }
-.nav-links li{margin:0}
 .nav-links li a{
   color:var(--minty);
   text-decoration:none;
   font-weight:600;
   padding:6px 10px;
   border-radius:8px;
-  transition:all 0.18s ease;
-  display:inline-block;
+  transition:all .18s ease;
 }
 .nav-links li a:hover,
-.nav-links li a:focus,
 .nav-links li a.active{
   background:var(--minty-strong);
   color:var(--deep);
-  outline: none;
 }
 
-/* hamburger (hidden desktop) */
 .hamburger{
   display:none;
   font-size:28px;
@@ -113,19 +95,18 @@ body{
   user-select:none;
 }
 
-/* ---------------- HEADER + LOGO (above nav if present) ------------- */
+/* ---------------- HEADER ---------------- */
 header{
   width:100%;
   padding:20px;
   display:flex;
   justify-content:center;
-  box-shadow:0 2px 10px rgba(0,0,0,0.5);
   background:transparent;
 }
 header img{width:150px; transition:transform .3s ease}
 header img:hover{transform:scale(1.1) rotate(-2deg)}
 
-/* ---------------- PAGE CONTENT / MAIN ---------------- */
+/* ---------------- MAIN CONTENT ---------------- */
 main{
   width:100%;
   max-width:1200px;
@@ -137,12 +118,6 @@ main{
   color:#98fbcb;
   text-align:center;
   margin:22px 0;
-}
-.page-content{
-  max-width:700px;
-  margin:0 auto 20px;
-  color:var(--text-light);
-  line-height:1.6;
 }
 
 /* ---------------- CHAT CONTAINER ---------------- */
@@ -182,6 +157,7 @@ main{
   gap:12px;
 }
 #secret-section h2{color:var(--minty); margin:0}
+
 #secret-section input{
   padding:10px;
   border-radius:8px;
@@ -189,8 +165,8 @@ main{
   background:#0d3d27;
   color:#fff;
   width:100%;
-  outline:none;
 }
+
 #secret-submit,#reset-theme{
   padding:10px 15px;
   border-radius:8px;
@@ -201,16 +177,13 @@ main{
   cursor:pointer;
   transition:all .18s ease;
   width:100%;
-  text-align:center;
 }
-#secret-submit:hover,#reset-theme:hover,
-#secret-submit:focus,#reset-theme:focus{
+#secret-submit:hover,#reset-theme:hover{
   background:var(--minty-strong);
   color:var(--deep);
-  outline:none;
 }
 
-/* ---------------- THEME SELECTOR (Themes page) ---------------- */
+/* ---------------- THEME SELECTOR (THUMBNAILS) ---------------- */
 .theme-container{
   width:100%;
   max-width:700px;
@@ -221,58 +194,93 @@ main{
   gap:20px;
   padding:12px;
 }
+
+/* Responsive grid */
 .theme-buttons{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
-  gap:20px;
   width:100%;
-  justify-items:stretch;
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(160px, 1fr));
+  gap:22px;
+  justify-items:center;
 }
+
+/* Thumbnail preview buttons */
 .theme-buttons button{
-  padding:14px;
+  width:100%;
+  max-width:180px;
+  height:110px;
+  position:relative;
   background:#0d3d27;
   border:2px solid var(--minty);
   border-radius:12px;
   color:var(--minty);
-  font-size:1.05rem;
+  font-size:1rem;
   font-weight:600;
   cursor:pointer;
-  width:100%;
+  overflow:hidden;
+  display:flex;
+  align-items:flex-end;
+  justify-content:center;
+  padding:10px;
   transition:all .18s ease;
 }
-.theme-buttons button:hover,
-.theme-buttons button:focus{
+
+/* Thumbnail image */
+.theme-buttons button img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  opacity:0.75;
+  pointer-events:none;
+}
+
+/* Text overlay */
+.theme-buttons button span{
+  position:relative;
+  z-index:2;
+  background:rgba(0,0,0,0.45);
+  padding:4px 8px;
+  border-radius:6px;
+}
+
+/* Hover effect */
+.theme-buttons button:hover{
   background:var(--minty-strong);
   color:var(--deep);
-  outline:none;
+  border-color:var(--minty-strong);
+}
+.theme-buttons button:hover img{
+  opacity:0.45;
 }
 
 /* ---------------- DEVLOGS ---------------- */
 .devlogs-container{max-width:900px;margin:0 auto;padding:20px}
-.devlog-entry{background:rgba(0,0,0,0.35);padding:20px;border-radius:12px;border-left:4px solid var(--minty);margin-bottom:20px;color:var(--text-light)}
+.devlog-entry{
+  background:rgba(0,0,0,0.35);
+  padding:20px;
+  border-radius:12px;
+  border-left:4px solid var(--minty);
+  margin-bottom:20px;
+  color:var(--text-light);
+}
 .devlog-entry h2{color:#98fbcb;margin:0 0 6px 0}
-.dev-date{color:#b7ffe5;font-size:.9rem}
 
-/* ---------------- THEME CLASSES (left purposely simple) ---------------- */
-/* When JS shows video, these classes tell the site not to force color background */
-body.bg1-theme, body.bg2-theme, body.bg3-theme, body.bg4-theme {}
-
-/* color themes */
-body.karen-theme{background:#0B0F2A;color:#fff}
-body.jarvis-theme{background:#0A0A0A;color:#00E5FF}
+/* ---------------- THEME CLASSES ---------------- */
+body.karen-theme{background:#0B0F2A}
+body.jarvis-theme{background:#0A0A0A}
 body.talal-theme{background:#F2F3F5;color:#2E3338}
 
-/* ---------------- HELPERS ---------------- */
-#quickchat-embedded{border-radius:10px;overflow:hidden}
-
-/* ---------------- RESPONSIVE / MOBILE ---------------- */
+/* ---------------- MOBILE ---------------- */
 @media (max-width: 880px){
   .nav-links{gap:16px}
   .nav-logo img{height:38px}
 }
+
 @media (max-width: 768px){
-  /* navbar adjustments */
   .minty-nav{padding:10px 12px; top:6px}
+
   .nav-links{
     display:none;
     position:absolute;
@@ -287,26 +295,13 @@ body.talal-theme{background:#F2F3F5;color:#2E3338}
     border:2px solid var(--minty);
     box-shadow:0 8px 18px rgba(0,0,0,0.35);
   }
+
   .nav-links.open{display:flex}
   .hamburger{display:block}
-  main{padding:16px;margin-top:8px}
+
   .chat-container{height:60vh}
 
-  /* theme buttons responsive */
-  .theme-buttons{grid-template-columns:repeat(2,1fr)}
-  .theme-buttons button{font-size:1rem}
-
-  /* secret area shrink */
-  #secret-section{max-width:320px;padding:16px}
-
-  /* keep video allowed, but note many mobiles block autoplay
-     JS handles starting after user interaction when necessary. */
-  .video-bg{display:block} /* allow JS to manage visibility - JS may toggle display to none when not desired */
+  .theme-buttons{
+    grid-template-columns:repeat(2, 1fr);
+  }
 }
-
-/* small utility */
-.center-block{text-align:center}
-
-/* ======================================================
-   END of CSS
-====================================================== */
