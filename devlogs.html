@@ -62,50 +62,7 @@
         </section>
 
     </main>
-
-    <script src="java.js" defer></script>
-<script>
-const video = document.getElementById("bg-video");
-const source = document.getElementById("bg-source");
-
-const allThemes = [
-    "karen-theme", "jarvis-theme", "talal-theme",
-    "nova-theme", "titan-theme",
-    "bg1-theme", "bg2-theme", "bg3-theme", "bg4-theme"
-];
-
-// Remove all theme classes
-function clearThemes() {
-    allThemes.forEach(t => document.body.classList.remove(t));
-}
-
-// Switch animated background themes
-function setBackgroundTheme(num) {
-    clearThemes();
-
-    let file = `background${num}.mp4`;
-
-    source.src = file;
-    video.style.display = "block"; // show video
-    video.load();
-
-    document.body.classList.add(`bg${num}-theme`);
-}
-
-// Switch normal color themes
-function setColorTheme(name) {
-    clearThemes();
-    video.style.display = "none"; // hide video for normal themes
-    document.body.classList.add(`${name}-theme`);
-}
-
-// SECRET CODE HANDLER (your old system)
-function applySecretCode(code) {
-    if (code === "karen") setColorTheme("karen");
-    if (code === "jarvis") setColorTheme("jarvis");
-    if (code === "talal") setColorTheme("talal");
-}
-</script>
+<script src="java.js" defer></script>
 
 </body>
 </html>
