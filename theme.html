@@ -28,24 +28,26 @@
   </nav>
 
   <main>
-    <div class="theme-selector" aria-hidden="false">
-      <ul>
-        <li><a href="#" onclick="setBackgroundTheme(1); return false;">Background 1</a></li>
-        <li><a href="#" onclick="setBackgroundTheme(2); return false;">Background 2</a></li>
-        <li><a href="#" onclick="setBackgroundTheme(3); return false;">Background 3</a></li>
-        <li><a href="#" onclick="setBackgroundTheme(4); return false;">Background 4</a></li>
-      </ul>
-    </div>
+<div class="theme-container">
 
-    <h1 class="page-title">Choose a Theme</h1>
+    <h2 class="page-title">Choose Background</h2>
+
+    <div class="theme-buttons">
+        <button onclick="setBackgroundTheme(1)">Background 1</button>
+        <button onclick="setBackgroundTheme(2)">Background 2</button>
+        <button onclick="setBackgroundTheme(3)">Background 3</button>
+        <button onclick="setBackgroundTheme(4)">Background 4</button>
+        <button onclick="setBackgroundColorMode()">Default Dark</button>
+    </div>
 
     <div id="secret-section">
-      <h2>Enter Secret Code</h2>
-      <input type="text" id="secret-input" placeholder="Enter code...">
-      <button id="secret-submit">Submit Code</button>
-      <button id="reset-theme">Reset Theme</button>
-      <p id="secret-message"></p>
+        <input type="text" id="secret-input" placeholder="Enter secret code">
+        <button id="secret-submit">Submit Code</button>
+        <button id="reset-theme">Reset Theme</button>
     </div>
+
+</div>
+
   </main>
 
   <script src="java.js" defer></script>
