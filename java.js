@@ -12,23 +12,7 @@ const video = document.getElementById("bg-video");
 const source = document.getElementById("bg-source");
 
 // ================================
-//  APPLY SAVED THEME
-// ================================
-function applySavedTheme() {
-    const saved = localStorage.getItem("minty-theme");
-
-    if (!saved) return;
-
-    document.body.classList.add(saved);
-    console.log("Loaded saved theme:", saved);
-
-    updateQuickChatTheme(saved);
-}
-
-applySavedTheme();
-
-// ================================
-//  CLEAR ALL THEMES (fixed)
+//  THEME SYSTEM
 // ================================
 function clearThemes() {
     document.body.classList.remove(
@@ -44,35 +28,61 @@ function clearThemes() {
     );
 }
 
+// Save theme mode + value
+function saveTheme(mode, value) {
+    localStorage.setItem("theme-mode", mode);   // "video" or "color"
+    localStorage.setItem("theme-value", value); // # or theme name
+}
+
+// Load saved theme on page load
+function applySavedTheme() {
+    const mode = localStorage.getItem("theme-mode");
+    const value = localStorage.getItem("theme-value");
+
+    if (!mode || !value) return;
+
+    if (mode === "video") {
+        setBackgroundTheme(value, false); // don't re-save
+    } else if (mode === "color") {
+        applyTheme(value, false);
+    }
+}
+
+applySavedTheme();
+
 // ================================
 //  APPLY NEW NORMAL THEME
 // ================================
-function applyTheme(themeName) {
+function applyTheme(themeName, save = true) {
     clearThemes();
-    video.style.display = "none"; // hide animated backgrounds
+    video.style.display = "none";
 
     document.body.classList.add(themeName);
-    localStorage.setItem("minty-theme", themeName);
+
+    if (save) {
+        saveTheme("color", themeName);
+    }
 
     updateQuickChatTheme(themeName);
 }
 
 // ================================
-//  BACKGROUND VIDEO THEMES (fixed)
+//  BACKGROUND VIDEO THEMES
 // ================================
-function setBackgroundTheme(num) {
+function setBackgroundTheme(num, save = true) {
     clearThemes();
 
-    const file = `background${num}.mp4`;
+    source.src = `background${num}.mp4`;
 
-    source.src = file;
     video.style.display = "block";
     video.load();
     video.play();
 
     document.body.classList.add(`bg${num}-theme`);
 
-    localStorage.setItem("minty-theme", `bg${num}-theme`);
+    if (save) {
+        saveTheme("video", num);
+    }
 }
 
 // ================================
@@ -106,14 +116,15 @@ if (submitBtn) submitBtn.addEventListener("click", handleSecret);
 if (resetBtn) {
     resetBtn.addEventListener("click", () => {
         clearThemes();
-        localStorage.removeItem("minty-theme");
+        localStorage.removeItem("theme-mode");
+        localStorage.removeItem("theme-value");
         message.textContent = "Theme reset!";
         video.style.display = "none";
     });
 }
 
 // ================================
-//  QUICKCHAT THEME UPDATE (unchanged)
+//  QUICKCHAT THEME UPDATE (same as yours)
 // ================================
 function updateQuickChatTheme(theme) {
     if (typeof _quickchat_embedded !== "function") return;
