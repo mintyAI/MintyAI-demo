@@ -8,12 +8,12 @@
 </head>
 
 <body>
-    <!-- Hidden video background -->
+
+<!-- Background video (managed ONLY by java.js) -->
 <video id="bg-video" class="video-bg" autoplay muted loop playsinline style="display:none;">
     <source id="bg-source" src="" type="video/mp4">
 </video>
-<script src="java.js" defer></script>
-<div id="bg-effects"></div>
+
 <header>
     <a href="index.html">
         <img src="minty.png" alt="Minty AI Logo">
@@ -49,65 +49,16 @@
 
     <ul class="page-content">
         <li>Minty AI is named after Mohammed’s mint plant, Minty.</li>
-        <li>This project originally started last year, not because of WAICY. The idea came back after seeing WAICY announce their 2025 competition, which encouraged us to update it and improve it.</li>
+        <li>This project originally started last year, not because of WAICY. The idea came back after seeing WAICY announce
+            the 2025 competition, which encouraged us to update it and improve it.
+        </li>
     </ul>
-    
-<section id="secret-section">
-    <h2>Enter Secret Code</h2>
-
-    <input type="text" id="secret-input" placeholder="Enter secret code..." />
-    <button id="secret-submit">Submit</button>
-    <button id="reset-theme">Reset Theme</button>
-
-    <p id="secret-message"></p>
-</section>
 
     <a href="index.html" class="back-link">← Back to MintyAI</a>
 </main>
 
+<!-- Theme loader script (MUST be last) -->
 <script src="java.js" defer></script>
-<script>
-const video = document.getElementById("bg-video");
-const source = document.getElementById("bg-source");
-
-const allThemes = [
-    "karen-theme", "jarvis-theme", "talal-theme",
-    "nova-theme", "titan-theme",
-    "bg1-theme", "bg2-theme", "bg3-theme", "bg4-theme"
-];
-
-// Remove all theme classes
-function clearThemes() {
-    allThemes.forEach(t => document.body.classList.remove(t));
-}
-
-// Switch animated background themes
-function setBackgroundTheme(num) {
-    clearThemes();
-
-    let file = `background${num}.mp4`;
-
-    source.src = file;
-    video.style.display = "block"; // show video
-    video.load();
-
-    document.body.classList.add(`bg${num}-theme`);
-}
-
-// Switch normal color themes
-function setColorTheme(name) {
-    clearThemes();
-    video.style.display = "none"; // hide video for normal themes
-    document.body.classList.add(`${name}-theme`);
-}
-
-// SECRET CODE HANDLER (your old system)
-function applySecretCode(code) {
-    if (code === "karen") setColorTheme("karen");
-    if (code === "jarvis") setColorTheme("jarvis");
-    if (code === "talal") setColorTheme("talal");
-}
-</script>
 
 </body>
 </html>
