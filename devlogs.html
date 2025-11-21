@@ -1,86 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-<header class="top-header">
-    <h1>Minty AI</h1>
-    <link rel="stylesheet" href="styles.css">
-</header>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Minty AI Devlogs</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="devlogs-page">
 
-<body>
-    <!-- Hidden video background -->
-<video id="bg-video" class="video-bg" autoplay muted loop playsinline style="display:none;">
+  <video id="bg-video" class="video-bg" autoplay muted loop playsinline>
     <source id="bg-source" src="" type="video/mp4">
-</video>
+  </video>
 
-    <!-- Background Effect Overlay -->
-    <div id="bg-effects"></div>
-
-    <!-- Logo -->
-    <header>
-        <a href="index.html">
-            <img src="minty.png" alt="Minty AI Logo">
-        </a>
-    </header>
-
-    <!-- Navigation -->
-<nav class="minty-nav">
+  <nav class="minty-nav" role="navigation">
     <div class="nav-left">
-        <a href="index.html" class="nav-logo">
-            <img src="minty.png" alt="Minty AI Logo">
-        </a>
+      <a href="index.html" class="nav-logo"><img src="minty.png" alt="Minty"></a>
     </div>
-
     <div class="nav-right">
-        <ul class="nav-links" id="mobileMenu">
-            <li><a href="about.html">About</a></li>
-            <li><a href="index.html">Chatbot</a></li>
-            <li><a href="theme.html">Themes</a></li>
-            <li><a href="devlogs.html">Devlogs</a></li>
-        </ul>
-
-        <div class="hamburger" onclick="toggleMenu()">
-            ☰
-        </div>
+      <ul class="nav-links" id="mobileMenu">
+        <li><a href="about.html">About</a></li>
+        <li><a href="index.html">Chatbot</a></li>
+        <li><a href="theme.html">Themes</a></li>
+        <li><a href="devlogs.html" class="active">Devlogs</a></li>
+      </ul>
+      <div class="hamburger" onclick="toggleMenu()">☰</div>
     </div>
-</nav>
+  </nav>
 
+  <header class="dev-header" style="margin-top:18px;">
+    <h1>Minty AI Devlogs</h1>
+    <p>Updates, improvements, and behind-the-scenes progress.</p>
+  </header>
 
+  <main class="devlogs-container">
+    <section class="devlog-entry">
+      <h2>✨ Devlog #1 — Minty AI Multi-Tab Launch!</h2>
+      <p class="dev-date">17/11/2025</p>
+      <p>Added multiple tabs (webpages) for the website and cleaned layout.</p>
+    </section>
 
-    <!-- Devlogs Header -->
-    <header class="dev-header">
-        <h1>Minty AI Devlogs</h1>
-        <p>Updates, improvements, and behind-the-scenes progress.</p>
-    </header>
+    <section class="devlog-entry">
+      <h2>🌐 Devlog #2 — Hosting Issues</h2>
+      <p class="dev-date">17/11/2025</p>
+      <p>Moved hosting to GitHub Pages for faster updates.</p>
+    </section>
+  </main>
 
-    <!-- Devlog Entries -->
-    <main class="devlogs-container">
-
-        <section class="devlog-entry">
-            <h2>✨ Devlog #1 — Minty AI Multi-Tab Launch!</h2>
-            <p class="dev-date">17/11/2025</p>
-            <p>
-                Added multiple tabs (webpages) for the website!
-                I know it's already expected, but hey, it took us less than a week!
-                Along with that the webpage looks a lot cleaner now. But still planning to make it look nicer.
-            </p>
-        </section>
-
-        <section class="devlog-entry">
-            <h2>🌐 Devlog #2 — Hosting Issues</h2>
-            <p class="dev-date">17/11/2025</p>
-            <p>
-                Hosting started on Netlify, but updating GitHub through it was annoying.
-                Now hosting on GitHub Pages for faster and easier updates.
-            </p>
-        </section>
-
-    </main>
-<script src="java.js" defer></script>
-<script>
-function toggleMenu() {
-    const menu = document.getElementById("mobileMenu");
-    menu.classList.toggle("open");
-}
-</script>
-
+  <script src="java.js" defer></script>
 </body>
 </html>
