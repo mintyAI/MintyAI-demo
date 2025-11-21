@@ -1,4 +1,12 @@
 console.log("java.js loaded successfully");
+window.addEventListener("DOMContentLoaded", () => {
+    const mode = localStorage.getItem("theme-mode");
+    const value = localStorage.getItem("theme-value");
+
+    if (mode === "video") {
+        setBackgroundTheme(value, false);
+    }
+});
 
 // ================================
 //  ELEMENTS
@@ -174,3 +182,4 @@ function updateQuickChatTheme(theme) {
 
     _quickchat_embedded("init", "mo6r8ou35i", { theme: quickTheme });
 }
+
