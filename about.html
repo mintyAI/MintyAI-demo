@@ -1,81 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-<header class="top-header">
-    <h1>Minty AI</h1>
-    <link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="styles.css">
-</header>
-
-
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>About Minty AI</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
 <body>
 
-<!-- Background video (managed ONLY by java.js) -->
-<video id="bg-video" class="video-bg" autoplay muted loop playsinline style="display:none;">
+  <video id="bg-video" class="video-bg" autoplay muted loop playsinline>
     <source id="bg-source" src="" type="video/mp4">
-</video>
+  </video>
 
-<header>
-    <a href="index.html">
-        <img src="minty.png" alt="Minty AI Logo">
-    </a>
-</header>
-
-<nav class="minty-nav">
+  <nav class="minty-nav" role="navigation">
     <div class="nav-left">
-        <a href="index.html" class="nav-logo">
-            <img src="minty.png" alt="Minty AI Logo">
-        </a>
+      <a href="index.html" class="nav-logo"><img src="minty.png" alt="Minty"></a>
     </div>
-
     <div class="nav-right">
-        <ul class="nav-links" id="mobileMenu">
-            <li><a href="about.html">About</a></li>
-            <li><a href="index.html">Chatbot</a></li>
-            <li><a href="theme.html">Themes</a></li>
-            <li><a href="devlogs.html">Devlogs</a></li>
-        </ul>
-
-        <div class="hamburger" onclick="toggleMenu()">
-            ☰
-        </div>
+      <ul class="nav-links" id="mobileMenu">
+        <li><a href="about.html" class="active">About</a></li>
+        <li><a href="index.html">Chatbot</a></li>
+        <li><a href="theme.html">Themes</a></li>
+        <li><a href="devlogs.html">Devlogs</a></li>
+      </ul>
+      <div class="hamburger" onclick="toggleMenu()">☰</div>
     </div>
-</nav>
+  </nav>
 
-
-
-<main>
+  <main>
     <h1 class="page-title">About Minty AI</h1>
 
     <p class="page-content">
-        Minty AI is an AI developed by Ahmed Aleid and Mohammed Albaiz. Its main goal is to help you understand the curriculum in a clearer and simpler way.
+      Minty AI is an AI developed by Ahmed Aleid and Mohammed Albaiz. Its main goal is to help you understand the curriculum in a clearer and simpler way.
     </p>
 
     <p class="page-content">Supported subjects:</p>
-
     <ul class="page-content">
-        <li>English Grammar Book</li>
-        <li>Chemistry</li>
-        <li>Biology</li>
-        <li>ICT</li>
+      <li>English Grammar Book</li>
+      <li>Chemistry</li>
+      <li>Biology</li>
+      <li>ICT</li>
     </ul>
 
     <h2 class="page-title">Fun Facts</h2>
-
     <ul class="page-content">
-        <li>Minty AI is named after Mohammed’s mint plant, Minty.</li>
-        <li>This project originally started last year, not because of WAICY. The idea came back after seeing WAICY announce
-            the 2025 competition, which encouraged us to update it and improve it.
-        </li>
+      <li>Minty AI is named after Mohammed’s mint plant, Minty.</li>
+      <li>This project started earlier and was updated for the 2025 competition.</li>
     </ul>
+  </main>
 
-</main>
-
-<!-- Theme loader script (MUST be last) -->
-<script src="java.js" defer></script>
-<script>
-function toggleMenu() {
-    const menu = document.getElementById("mobileMenu");
-    menu.classList.toggle("open");
-}
-</script>
+  <script src="java.js" defer></script>
 </body>
 </html>
