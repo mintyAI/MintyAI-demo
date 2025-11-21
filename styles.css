@@ -418,7 +418,16 @@ header img {
     .chat-container {
         width: 95%;
     }
+body {
+    background: #2f2f2f;
 }
+
+@media (max-width: 768px) {
+    #bg-video {
+        display: none !important;
+    }
+}
+
 
 
 
