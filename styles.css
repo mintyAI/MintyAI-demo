@@ -240,5 +240,102 @@ body.talal-theme { background:#F2F3F5; color:#2E3338; }
     .theme-buttons {
         grid-template-columns: 1fr 1fr;
     }
+/* ============================
+   THEMES PAGE (CENTERED + FIXED)
+============================ */
+.theme-container {
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    padding: 20px;
 }
+
+/* Perfectly centered grid */
+.theme-buttons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    justify-items: center;   /* centers items horizontally */
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+}
+
+/* Buttons match navbar hover + style */
+.theme-buttons button {
+    padding: 14px;
+    background: #0d3d27;
+    border: 2px solid var(--minty);
+    border-radius: 12px;
+    color: var(--minty);
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    transition: all 0.18s ease; /* matches nav */
+}
+
+.theme-buttons button:hover {
+    background: var(--minty-strong);
+    color: var(--deep);
+}
+
+/* ============================
+   SECRET CODE + RESET BUTTONS FIX
+============================ */
+#secret-section {
+    background: rgba(13,61,39,0.25);
+    padding: 20px;
+    border-radius: 12px;
+    border: 2px solid var(--minty);
+    width: 100%;
+    max-width: 380px;
+    margin: 20px auto 30px;
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#secret-section input {
+    padding: 10px;
+    border-radius: 8px;
+    border: 2px solid var(--minty);
+    background: #0d3d27;
+    color: #fff;
+    width: 100%;
+}
+
+#secret-submit,
+#reset-theme {
+    padding: 10px 15px;
+    border-radius: 8px;
+    background: #0d3d27;
+    color: var(--minty);
+    border: 2px solid var(--minty);
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    transition: all 0.18s ease; /* matches nav hover */
+}
+
+#secret-submit:hover,
+#reset-theme:hover {
+    background: var(--minty-strong);
+    color: var(--deep);
+}
+
+/* ============================
+   MOBILE FIXES
+============================ */
+@media (max-width: 768px) {
+    .theme-buttons {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
 
