@@ -1,37 +1,45 @@
 // ---------------- Background Handling ----------------
 
-// Load stored background when page opens
+// Load saved background when page opens
 document.addEventListener("DOMContentLoaded", () => {
     const saved = localStorage.getItem("background");
 
     if (!saved || saved === "none") {
         setBackgroundColorMode();
-        return;
+    } else {
+        setBackgroundTheme(parseInt(saved));
     }
-
-    setBackgroundTheme(parseInt(saved));
 });
 
 
-// Set MP4 background theme
+// Apply MP4 background theme
 function setBackgroundTheme(num) {
     const video = document.getElementById("bg-video");
-    const source = document.getElementById("bg-source");
 
-    source.src = "background" + num + ".mp4";
-    video.load();
+    // Hide if element missing
+    if (!video) return;
+
     video.style.display = "block";
+    video.src = `background${num}.mp4`;  // MUST match filenames
+    video.load();
+    video.play().catch(() => {});
 
+    // fallback color behind video
     document.body.style.background = "black";
 
     localStorage.setItem("background", num);
 }
 
 
-// Default dark theme (#2f2f2f)
+// Apply default dark mode background
 function setBackgroundColorMode() {
     const video = document.getElementById("bg-video");
-    video.style.display = "none";
+
+    if (video) {
+        video.pause();
+        video.src = "";
+        video.style.display = "none";
+    }
 
     document.body.style.background = "#2f2f2f";
 
@@ -39,7 +47,8 @@ function setBackgroundColorMode() {
 }
 
 
-// Reset button
+// ---------------- Reset Button ----------------
+
 const resetBtn = document.getElementById("reset-theme");
 if (resetBtn) {
     resetBtn.onclick = () => setBackgroundColorMode();
@@ -48,31 +57,9 @@ if (resetBtn) {
 
 // ---------------- Hamburger Menu ----------------
 
-<script>
 function toggleMenu() {
-    document.querySelector('.nav-links').classList.toggle('open');
-}
-</script>
-function setBackgroundTheme(id) {
-    const video = document.getElementById("bg-video");
-    document.body.className = ""; // reset themes
-
-    // If theme id is 1-4 → video theme
-    if ([1,2,3,4].includes(id)) {
-        document.body.classList.add(`bg${id}-theme`);
-        video.style.display = "block";
-        video.src = `bg${id}.mp4`; // MAKE SURE filenames match here
-        video.play().catch(() => {});
-        return;
+    const menu = document.querySelector('.nav-links');
+    if (menu) {
+        menu.classList.toggle('open');
     }
-
-    // If not video → hide the video
-    video.style.display = "none";
-    video.pause();
-    video.src = "";
 }
-
-
-
-
-
