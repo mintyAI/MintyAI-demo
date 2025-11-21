@@ -139,114 +139,106 @@ body, html {
 }
 
 /* ---------------- NAVBAR (FINAL VERSION) ---------------- */
+/* NAVBAR CONTAINER */
 .minty-nav {
     position: fixed;
     top: 20px;
     left: 50%;
     transform: translateX(-50%);
-
     width: 92%;
     max-width: 1000px;
-
     padding: 12px 25px;
-    background: #0d3d27;
-    border: 2px solid #70e6b8;
+
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(12px);
     border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.12);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.35);
 
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-    box-shadow: 0 4px 12px rgba(112, 230, 184, 0.25);
     z-index: 9999;
 }
 
+/* LOGO */
 .nav-logo img {
-    width: 60px;
+    height: 45px;
 }
 
-/* Desktop links */
-.nav-links {
-    list-style: none;
+/* RIGHT SIDE */
+.nav-right {
     display: flex;
-    gap: 35px;
+    align-items: center;
+    gap: 20px;
+}
+
+/* DESKTOP LINKS */
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 30px;
 }
 
 .nav-links li a {
+    color: #7fffd4;
     text-decoration: none;
-    color: #70e6b8;
-    font-size: 1.15rem;
+    font-size: 1.1rem;
     font-weight: 600;
     padding: 6px 12px;
     border-radius: 10px;
     transition: 0.25s ease;
 }
 
-.nav-links li a:hover,
-.nav-links li a.active {
-    background: #1abc9c;
+.nav-links li a:hover {
+    background: #7fffd4;
     color: #0d3d27;
 }
 
-/* Hamburger */
+/* HAMBURGER (Hidden on desktop) */
 .hamburger {
     display: none;
-    font-size: 32px;
+    font-size: 34px;
     cursor: pointer;
-    color: #70e6b8;
-    padding: 8px 12px;
-    border-radius: 10px;
+    color: #7fffd4;
+    padding: 5px 10px;
 }
 
-/* ---------------- MOBILE NAV ---------------- */
+/* =========================
+      MOBILE MENU
+========================= */
 @media (max-width: 768px) {
 
     .hamburger {
         display: block;
     }
 
-    /* Hide desktop links by default */
     .nav-links {
         display: none;
         flex-direction: column;
-        gap: 20px;
-
         position: absolute;
-        top: 70px;
+        top: 80px;
         right: 20px;
-
+        background: rgba(13,61,39,0.95);
         width: 220px;
         padding: 20px;
-
-        background: rgba(13, 61, 39, 0.95);
-        border: 2px solid #70e6b8;
         border-radius: 16px;
-        box-shadow: 0 4px 12px rgba(112, 230, 184, 0.25);
+        border: 2px solid #7fffd4;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        gap: 20px;
     }
 
-    /* When opened */
     .nav-links.open {
         display: flex;
     }
 
     .nav-links li a {
         font-size: 1.2rem;
-        width: 100%;
         padding: 10px;
+        display: block;
     }
 }
 
-/* -------- PAGE BASICS ---------- */
-main {
-    padding-top: 120px;
-    text-align: center;
-}
-
-.page-title {
-    margin-top: 40px;
-    font-size: 2.3rem;
-    color: #7fffd4;
-}
 
 
 
