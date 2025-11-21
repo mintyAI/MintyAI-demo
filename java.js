@@ -184,8 +184,9 @@ function updateQuickChatTheme(theme) {
 }
 // Mobile navbar
 function toggleMenu() {
-    const nav = document.querySelector("nav ul");
-    nav.classList.toggle("open");
+    document.getElementById("nav-links").classList.toggle("open");
 }
+
+
 
 
