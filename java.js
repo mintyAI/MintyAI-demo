@@ -182,4 +182,10 @@ function updateQuickChatTheme(theme) {
 
     _quickchat_embedded("init", "mo6r8ou35i", { theme: quickTheme });
 }
+// Mobile navbar
+function toggleMenu() {
+    const nav = document.querySelector("nav ul");
+    nav.classList.toggle("open");
+}
+
 
