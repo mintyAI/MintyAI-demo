@@ -48,8 +48,12 @@ if (resetBtn) {
 
 // ---------------- Hamburger Menu ----------------
 
+<script>
 function toggleMenu() {
-    document.getElementById("mobileMenu").classList.toggle("open");
+    document.querySelector('.nav-links').classList.toggle('open');
 }
+</script>
+
+
 
 
