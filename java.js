@@ -1,30 +1,27 @@
 // ---------------- Background & Theme Manager ----------------
 (function () {
-  const BG_KEY = "background"; // "none" or "1"/"2"/...
-  const THEME_KEY = "themeName"; // e.g. "karen-theme"
+  const BG_KEY = "background";   // stores: "none" or "1", "2", "3"...
+  const THEME_KEY = "themeName"; // stores: "karen-theme", "jarvis-theme", etc.
 
-  // DOM ready -> restore saved state
+  // Restore saved background/theme on page load
   document.addEventListener("DOMContentLoaded", () => {
-    const bg = localStorage.getItem(BG_KEY);
-    const theme = localStorage.getItem(THEME_KEY);
+    const savedBg = localStorage.getItem(BG_KEY);
+    const savedTheme = localStorage.getItem(THEME_KEY);
 
-    // if a video background is stored -> use it (priority)
-    if (bg && bg !== "none") {
-      setBackgroundTheme(parseInt(bg, 10), false);
+    if (savedBg && savedBg !== "none") {
+      setBackgroundTheme(parseInt(savedBg, 10), false);
       return;
     }
 
-    // else if a named theme saved -> apply it
-    if (theme) {
-      applyThemeClass(theme, false);
+    if (savedTheme) {
+      applyThemeClass(savedTheme, false);
       return;
     }
 
-    // default
     setBackgroundColorMode(false);
   });
 
-  // -- Helpers to get DOM elements --
+  // Helper to access video elements
   function _els() {
     return {
       video: document.getElementById("bg-video"),
@@ -32,91 +29,97 @@
     };
   }
 
-  // Set video background (1..n). save = whether to persist to localStorage
-  window.setBackgroundTheme = function setBackgroundTheme(id, save = true) {
+  // ---------------- Set MP4 Background ----------------
+  window.setBackgroundTheme = function (id, save = true) {
     const { video, source } = _els();
-    if (!video) {
-      console.warn("No #bg-video on page.");
-      return;
-    }
+    if (!video) return;
 
-    const n = parseInt(id, 10);
-    if (isNaN(n)) return;
+    const num = parseInt(id, 10);
+    if (isNaN(num)) return;
 
-    const filename = `background${n}.mp4`; // adjust if your filenames differ
+    const filename = `background${num}.mp4`;
+
+    // Update the source
     if (source) {
       source.src = filename;
-      try { video.load(); } catch (e) {}
+      try { video.load(); } catch {}
     } else {
-      try { video.pause(); } catch {}
       video.src = filename;
       try { video.load(); } catch {}
     }
 
     video.style.display = "block";
-    // fallback background behind video
     document.body.style.background = "black";
 
-    // remove any named theme classes so color themes don't conflict
+    // Remove color theme classes
     removeNamedThemes();
+    removeBgThemeClasses();
 
-    if (save) localStorage.setItem(BG_KEY, String(n));
-    if (save) localStorage.removeItem(THEME_KEY);
+    document.body.classList.add(`bg${num}-theme`);
 
-    // try to play (may be blocked until user interacts)
+    if (save) {
+      localStorage.setItem(BG_KEY, String(num));
+      localStorage.removeItem(THEME_KEY);
+    }
+
+    // Attempt to play (mobile may still block until user taps)
     const p = video.play();
-    if (p && typeof p.then === "function") {
-      p.catch(() => { /* ignored */ });
-    }
+    if (p?.catch) p.catch(() => {});
   };
 
-  // Switch back to plain color mode
-  window.setBackgroundColorMode = function setBackgroundColorMode(save = true) {
+  // ---------------- Remove video, use default dark background ----------------
+  window.setBackgroundColorMode = function (save = true) {
     const { video, source } = _els();
+
     if (video) {
       if (source) {
         source.src = "";
         try { video.load(); } catch {}
       } else {
-        try { video.pause(); } catch {}
         try { video.removeAttribute("src"); } catch {}
       }
-      try { video.pause(); } catch {}
+      video.pause?.();
       video.style.display = "none";
     }
 
-    document.body.style.background = "#2f2f2f";
-    if (save) localStorage.setItem(BG_KEY, "none");
-    if (save) localStorage.removeItem(THEME_KEY);
     removeNamedThemes();
+    removeBgThemeClasses();
+    document.body.style.background = "#2f2f2f";
+
+    if (save) {
+      localStorage.setItem(BG_KEY, "none");
+      localStorage.removeItem(THEME_KEY);
+    }
   };
 
-  // Apply a named (color) theme: e.g. "karen-theme"
-  window.applyThemeClass = function applyThemeClass(name, save = true) {
-    // hide video if any
+  // ---------------- Apply a color theme (non-video) ----------------
+  window.applyThemeClass = function (name, save = true) {
     const { video, source } = _els();
+
+    // Hide video if shown
     if (video) {
       if (source) {
         source.src = "";
         try { video.load(); } catch {}
       } else {
-        try { video.pause(); } catch {}
         try { video.removeAttribute("src"); } catch {}
       }
+      video.pause?.();
       video.style.display = "none";
     }
 
-    // remove previous named themes and bg-theme classes
     removeNamedThemes();
     removeBgThemeClasses();
 
     if (name) document.body.classList.add(name);
 
-    // set sensible page background: some themes are light/dark
-    if (name === "talal-theme") document.body.style.background = "#F2F3F5";
-    else if (name === "jarvis-theme") document.body.style.background = "#0A0A0A";
-    else if (name === "karen-theme") document.body.style.background = "#0B0F2A";
-    else document.body.style.background = "#2f2f2f";
+    // Automatic body background per theme
+    switch (name) {
+      case "talal-theme": document.body.style.background = "#F2F3F5"; break;
+      case "jarvis-theme": document.body.style.background = "#0A0A0A"; break;
+      case "karen-theme": document.body.style.background = "#0B0F2A"; break;
+      default: document.body.style.background = "#2f2f2f";
+    }
 
     if (save) {
       localStorage.setItem(THEME_KEY, name);
@@ -124,35 +127,34 @@
     }
   };
 
+  // ---------------- Helpers ----------------
   function removeNamedThemes() {
-    ["karen-theme", "jarvis-theme", "talal-theme", "nova-theme", "titan-theme"].forEach(c => {
-      document.body.classList.remove(c);
-    });
+    ["karen-theme", "jarvis-theme", "talal-theme", "nova-theme", "titan-theme"]
+      .forEach(c => document.body.classList.remove(c));
   }
 
   function removeBgThemeClasses() {
-    ["bg1-theme", "bg2-theme", "bg3-theme", "bg4-theme"].forEach(c => {
-      document.body.classList.remove(c);
-    });
+    ["bg1-theme", "bg2-theme", "bg3-theme", "bg4-theme"]
+      .forEach(c => document.body.classList.remove(c));
   }
 
-  // Utility: reset both
-  window.resetThemeAndBackground = function resetThemeAndBackground() {
+  // Reset both system
+  window.resetThemeAndBackground = function () {
     setBackgroundColorMode();
-    localStorage.removeItem(THEME_KEY);
     localStorage.removeItem(BG_KEY);
+    localStorage.removeItem(THEME_KEY);
   };
 
-  // Hook reset button if present
+  // Auto-hook reset button
   document.addEventListener("DOMContentLoaded", () => {
-    const btn = document.getElementById("reset-theme");
-    if (btn) btn.addEventListener("click", () => resetThemeAndBackground());
+    const resetBtn = document.getElementById("reset-theme");
+    if (resetBtn) resetBtn.onclick = () => resetThemeAndBackground();
   });
 
 })();
 
-// ---------------- Hamburger Menu (keeps minimal footprint) ----------------
+// ---------------- Hamburger Menu ----------------
 function toggleMenu() {
   const menu = document.getElementById("mobileMenu");
-  if (menu) menu.classList.toggle("open");
+  menu?.classList.toggle("open");
 }
