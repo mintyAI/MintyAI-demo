@@ -1,4 +1,6 @@
-/* General body styling */
+/* ================================================
+   GENERAL PAGE LAYOUT
+================================================ */
 body {
     margin: 0;
     background: #2f2f2f !important;
@@ -10,7 +12,9 @@ body {
     min-height: 100vh;
 }
 
-/* Header styling */
+/* ================================================
+   HEADER
+================================================ */
 header {
     width: 100%;
     padding: 20px;
@@ -28,58 +32,16 @@ header img:hover {
     transform: scale(1.1) rotate(-2deg);
 }
 
-/* Page title text (green) */
-.title-text {
-    color: #70e6b8; /* Mint green */
-    font-size: 20px;
-    margin-top: 10px;
-    text-align: center;
-    font-weight: 600;
-}
-
-/* Chat container with green gradient */
-.chat-container {
-    width: 100%;
-    max-width: 1200px;
-    height: 75vh;
-    margin-top: 20px;
-    position: relative;
-    background: linear-gradient(to bottom, #000000, #ffffff); /* Dark green to mint green */
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* Iframe */
-#quickchat-embedded {
-    width: 95%;
-    height: 95%;
-    border-radius: 10px;
-    background-color: #FAF9F6 /* dark green inside chat */
-}
-
-/* Responsive tweaks */
-@media (max-width: 768px) {
-    header img { width: 120px; }
-    .chat-container { height: 70vh; }
-}
-
-/* Animations */
-@keyframes pulse {
-    0%, 100% { text-shadow: 0 0 6px rgba(112, 230, 184, 0.8); }
-    50% { text-shadow: 0 0 12px rgba(112, 230, 184, 1); }
-}
-/* Smooth Minty Navigation Bar */
+/* ================================================
+   MAIN NAVBAR
+================================================ */
 .navbar {
-    background-color: #0d3d27;              /* deep green */
+    background-color: #0d3d27;
     padding: 12px 25px;
-    border-radius: 14px;                    /* rounded corners */
-    margin: 20px auto;                      /* center horizontally */
-    width: fit-content;                     /* shrink to content */
-    border: 2px solid #70e6b8;              /* mint border */
+    border-radius: 14px;
+    margin: 20px auto;
+    width: fit-content;
+    border: 2px solid #70e6b8;
     box-shadow: 0 4px 12px rgba(112, 230, 184, 0.25);
 }
 
@@ -101,22 +63,23 @@ header img:hover {
     transition: all 0.25s ease;
 }
 
-/* Hover animation */
 .navbar ul li a:hover {
-    background-color: #1abc9c;             /* minty teal */
-    color: #0d3d27;                         /* dark text for contrast */
-    box-shadow: 0 2px 10px rgba(26, 188, 156, 0.35);
+    background-color: #1abc9c;
+    color: #0d3d27;
+    box-shadow: 0 2px 10px rgba(26,188,156,0.35);
 }
-/* Page Title */
+
+/* ================================================
+   PAGE TITLES & CONTENT
+================================================ */
 .page-title {
     font-size: 2rem;
     font-weight: 700;
     margin: 30px 0 15px;
-    color: #98fbcb; /* Mint color */
+    color: #98fbcb;
     text-align: center;
 }
 
-/* Paragraphs */
 .page-content {
     max-width: 700px;
     margin: 0 auto 20px;
@@ -125,50 +88,45 @@ header img:hover {
     color: #e5e5e5;
 }
 
-/* Lists */
 .page-content ul,
 ul.page-content {
     max-width: 700px;
-    margin: 0 auto 25px;
     padding-left: 20px;
 }
 
 .page-content li {
     margin-bottom: 8px;
-    padding-left: 6px;
 }
 
-/* Fun Facts header */
-h2.page-title {
-    margin-top: 40px;
-    font-size: 1.7rem;
+/* ================================================
+   CHAT / QUICKCHAT CONTAINER
+================================================ */
+.chat-container {
+    width: 100%;
+    max-width: 1200px;
+    height: 75vh;
+    margin-top: 20px;
+    position: relative;
+    background: linear-gradient(to bottom, #000000, #ffffff);
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-/* Back Link */
-.back-link {
-    display: block;
-    text-align: center;
-    margin: 40px auto;
-    font-size: 1rem;
-    text-decoration: none;
-    color: #2dd4bf;
-    transition: 0.2s;
+#quickchat-embedded {
+    width: 95%;
+    height: 95%;
+    border-radius: 10px;
+    background-color: #FAF9F6;
 }
 
-.back-link:hover {
-    color: #5ef2dd;
-}
-
-/* Better spacing for main */
-main {
-    padding: 20px;
-}
-/* ========================================================= */
-/* SECRET CODE SECTION — Matches main Minty dark green theme */
-/* ========================================================= */
-
+/* ================================================
+   SECRET CODE SECTION
+================================================ */
 #secret-section {
-    background: rgba(13, 61, 39, 0.25); /* transparent minty green */
+    background: rgba(13,61,39,0.25);
     padding: 16px;
     border-radius: 12px;
     border: 2px solid #70e6b8;
@@ -177,27 +135,15 @@ main {
     text-align: center;
 }
 
-#secret-section h2 {
-    color: #70e6b8;
-    margin-bottom: 10px;
-}
-
 #secret-section input {
     padding: 10px;
     border-radius: 8px;
     border: 2px solid #70e6b8;
     background: #0d3d27;
-    color: #ffffff;
-    font-size: 1rem;
+    color: #fff;
     width: 200px;
-    outline: none;
 }
 
-#secret-section input::placeholder {
-    color: #b7ffe5;
-}
-
-/* BUTTONS — match navbar color */
 #secret-submit,
 #reset-theme {
     padding: 10px 15px;
@@ -215,139 +161,11 @@ main {
 #reset-theme:hover {
     background: #1abc9c;
     color: #0d3d27;
-    box-shadow: 0 2px 10px rgba(26, 188, 156, 0.35);
-}
-/* ========================================================= */
-/* THEME CLASS DEFINITIONS — REQUIRED FOR THEMES TO WORK     */
-/* ========================================================= */
-
-/* Transition effect */
-body.theme-transition {
-    transition: background 0.6s ease, color 0.6s ease;
-    filter: brightness(0.85);
 }
 
-/* --------------------------- */
-/* 🕷️ SPIDER-MAN THEME — KAREN */
-/* --------------------------- */
-body.karen-theme {
-    background-color: #0B0F2A !important;
-    color: #ffffff !important;
-}
-
-.karen-theme .navbar {
-    background-color: #C1121F !important;
-    border-color: #1976D2 !important;
-}
-
-.karen-theme h1,
-.karen-theme h2,
-.karen-theme a {
-    color: #1976D2 !important;
-}
-
-/* -------------------------- */
-/* 🟥 IRON MAN THEME — JARVIS */
-/* -------------------------- */
-body.jarvis-theme {
-    background-color: #0A0A0A !important;
-    color: #00E5FF !important;
-}
-
-.jarvis-theme .navbar {
-    background-color: #B30000 !important;
-    border-color: #FFC400 !important;
-}
-
-.jarvis-theme h1,
-.jarvis-theme h2,
-.jarvis-theme a {
-    color: #FFC400 !important;
-}
-
-/* ---------------------------- */
-/* 🤍 DISCORD LIGHT — TALAL     */
-/* ---------------------------- */
-body.talal-theme {
-    background-color: #F2F3F5 !important;
-    color: #2E3338 !important;
-}
-
-.talal-theme .navbar {
-    background-color: #FFFFFF !important;
-    border-color: #5865F2 !important;
-}
-
-.talal-theme h1,
-.talal-theme h2,
-.talal-theme a {
-    color: #5865F2 !important;
-}
-
-/* Placeholder extra themes */
-body.nova-theme {
-    background: #080808 !important;
-    color: #39ff14 !important;
-}
-
-body.titan-theme {
-    background: #1a1a1a !important;
-    color: #ffae00 !important;
-}
-/* =========================================================
-   DEVLOGS PAGE
-========================================================= */
-
-.dev-header {
-    text-align: center;
-    padding: 25px;
-}
-
-.dev-header h1 {
-    color: #98fbcb;
-}
-
-.devlogs-container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-.devlog-entry {
-    background: rgba(0,0,0,0.35);
-    padding: 20px;
-    border-radius: 12px;
-    border-left: 4px solid #70e6b8;
-    margin-bottom: 25px;
-}
-
-.devlog-entry h2 {
-    margin: 0;
-    color: #98fbcb;
-}
-
-.dev-date {
-    color: #b7ffe5;
-    font-size: 0.9rem;
-}
-/* VIDEO BACKGROUND THEMES */
-body.bg1-theme {
-    background: none;
-}
-
-body.bg2-theme {
-    background: none;
-}
-
-body.bg3-theme {
-    background: none;
-}
-
-body.bg4-theme {
-    background: none;
-}
-
-/* Make sure video covers the screen */
+/* ================================================
+   BACKGROUND VIDEO
+================================================ */
 .video-bg {
     position: fixed;
     top: 0;
@@ -359,16 +177,64 @@ body.bg4-theme {
     pointer-events: none;
     opacity: 1;
 }
-/* Hide hamburger on desktop */
-.hamburger {
-    display: none;
-    font-size: 28px;
-    cursor: pointer;
-    padding: 10px;
+
+body.bg1-theme,
+body.bg2-theme,
+body.bg3-theme,
+body.bg4-theme {
+    background: none !important;
 }
 
-/* Mobile navbar behavior */
+/* ================================================
+   THEMES (Karen, Jarvis, Talal, etc.)
+================================================ */
+body.karen-theme {
+    background-color: #0B0F2A !important;
+    color: #fff !important;
+}
+
+body.jarvis-theme {
+    background-color: #0A0A0A !important;
+    color: #00E5FF !important;
+}
+
+body.talal-theme {
+    background-color: #F2F3F5 !important;
+    color: #2E3338 !important;
+}
+
+/* ================================================
+   MOBILE RESPONSIVE FIXES (FULLY WORKING)
+================================================ */
 @media (max-width: 768px) {
+
+    header img {
+        width: 140px;
+    }
+
+    .page-title {
+        font-size: 1.6rem;
+        padding: 0 10px;
+    }
+
+    .page-content {
+        font-size: 1rem;
+        padding: 0 10px;
+    }
+
+    .chat-container {
+        width: 95%;
+        height: 70vh;
+    }
+
+    /* Mobile navbar */
+    .hamburger {
+        display: block;
+        font-size: 30px;
+        margin: 10px;
+        cursor: pointer;
+    }
+
     nav ul {
         display: none;
         flex-direction: column;
@@ -385,61 +251,8 @@ body.bg4-theme {
         display: flex;
     }
 
-    .hamburger {
-        display: block;
-    }
-@media (max-width: 768px) {
-    .page-title {
-        font-size: 1.6rem;
-        text-align: center;
-        padding: 0 10px;
-    }
-
-    .page-content {
-        font-size: 1rem;
-        padding: 0 10px;
-    }
-header img {
-    max-width: 180px;
-    width: 40%;
-}
-
-@media (max-width: 768px) {
-    header img {
-        max-width: 140px;
-    }
-.chat-container {
-    width: 100%;
-    max-width: 700px;
-    margin: auto;
-}
-
-@media (max-width: 768px) {
-    .chat-container {
-        width: 95%;
-    }
-body {
-    background: #2f2f2f;
-}
-
-@media (max-width: 768px) {
+    /* Hide video on mobile (browser limitations) */
     #bg-video {
         display: none !important;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
