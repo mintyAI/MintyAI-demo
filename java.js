@@ -158,3 +158,14 @@ function toggleMenu() {
   const menu = document.getElementById("mobileMenu");
   menu?.classList.toggle("open");
 }
+#bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1;      /* THIS! Makes it behind everything */
+  pointer-events: none;
+}
+
