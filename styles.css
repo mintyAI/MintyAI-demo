@@ -388,7 +388,19 @@ body.bg4-theme {
     .hamburger {
         display: block;
     }
+@media (max-width: 768px) {
+    .page-title {
+        font-size: 1.6rem;
+        text-align: center;
+        padding: 0 10px;
+    }
+
+    .page-content {
+        font-size: 1rem;
+        padding: 0 10px;
+    }
 }
+
 
 
 
