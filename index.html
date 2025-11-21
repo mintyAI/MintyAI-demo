@@ -1,89 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-<header class="top-header">
-    <h1>Minty AI</h1>
-    <link rel="stylesheet" href="styles.css">
-</header>
-
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Minty AI Chatbot</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
 <body>
 
-<!-- Background video (starts hidden, controlled ONLY by java.js) -->
-<video id="bg-video" class="video-bg" autoplay muted loop playsinline style="display:none;">
+  <!-- video background (present on every page) -->
+  <video id="bg-video" class="video-bg" autoplay muted loop playsinline>
     <source id="bg-source" src="" type="video/mp4">
-</video>
+  </video>
 
-<header>
-    <a href="index.html"><img src="minty.png" alt="Minty AI Logo"></a>
-</header>
-
-<nav class="minty-nav">
+  <!-- NAVBAR (Option C: logo inside navbar) -->
+  <nav class="minty-nav" role="navigation" aria-label="Main Navigation">
     <div class="nav-left">
-        <a href="index.html" class="nav-logo">
-            <img src="minty.png" alt="Minty AI Logo">
-        </a>
+      <a href="index.html" class="nav-logo"><img src="minty.png" alt="Minty"></a>
     </div>
 
     <div class="nav-right">
-        <ul class="nav-links" id="mobileMenu">
-            <li><a href="about.html">About</a></li>
-            <li><a href="index.html">Chatbot</a></li>
-            <li><a href="theme.html">Themes</a></li>
-            <li><a href="devlogs.html">Devlogs</a></li>
-        </ul>
-
-        <div class="hamburger" onclick="toggleMenu()">
-            ☰
-        </div>
+      <ul class="nav-links" id="mobileMenu">
+        <li><a href="about.html">About</a></li>
+        <li><a href="index.html" class="active">Chatbot</a></li>
+        <li><a href="theme.html">Themes</a></li>
+        <li><a href="devlogs.html">Devlogs</a></li>
+      </ul>
+      <div class="hamburger" onclick="toggleMenu()" aria-hidden="true">☰</div>
     </div>
-</nav>
+  </nav>
 
+  <main>
+    <h1 class="page-title">Minty AI: The AI that actually helps you understand.</h1>
 
+    <div class="chat-container">
+      <div id="quickchat-embedded"></div>
+    </div>
+  </main>
 
-<h1 class="page-title">Minty AI: The AI that actually helps you understand.</h1>
+  <!-- QuickChat widget -->
+  <script>
+    (function(e,a,d,i,c,t=a.createElement(d)){
+      e[c]=e[c]||function(){(e[c].q=e[c].q||[]).push(arguments)};
+      t.src=i; t.async=1;
+      a.body.insertAdjacentElement("beforeend",t)
+    })(window,document,"script","https://widget.quickchat.ai/embed.js","_quickchat_embedded");
+    _quickchat_embedded("host","app.quickchat.ai");
+    _quickchat_embedded("init","mo6r8ou35i",{
+      theme:{ type:"dark", primary:"#70e6b8", background:"#135a3c", text:"#ffffff",
+      inputBackground:"#0d3d27", inputText:"#ffffff", bubbleUser:"#0a2a1d", bubbleAi:"#1abc9c",
+      bubbleBorder:"#70e6b8", bubbleShadow:"0 2px 8px rgba(112,230,184,0.3)" }
+    });
+  </script>
 
-<div class="chat-container">
-    <div id="quickchat-embedded"></div>
-</div>
-
-<!-- QuickChat Widget -->
-<script>
-(function(e,a,d,i,c,t=a.createElement(d)){
-    e[c]=e[c]||function(){(e[c].q=e[c].q||[]).push(arguments)};
-    t.src=i; t.async=1;
-    a.body.insertAdjacentElement("beforeend",t)
-})(window,document,"script","https://widget.quickchat.ai/embed.js","_quickchat_embedded");
-
-_quickchat_embedded("host", "app.quickchat.ai");
-_quickchat_embedded("init", "mo6r8ou35i", {
-    theme: {
-        type: "dark",
-        primary: "#70e6b8",
-        background: "#135a3c",
-        text: "#ffffff",
-        inputBackground: "#0d3d27",
-        inputText: "#ffffff",
-        bubbleUser: "#0a2a1d",
-        bubbleAi: "#1abc9c",
-        bubbleBorder: "#70e6b8",
-        bubbleShadow: "0 2px 8px rgba(112,230,184,0.3)"
-    }
-});
-</script>
-
-<!-- Your main theme/background logic -->
-<script src="java.js" defer></script>
-<script>
-function toggleMenu() {
-    const menu = document.getElementById("mobileMenu");
-    menu.classList.toggle("open");
-}
-</script>
-
+  <script src="java.js" defer></script>
 </body>
 </html>
-
-
-
-
-
-
