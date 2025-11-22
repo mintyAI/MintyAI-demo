@@ -141,8 +141,9 @@
 
 // ---------------- Hamburger Menu (robust) ----------------
 function toggleMenu() {
-  // prefer element with id mobileMenu, otherwise fallback to first .nav-links
-  const menu = document.getElementById("mobileMenu") || document.querySelector(".nav-links");
+  const menu = document.getElementById("mobileMenu");
   if (!menu) return;
   menu.classList.toggle("open");
 }
+
+
