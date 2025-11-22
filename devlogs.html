@@ -3,65 +3,54 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Minty AI Themes</title>
-  <link rel="stylesheet" href="styles.css" />
+  <title>Minty AI Devlogs</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="devlogs-page">
 
-  <!-- background video container (JS controls source/display) -->
   <video id="bg-video" class="video-bg" autoplay muted loop playsinline>
     <source id="bg-source" src="" type="video/mp4">
   </video>
 
-  <nav class="minty-nav" role="navigation" aria-label="Main Navigation">
+  <nav class="minty-nav" role="navigation">
     <div class="nav-left">
       <a href="index.html" class="nav-logo"><img src="minty.png" alt="Minty"></a>
     </div>
-
     <div class="nav-right">
       <ul class="nav-links" id="mobileMenu">
         <li><a href="about.html">About</a></li>
         <li><a href="index.html">Chatbot</a></li>
-        <li><a href="theme.html" class="active">Themes</a></li>
-        <li><a href="devlogs.html">Devlogs</a></li>
+        <li><a href="theme.html">Themes</a></li>
+        <li><a href="devlogs.html" class="active">Devlogs</a></li>
       </ul>
-      <div class="hamburger" onclick="toggleMenu()" aria-hidden="true">☰</div>
+      <div class="hamburger" onclick="toggleMenu()">☰</div>
     </div>
   </nav>
 
-  <main>
-    <h1 class="page-title">Choose a Theme</h1>
+  <header class="dev-header" style="margin-top:18px;">
+    <h1>Minty AI Devlogs</h1>
+    <p>Updates, improvements, and behind-the-scenes progress.</p>
+  </header>
+  <main class="devlogs-container">
+ <section class="devlog-entry">
+      <h2>💎 Devlog #3 — Website theme refined</h2>
+      <p class="dev-date">17/11/2025</p>
+      <p>Added themes, made website look cleaner in general. Maybe I'd remove the secret codes soon? IDK you tell me</p>
+    </section>
+  
+  <section class="devlog-entry">
+      <h2>🌐 Devlog #2 — Hosting Issues</h2>
+      <p class="dev-date">17/11/2025</p>
+      <p>Moved hosting to GitHub Pages for faster updates.</p>
+    </section>
 
-    <div class="theme-container">
-      <div class="theme-buttons">
-        <button onclick="setBackgroundTheme(1)">
-          <img src="thumb1.jpg" alt="Background 1 preview">
-          <span>Background 1</span>
-        </button>
+    <section class="devlog-entry">
+      <h2>✨ Devlog #1 — Minty AI Multi-Tab Launch!</h2>
+      <p class="dev-date">17/11/2025</p>
+      <p>Added multiple tabs (webpages) for the website and cleaned layout.</p>
+    </section>
 
-        <button onclick="setBackgroundTheme(2)">
-          <img src="thumb2.jpg" alt="Background 2 preview">
-          <span>Background 2</span>
-        </button>
-
-        <button onclick="setBackgroundTheme(3)">
-          <img src="thumb3.jpg" alt="Background 3 preview">
-          <span>Background 3</span>
-        </button>
-
-        <button onclick="setBackgroundTheme(4)">
-          <img src="thumb4.jpg" alt="Background 4 preview">
-          <span>Background 4</span>
-        </button>
-      </div>
-
-      <!-- reset button -->
-      <div style="width:100%;max-width:260px;margin: 8px auto 0;">
-        <button id="reset-theme" onclick="resetThemeAndBackground()" style="width:100%;padding:10px;border-radius:8px;border:2px solid #70e6b8;background:#0d3d27;color:#70e6b8;font-weight:600;">
-          Reset to default
-        </button>
-      </div>
-    </div>
+   
   </main>
 
   <script src="java.js" defer></script>
