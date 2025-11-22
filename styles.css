@@ -1,5 +1,5 @@
 /* ======================================================
-   Minty AI — CLEAN + FIXED + ANIMATED MOBILE MENU
+   Minty AI — CLEAN + FIXED + THEME BUTTONS UNIFORM
 ====================================================== */
 
 :root{
@@ -13,6 +13,7 @@
 
 /* ---------------- GLOBAL ---------------- */
 *{box-sizing:border-box}
+html,body{height:100%}
 body{
   margin:0;
   background:var(--bg-dark);
@@ -56,15 +57,10 @@ body{
   z-index:100;
 }
 
-.nav-logo img{
-  height:44px;
-}
+.nav-left{display:flex;align-items:center;gap:10px}
+.nav-logo img{height:44px; display:block;}
 
-.nav-right{
-  display:flex;
-  gap:16px;
-  position:relative; /* IMPORTANT for mobile dropdown */
-}
+.nav-right{display:flex;align-items:center;gap:16px;position:relative;}
 
 .nav-links{
   display:flex;
@@ -99,16 +95,19 @@ body{
 }
 
 /* ======================================================
-   FIXED: REAL MOBILE MENU (#mobileMenu)
+   MOBILE MENU (works with either #mobileMenu or .nav-links)
+   - CSS will accept both selectors for safety
 ====================================================== */
 @media (max-width:768px){
 
   .hamburger{display:block;}
 
-  #mobileMenu{
+  /* primary: #mobileMenu used by HTML; fallback to .nav-links */
+  #mobileMenu,
+  .nav-links {
     position:absolute;
-    top:58px;
-    right:0;
+    top:64px;
+    right:10px;
     width:230px;
     flex-direction:column;
     gap:14px;
@@ -117,30 +116,28 @@ body{
     border-radius:12px;
     box-shadow:0 8px 20px rgba(0,0,0,0.35);
 
-    /* Hidden state */
+    /* hidden by default */
     max-height:0;
     overflow:hidden;
     padding:0;
-
     transition:max-height .35s ease, padding .25s ease;
-    z-index:9999;
     display:flex;
+    z-index:9999;
   }
 
-  /* OPENED state (toggled by JS) */
-  #mobileMenu.open{
+  /* opened state */
+  #mobileMenu.open,
+  .nav-links.open {
     max-height:500px;
     padding:14px;
   }
 
-  /* hide desktop layout */
-  .nav-links{
-    display:none;
-  }
+  /* visually hide desktop inline nav while keeping the element */
+  .nav-links:not(.open) { display:none; }
 }
 
 /* ======================================================
-   MAIN CONTENT
+   MAIN + CHAT
 ====================================================== */
 main{
   width:100%;
@@ -155,9 +152,6 @@ main{
   margin:20px 0;
 }
 
-/* ======================================================
-   CHAT
-====================================================== */
 .chat-container{
   width:100%;
   max-width:1200px;
@@ -179,43 +173,7 @@ main{
 }
 
 /* ======================================================
-   SECRET PANEL
-====================================================== */
-#secret-section{
-  background:var(--panel);
-  padding:18px;
-  width:100%;
-  max-width:380px;
-  margin:20px auto;
-  border-radius:12px;
-  border:2px solid var(--minty);
-  display:flex;
-  flex-direction:column;
-  gap:14px;
-  text-align:center;
-}
-
-#secret-section input,
-#secret-submit,
-#reset-theme{
-  padding:10px;
-  border-radius:8px;
-  border:2px solid var(--minty);
-  background:#0d3d27;
-  color:var(--minty);
-  font-weight:600;
-  width:100%;
-  transition:.2s;
-}
-
-#secret-submit:hover,
-#reset-theme:hover{
-  background:var(--minty-strong);
-  color:var(--deep);
-}
-
-/* ======================================================
-   THEME SELECTOR - CLEAN DESKTOP GRID
+   THEME SELECTOR - UNIFORM THUMBNAILS
 ====================================================== */
 .theme-container{
   width:100%;
@@ -227,33 +185,24 @@ main{
   gap:22px;
 }
 
-/* Desktop → 3 columns */
+/* Desktop default: 3 columns; tablet: 2; mobile: 1 */
 .theme-buttons{
   width:100%;
   display:grid;
   grid-template-columns:repeat(3, 1fr);
-  gap:24px;
+  gap:22px;
   justify-items:center;
 }
 
-/* Tablet → 2 */
-@media (max-width:900px){
-  .theme-buttons{
-    grid-template-columns:repeat(2,1fr);
-  }
-}
+/* breakpoints */
+@media (max-width:900px){ .theme-buttons{ grid-template-columns:repeat(2,1fr); } }
+@media (max-width:600px){ .theme-buttons{ grid-template-columns:repeat(1,1fr); } }
 
-/* Mobile → 1 */
-@media (max-width:600px){
-  .theme-buttons{
-    grid-template-columns:repeat(1,1fr);
-  }
-}
-
+/* Thumbnail buttons are fixed size + flex internals so text overlay doesn't push image */
 .theme-buttons button{
   width:100%;
   height:120px;
-  max-width:200px;
+  max-width:260px;
   position:relative;
   overflow:hidden;
   border-radius:12px;
@@ -269,25 +218,34 @@ main{
   padding-bottom:10px;
 }
 
+/* make images fill & always same size */
 .theme-buttons button img{
   position:absolute;
   inset:0;
   width:100%;
   height:100%;
-  object-fit:cover;
-  opacity:.75;
+  object-fit:cover; /* ensures consistent cropping */
+  pointer-events:none;
+  opacity:.78;
   transition:.18s;
 }
 
+/* overlay text */
+.theme-buttons button span{
+  position:relative;
+  z-index:2;
+  background:rgba(0,0,0,0.45);
+  padding:6px 10px;
+  border-radius:8px;
+}
+
+/* hover */
 .theme-buttons button:hover{
   background:var(--minty-strong);
   border-color:var(--minty-strong);
   color:var(--deep);
 }
-
-.theme-buttons button:hover img{
-  opacity:.42;
-}
+.theme-buttons button:hover img{ opacity:.42; }
 
 /* ======================================================
    DEVLOGS
@@ -301,7 +259,4 @@ main{
   color:var(--text-light);
 }
 
-.devlog-entry h2{
-  margin:0 0 6px 0;
-  color:#98fbcb;
-}
+.devlog-entry h2{ color:#98fbcb; margin:0 0 6px 0; }
