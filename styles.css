@@ -260,3 +260,23 @@ main{
 }
 
 .devlog-entry h2{ color:#98fbcb; margin:0 0 6px 0; }
+#reset-theme {
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+    font-size: 1.1rem;
+    background: #2a2a2a;
+    color: #fff;
+    border: 2px solid #444;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+/* Hover animation */
+#reset-theme:hover {
+    background: #3a3a3a;
+    transform: translateY(-4px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.4);
+}
+
