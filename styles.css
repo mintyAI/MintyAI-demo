@@ -60,6 +60,12 @@ body{
   height:44px;
 }
 
+.nav-right{
+  display:flex;
+  gap:16px;
+  position:relative; /* IMPORTANT for mobile dropdown */
+}
+
 .nav-links{
   display:flex;
   align-items:center;
@@ -93,37 +99,43 @@ body{
 }
 
 /* ======================================================
-   SLIDE-DOWN ANIMATED MOBILE MENU
+   FIXED: REAL MOBILE MENU (#mobileMenu)
 ====================================================== */
 @media (max-width:768px){
 
   .hamburger{display:block;}
 
-  .nav-links{
+  #mobileMenu{
     position:absolute;
-    top:64px;
-    right:10px;
+    top:58px;
+    right:0;
     width:230px;
     flex-direction:column;
     gap:14px;
     background:#0d3d27;
     border:2px solid var(--minty);
     border-radius:12px;
-    padding:14px;
     box-shadow:0 8px 20px rgba(0,0,0,0.35);
 
-    /* Hidden by default */
+    /* Hidden state */
     max-height:0;
     overflow:hidden;
+    padding:0;
 
-    /* Transition for slide-down */
     transition:max-height .35s ease, padding .25s ease;
+    z-index:9999;
+    display:flex;
   }
 
-  /* When opened */
-  .nav-links.open{
+  /* OPENED state (toggled by JS) */
+  #mobileMenu.open{
     max-height:500px;
     padding:14px;
+  }
+
+  /* hide desktop layout */
+  .nav-links{
+    display:none;
   }
 }
 
@@ -167,7 +179,7 @@ main{
 }
 
 /* ======================================================
-   SECRET THEME PANEL
+   SECRET PANEL
 ====================================================== */
 #secret-section{
   background:var(--panel);
@@ -203,7 +215,7 @@ main{
 }
 
 /* ======================================================
-   THEME SELECTOR — FIXED PERFECT GRID
+   THEME SELECTOR - CLEAN DESKTOP GRID
 ====================================================== */
 .theme-container{
   width:100%;
@@ -215,15 +227,29 @@ main{
   gap:22px;
 }
 
+/* Desktop → 3 columns */
 .theme-buttons{
   width:100%;
   display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(170px, 1fr));
-  gap:22px;
+  grid-template-columns:repeat(3, 1fr);
+  gap:24px;
   justify-items:center;
 }
 
-/* Perfectly equal buttons */
+/* Tablet → 2 */
+@media (max-width:900px){
+  .theme-buttons{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+/* Mobile → 1 */
+@media (max-width:600px){
+  .theme-buttons{
+    grid-template-columns:repeat(1,1fr);
+  }
+}
+
 .theme-buttons button{
   width:100%;
   height:120px;
@@ -243,7 +269,6 @@ main{
   padding-bottom:10px;
 }
 
-/* Consistent thumbnails */
 .theme-buttons button img{
   position:absolute;
   inset:0;
