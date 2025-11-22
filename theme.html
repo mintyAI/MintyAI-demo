@@ -4,18 +4,20 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Minty AI Themes</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
+  <!-- background video container (JS controls source/display) -->
   <video id="bg-video" class="video-bg" autoplay muted loop playsinline>
     <source id="bg-source" src="" type="video/mp4">
   </video>
 
-  <nav class="minty-nav" role="navigation">
+  <nav class="minty-nav" role="navigation" aria-label="Main Navigation">
     <div class="nav-left">
       <a href="index.html" class="nav-logo"><img src="minty.png" alt="Minty"></a>
     </div>
+
     <div class="nav-right">
       <ul class="nav-links" id="mobileMenu">
         <li><a href="about.html">About</a></li>
@@ -23,60 +25,45 @@
         <li><a href="theme.html" class="active">Themes</a></li>
         <li><a href="devlogs.html">Devlogs</a></li>
       </ul>
-      <div class="hamburger" onclick="toggleMenu()">☰</div>
+      <div class="hamburger" onclick="toggleMenu()" aria-hidden="true">☰</div>
     </div>
   </nav>
 
   <main>
-<div class="theme-container">
+    <h1 class="page-title">Choose a Theme</h1>
 
-    <h2 class="page-title">Choose Background</h2>
+    <div class="theme-container">
+      <div class="theme-buttons">
+        <button onclick="setBackgroundTheme(1)">
+          <img src="thumb1.jpg" alt="Background 1 preview">
+          <span>Background 1</span>
+        </button>
 
-    <div class="theme-buttons">
-        <button class="theme-thumb" onclick="setBackgroundTheme(1)">
-    <img src="bg1.jpg">
-</button>
-<button class="theme-thumb" onclick="setBackgroundTheme(2)">
-    <img src="bg2.jpg">
-</button>
-    <div class="theme-buttons">
-        <button class="theme-thumb" onclick="setBackgroundTheme(3)">
-    <img src="bg3.jpg">
-</button>
-<button class="theme-thumb" onclick="setBackgroundTheme(4)">
-    <img src="bg4.jpg">
-</button>
-        <button onclick="setBackgroundColorMode()">Default Dark</button>
+        <button onclick="setBackgroundTheme(2)">
+          <img src="thumb2.jpg" alt="Background 2 preview">
+          <span>Background 2</span>
+        </button>
+
+        <button onclick="setBackgroundTheme(3)">
+          <img src="thumb3.jpg" alt="Background 3 preview">
+          <span>Background 3</span>
+        </button>
+
+        <button onclick="setBackgroundTheme(4)">
+          <img src="thumb4.jpg" alt="Background 4 preview">
+          <span>Background 4</span>
+        </button>
+      </div>
+
+      <!-- reset button -->
+      <div style="width:100%;max-width:260px;margin: 8px auto 0;">
+        <button id="reset-theme" onclick="resetThemeAndBackground()" style="width:100%;padding:10px;border-radius:8px;border:2px solid #70e6b8;background:#0d3d27;color:#70e6b8;font-weight:600;">
+          Reset to default
+        </button>
+      </div>
     </div>
-
-    <div id="secret-section">
-        <input type="text" id="secret-input" placeholder="Enter secret code">
-        <button id="secret-submit">Submit Code</button>
-        <button id="reset-theme">Reset Theme</button>
-    </div>
-
-</div>
-
   </main>
 
   <script src="java.js" defer></script>
-  <script>
-    // small secret code handler (keeps it simple)
-    document.addEventListener("DOMContentLoaded", () => {
-      const submit = document.getElementById("secret-submit");
-      const input = document.getElementById("secret-input");
-      const msg = document.getElementById("secret-message");
-
-      function apply(code) {
-        const c = (code || "").trim().toLowerCase();
-        if (c === "karen") { applyThemeClass("karen-theme"); msg.textContent = "🕷️ Karen theme applied"; }
-        else if (c === "jarvis") { applyThemeClass("jarvis-theme"); msg.textContent = "🤖 Jarvis theme applied"; }
-        else if (c === "talal") { applyThemeClass("talal-theme"); msg.textContent = "✨ Talal theme applied"; }
-        else { msg.textContent = "❌ Incorrect code"; }
-      }
-
-      if (submit) submit.addEventListener("click", () => apply(input.value));
-    });
-  </script>
 </body>
 </html>
