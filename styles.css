@@ -1,5 +1,5 @@
 /* ======================================================
-   Minty AI — CLEAN + FIXED + THEME BUTTONS UNIFORM
+   Minty AI — Clean, Stable, Fully Working UI
 ====================================================== */
 
 :root{
@@ -7,25 +7,30 @@
   --minty-strong:#1abc9c;
   --deep:#0d3d27;
   --bg-dark:#2f2f2f;
-  --panel:rgba(13,61,39,0.25);
   --text-light:#e5e5e5;
 }
 
-/* ---------------- GLOBAL ---------------- */
-*{box-sizing:border-box}
-html,body{height:100%}
-body{
+/* GLOBAL -------------------------------------------- */
+*{
+  box-sizing:border-box;
+}
+
+html,body{
+  height:100%;
   margin:0;
+  padding:0;
+}
+
+body{
   background:var(--bg-dark);
   color:#fff;
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  min-height:100vh;
   display:flex;
   flex-direction:column;
   align-items:center;
 }
 
-/* ---------------- VIDEO BG ---------------- */
+/* BACKGROUND VIDEO ---------------------------------- */
 .video-bg{
   position:fixed;
   inset:0;
@@ -40,51 +45,68 @@ body{
 /* ======================================================
    NAVBAR
 ====================================================== */
+
 .minty-nav{
   width:92%;
   max-width:1100px;
   margin:12px auto 0;
   padding:10px 18px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
   background:var(--deep);
   border:2px solid var(--minty);
   border-radius:12px;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
   box-shadow:0 6px 20px rgba(0,0,0,0.35);
   position:sticky;
   top:10px;
-  z-index:100;
+  z-index:1000;
 }
 
-.nav-left{display:flex;align-items:center;gap:10px}
-.nav-logo img{height:44px; display:block;}
-
-.nav-right{display:flex;align-items:center;gap:16px;position:relative;}
-
-.nav-links{
+.nav-left{
   display:flex;
   align-items:center;
-  gap:28px;
-  list-style:none;
-  padding:0;
-  margin:0;
 }
 
-.nav-links li a{
+.nav-logo img{
+  height:44px;
+  display:block;
+}
+
+.nav-right{
+  display:flex;
+  align-items:center;
+  position:relative;
+  gap:16px;
+}
+
+/* Desktop links */
+.nav-links{
+  display:flex;
+  gap:28px;
+  list-style:none;
+  margin:0;
+  padding:0;
+}
+
+.nav-links a{
   color:var(--minty);
   text-decoration:none;
-  font-weight:600;
   padding:6px 10px;
   border-radius:8px;
-  transition:.18s;
+  font-weight:600;
+  transition:.2s;
 }
-.nav-links li a:hover,
-.nav-links li a.active{
+
+.nav-links a:hover,
+.nav-links a.active{
   background:var(--minty-strong);
   color:var(--deep);
 }
 
+/* Hamburger */
 .hamburger{
   display:none;
   font-size:30px;
@@ -95,50 +117,45 @@ body{
 }
 
 /* ======================================================
-   MOBILE MENU (works with either #mobileMenu or .nav-links)
-   - CSS will accept both selectors for safety
+   MOBILE NAV
 ====================================================== */
-@media (max-width:768px){
 
-  .hamburger{display:block;}
+@media(max-width:768px){
 
-  /* primary: #mobileMenu used by HTML; fallback to .nav-links */
-  #mobileMenu,
-  .nav-links {
+  .hamburger{ display:block; }
+
+  /* hide desktop layout */
+  .nav-links{
     position:absolute;
     top:64px;
     right:10px;
-    width:230px;
     flex-direction:column;
-    gap:14px;
+    width:220px;
+
     background:#0d3d27;
     border:2px solid var(--minty);
     border-radius:12px;
     box-shadow:0 8px 20px rgba(0,0,0,0.35);
 
-    /* hidden by default */
-    max-height:0;
     overflow:hidden;
+    max-height:0;
     padding:0;
+
     transition:max-height .35s ease, padding .25s ease;
-    display:flex;
-    z-index:9999;
+    z-index:999;
   }
 
-  /* opened state */
-  #mobileMenu.open,
-  .nav-links.open {
-    max-height:500px;
+  /* OPEN */
+  .nav-links.open{
+    max-height:400px;
     padding:14px;
   }
-
-  /* visually hide desktop inline nav while keeping the element */
-  .nav-links:not(.open) { display:none; }
 }
 
 /* ======================================================
-   MAIN + CHAT
+   MAIN CONTENT
 ====================================================== */
+
 main{
   width:100%;
   max-width:1200px;
@@ -148,21 +165,23 @@ main{
 .page-title{
   font-size:2rem;
   text-align:center;
-  color:#98fbcb;
   margin:20px 0;
+  color:#98fbcb;
 }
 
+/* CHAT ------------------------------------------------ */
 .chat-container{
   width:100%;
   max-width:1200px;
   height:75vh;
   background:linear-gradient(to bottom,#000,#fff);
   border-radius:12px;
+  box-shadow:0 4px 16px rgba(0,0,0,0.4);
+  margin:20px auto;
+
   display:flex;
   align-items:center;
   justify-content:center;
-  box-shadow:0 4px 16px rgba(0,0,0,0.4);
-  margin:20px auto;
 }
 
 #quickchat-embedded{
@@ -173,79 +192,88 @@ main{
 }
 
 /* ======================================================
-   THEME SELECTOR - UNIFORM THUMBNAILS
+   THEME SELECTOR — UNIFORM GRID
 ====================================================== */
+
 .theme-container{
   width:100%;
-  max-width:720px;
-  margin:0 auto;
+  max-width:760px;
   padding:12px;
+  margin:0 auto;
   display:flex;
   flex-direction:column;
   gap:22px;
 }
 
-/* Desktop default: 3 columns; tablet: 2; mobile: 1 */
+/* Desktop = 3 columns */
 .theme-buttons{
-  width:100%;
   display:grid;
   grid-template-columns:repeat(3, 1fr);
   gap:22px;
-  justify-items:center;
 }
 
-/* breakpoints */
-@media (max-width:900px){ .theme-buttons{ grid-template-columns:repeat(2,1fr); } }
-@media (max-width:600px){ .theme-buttons{ grid-template-columns:repeat(1,1fr); } }
+/* Breakpoints */
+@media(max-width:900px){
+  .theme-buttons{
+    grid-template-columns:repeat(2, 1fr);
+  }
+}
+@media(max-width:600px){
+  .theme-buttons{
+    grid-template-columns:1fr;
+  }
+}
 
-/* Thumbnail buttons are fixed size + flex internals so text overlay doesn't push image */
 .theme-buttons button{
   width:100%;
-  height:120px;
-  max-width:260px;
+  height:130px;
   position:relative;
   overflow:hidden;
-  border-radius:12px;
+
   border:2px solid var(--minty);
+  border-radius:12px;
   background:#0d3d27;
   color:var(--minty);
+
   display:flex;
   align-items:flex-end;
   justify-content:center;
-  font-weight:600;
+
   cursor:pointer;
-  transition:.18s;
-  padding-bottom:10px;
+  font-weight:600;
+  transition:.2s;
 }
 
-/* make images fill & always same size */
+/* Thumbnail image — ALWAYS UNIFORM */
 .theme-buttons button img{
   position:absolute;
   inset:0;
   width:100%;
   height:100%;
-  object-fit:cover; /* ensures consistent cropping */
+  object-fit:cover;
+  opacity:.75;
+  transition:.2s;
   pointer-events:none;
-  opacity:.78;
-  transition:.18s;
 }
 
-/* overlay text */
 .theme-buttons button span{
   position:relative;
   z-index:2;
-  background:rgba(0,0,0,0.45);
+  background:rgba(0,0,0,0.5);
   padding:6px 10px;
   border-radius:8px;
 }
 
-/* hover */
+/* Hover effect */
 .theme-buttons button:hover{
-  background:var(--minty-strong);
   border-color:var(--minty-strong);
+  background:var(--minty-strong);
   color:var(--deep);
 }
-.theme-buttons button:hover img{ opacity:.42; }
+
+.theme-buttons button:hover img{
+  opacity:.4;
+}
 
 /* ======================================================
    DEVLOGS
@@ -259,24 +287,33 @@ main{
   color:var(--text-light);
 }
 
-.devlog-entry h2{ color:#98fbcb; margin:0 0 6px 0; }
-#reset-theme {
-    width: 100%;
-    padding: 12px;
-    margin-top: 15px;
-    font-size: 1.1rem;
-    background: #2a2a2a;
-    color: #fff;
-    border: 2px solid #444;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: all 0.25s ease;
+.devlog-entry h2{
+  margin:0 0 6px 0;
+  color:#98fbcb;
 }
 
-/* Hover animation */
+/* RESET THEME BUTTON ------------------------------- */
+#reset-theme{
+  width:100%;
+  padding:12px;
+  margin-top:15px;
+  background:#2a2a2a;
+  color:#fff;
+  border:2px solid #444;
+  border-radius:10px;
+  cursor:pointer;
+  font-size:1.1rem;
+  transition:.25s ease;
+}
+
+#reset-theme:hover{
+  background:#3a3a3a;
+  transform:translateY(-4px);
+  box-shadow:0 6px 12px rgba(0,0,0,0.4);
+}
+
 #reset-theme:hover {
-    background: #3a3a3a;
-    transform: translateY(-4px);
-    box-shadow: 0 6px 12px rgba(0,0,0,0.4);
+    background: #3b3b3b;
+    border-color: #fff;
+    transform: scale(1.05);
 }
-
