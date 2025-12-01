@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minty AI — Feedback</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- BACKGROUND VIDEO -->
+    <video id="bg-video" class="video-bg" autoplay muted loop playsinline>
+        <source id="bg-source" src="" type="video/mp4">
+    </video>
+
+    <!-- NAVBAR -->
+    <nav class="minty-nav" role="navigation" aria-label="Main Navigation">
+        <div class="nav-left">
+            <a href="index.html" class="nav-logo">
+                <img src="minty.png" alt="Minty">
+            </a>
+        </div>
+
+        <div class="nav-right">
+            <ul class="nav-links" id="mobileMenu">
+                <li><a href="about.html">About</a></li>
+                <li><a href="index.html">Chatbot</a></li>
+                <li><a href="theme.html">Themes</a></li>
+                <li><a href="devlogs.html">Devlogs</a></li>
+                <li><a href="feedback.html" class="active">Feedback</a></li>
+            </ul>
+            <div class="hamburger" onclick="toggleMenu()">☰</div>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <h1 class="page-title">Feedback</h1>
+
+        <div class="feedback-wrapper">
+            <iframe 
+                src="https://docs.google.com/forms/d/e/1FAIpQLSes5M3CmsR4FKIVk2TQfIzx9_mO1Z4ojcl7G74r4rtxCR5Rlw/viewform?embedded=true"
+                frameborder="0"
+                marginheight="0"
+                marginwidth="0">
+            </iframe>
+        </div>
+    </main>
+
+    <!-- JAVASCRIPT -->
+    <script src="script.js"></script>
+
+</body>
+</html>
