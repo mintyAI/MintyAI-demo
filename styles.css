@@ -276,14 +276,15 @@ main{
 }
 
 /* ======================================================
-   DEVLOGS
+   DEVLOGS — CLEAN, SEPARATE MODULE
 ====================================================== */
+
 .devlog-entry{
   background:rgba(0,0,0,0.35);
   padding:20px;
   border-radius:12px;
   border-left:4px solid var(--minty);
-  margin-bottom:20px;
+  margin-bottom:24px;
   color:var(--text-light);
 }
 
@@ -292,23 +293,53 @@ main{
   color:#98fbcb;
 }
 
-.feedback-box {
-    width: 100%;
-    max-width: 1000px;
-    margin: 25px auto;
-    background: rgba(0, 0, 0, 0.35);
-    border: 2px solid var(--minty);
-    border-radius: 14px;
-    padding: 20px;
-    backdrop-filter: blur(5px);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+/* Small spacing fix so feedback page never inherits devlog spacing */
+.devlog-entry:last-child {
+  margin-bottom:40px;
 }
 
-.feedback-frame {
-    width: 100%;
-    height: 1200px;
-    border: none;
-    border-radius: 10px;
+
+/* ======================================================
+   FEEDBACK PAGE — FULLY SEPARATE STYLING
+====================================================== */
+
+.feedback-section {
+  width:100%;
+  max-width:1100px;
+  margin:25px auto 40px auto !important;
+  display:flex;
+  justify-content:center;
 }
+
+.feedback-box {
+  width:100%;
+  background:rgba(0,0,0,0.45);
+  border:2px solid var(--minty);
+  border-radius:14px;
+  padding:22px;
+  box-shadow:0 6px 20px rgba(0,0,0,0.35);
+  backdrop-filter:blur(6px);
+}
+
+/* Bigger, more readable form area */
+.feedback-frame {
+  width:100%;
+  height:1200px;
+  border:none;
+  border-radius:12px;
+  background:transparent;
+}
+
+/* Mobile adjustments */
+@media (max-width:768px){
+  .feedback-frame {
+    height:1400px;
+  }
+  .feedback-box {
+    padding:16px;
+  }
+}
+
+
 
 
