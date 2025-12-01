@@ -40,21 +40,15 @@
   </main>
 
   <!-- QuickChat widget -->
-  <script>
-    (function(e,a,d,i,c,t=a.createElement(d)){
-      e[c]=e[c]||function(){(e[c].q=e[c].q||[]).push(arguments)};
-      t.src=i; t.async=1;
-      a.body.insertAdjacentElement("beforeend",t)
-    })(window,document,"script","https://widget.quickchat.ai/embed.js","_quickchat_embedded");
-    _quickchat_embedded("host","app.quickchat.ai");
-    _quickchat_embedded("init","mo6r8ou35i",{
-      theme:{ type:"dark", primary:"#70e6b8", background:"#135a3c", text:"#ffffff",
-      inputBackground:"#0d3d27", inputText:"#ffffff", bubbleUser:"#0a2a1d", bubbleAi:"#1abc9c",
-      bubbleBorder:"#70e6b8", bubbleShadow:"0 2px 8px rgba(112,230,184,0.3)" }
-    });
-  </script>
+<div id="quickchat-embedded" style="height:600px;overflow: hidden;"></div>
+<script>
+  (function(e,a,d,i,c,t=a.createElement(d)){e[c]=e[c]||function(){(e[c].q=e[c].q||[]).push(arguments)},t.src=i,t.async=1,a.body.insertAdjacentElement("beforeend",t)})(window,document,"script","https://widget.quickchat.ai/embed.js","_quickchat_embedded");
+  _quickchat_embedded("host", "app.quickchat.ai");
+  _quickchat_embedded("init", "hht9zd7rn9");
+</script>
 
   <script src="java.js" defer></script>
 </body>
 </html>
+
 
