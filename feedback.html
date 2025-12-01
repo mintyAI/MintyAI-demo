@@ -5,11 +5,12 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Minty AI — Feedback</title>
 
-  <!-- If you have a site-wide stylesheet, keep the link; inline CSS below is a safe fallback. -->
+  <!-- Main shared CSS -->
   <link rel="stylesheet" href="styles.css" />
 
   <style>
-    /* ---------- FALLBACK / PAGE-ONLY CSS (copied & trimmed from your theme) ---------- */
+    /* ---------- PAGE CSS (same as before) ---------- */
+
     :root{
       --minty:#70e6b8;
       --minty-strong:#1abc9c;
@@ -18,8 +19,8 @@
       --panel:rgba(13,61,39,0.25);
       --text-light:#e5e5e5;
     }
-    *{box-sizing:border-box}
-    html,body{height:100%}
+    *{box-sizing:border-box;}
+    html,body{height:100%;}
     body{
       margin:0;
       font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -32,7 +33,7 @@
       -webkit-font-smoothing:antialiased;
     }
 
-    /* Video background (JS shows/hides it) */
+    /* Video background (your main theme system controls it) */
     .video-bg{
       position:fixed;
       inset:0;
@@ -40,9 +41,11 @@
       height:100%;
       object-fit:cover;
       z-index:-1;
-      display:none;
       pointer-events:none;
     }
+
+    /* ⭐ FIX — ensures JS can force the video to show */
+    .video-bg { display: block !important; }
 
     /* NAVBAR */
     .minty-nav{
@@ -62,10 +65,17 @@
       top:8px;
       z-index:50;
     }
-    .nav-left{display:flex;align-items:center;gap:10px}
-    .nav-logo img{height:44px; display:block;}
+    .nav-left{display:flex;align-items:center;gap:10px;}
+    .nav-logo img{height:44px;}
     .nav-right{display:flex;align-items:center;gap:14px;position:relative;}
-    .nav-links{display:flex;align-items:center;gap:18px;list-style:none;margin:0;padding:0}
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:18px;
+      list-style:none;
+      margin:0;
+      padding:0;
+    }
     .nav-links li a{
       color:var(--minty);
       text-decoration:none;
@@ -73,18 +83,32 @@
       padding:6px 10px;
       border-radius:8px;
       transition:.18s;
-      display:inline-block;
     }
     .nav-links li a:hover,
-    .nav-links li a.active{ background:var(--minty-strong); color:var(--deep) }
+    .nav-links li a.active{
+      background:var(--minty-strong);
+      color:var(--deep);
+    }
+    .hamburger{
+      display:none;
+      font-size:28px;
+      color:var(--minty);
+      cursor:pointer;
+      padding:6px;
+    }
 
-    .hamburger{ display:none; font-size:28px; color:var(--minty); cursor:pointer; padding:6px; border-radius:8px; }
+    main{
+      width:100%;
+      max-width:1200px;
+      padding:22px;
+    }
 
-    /* MAIN */
-    main{ width:100%; max-width:1200px; padding:22px; margin-top:8px; }
-    .page-title{ font-size:2rem; text-align:center; color:#98fbcb; margin:18px 0; }
+    .page-title{
+      font-size:2rem;
+      text-align:center;
+      color:#98fbcb;
+    }
 
-    /* Feedback container */
     .feedback-box{
       width:100%;
       max-width:1100px;
@@ -98,18 +122,17 @@
 
     .feedback-frame{
       width:100%;
-      height:calc(100vh - 280px); /* responsive height: fills most of viewport */
+      height:calc(100vh - 280px);
       min-height:700px;
       border:0;
       border-radius:10px;
-      display:block;
       background:transparent;
     }
 
-    /* Responsive tweaks */
     @media (max-width:900px){
       .feedback-frame{ height:900px; min-height:600px; }
     }
+
     @media (max-width:680px){
       .hamburger{ display:block; }
       .nav-links{
@@ -123,27 +146,22 @@
         border:2px solid var(--minty);
         border-radius:12px;
         padding:12px;
-        box-shadow:0 8px 20px rgba(0,0,0,0.35);
         max-height:0;
         overflow:hidden;
         transition:max-height .35s ease, padding .25s ease;
       }
       .nav-links.open{ max-height:500px; padding:12px; }
     }
-
-    /* small utility to ensure embedded form matches background: make iframe background transparent when possible */
-    .feedback-frame iframe, .feedback-frame { background: transparent; }
   </style>
 </head>
 
 <body>
-  <!-- Background video element (managed by your global JS if present) -->
+  <!-- Background video controlled by your JS -->
   <video id="bg-video" class="video-bg" autoplay muted loop playsinline>
     <source id="bg-source" src="" type="video/mp4">
   </video>
 
-  <!-- NAV -->
-  <nav class="minty-nav" role="navigation" aria-label="Main Navigation">
+  <nav class="minty-nav">
     <div class="nav-left">
       <a href="index.html" class="nav-logo"><img src="minty.png" alt="Minty"></a>
     </div>
@@ -156,45 +174,29 @@
         <li><a href="devlogs.html">Devlogs</a></li>
         <li><a href="feedback.html" class="active">Feedback</a></li>
       </ul>
-
-      <div class="hamburger" onclick="toggleMenu()" aria-hidden="true">☰</div>
+      <div class="hamburger" onclick="toggleMenu()">☰</div>
     </div>
   </nav>
 
-  <!-- MAIN -->
   <main>
     <h1 class="page-title">Feedback</h1>
 
     <div class="feedback-box">
-      <!-- Larger, responsive iframe. Google Forms doesn't allow full styling inside iframe — this wrapper makes it match the site. -->
       <iframe
         class="feedback-frame"
         src="https://docs.google.com/forms/d/e/1FAIpQLSes5M3CmsR4FKIVk2TQfIzx9_mO1Z4ojcl7G74r4rtxCR5Rlw/viewform?embedded=true"
-        allow="ambient-light-sensor; accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
       >
-        Loading…
       </iframe>
     </div>
   </main>
 
-  <!-- Minimal JS: toggle menu + attempt to restore global background/theme if your java.js provides functions -->
+  <script src="java.js"></script>
+
   <script>
     function toggleMenu(){
-      const menu = document.getElementById('mobileMenu') || document.querySelector('.nav-links');
-      if(!menu) return;
-      menu.classList.toggle('open');
+      const m = document.getElementById("mobileMenu");
+      if (m) m.classList.toggle("open");
     }
-
-    // If you have a global theme loader function (from your existing java.js), call applySaved settings on load.
-    // This is safe: it checks that expected functions exist before calling them.
-    window.addEventListener('DOMContentLoaded', () => {
-      // if you use a function named applySavedTheme or a manager, call it (optional)
-      if (typeof applySavedTheme === 'function') {
-        try { applySavedTheme(); } catch(e){console.warn(e);}
-      }
-      // If your new manager exposes setBackgroundColorMode / setBackgroundTheme and stored values exist,
-      // your global js will already handle it; we don't force anything here.
-    });
   </script>
 </body>
 </html>
