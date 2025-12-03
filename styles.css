@@ -339,6 +339,16 @@ main{
     padding:16px;
   }
 }
+.page-content li {
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+
+.answer {
+  color: #98fbcb;
+  display: inline-block;
+  margin-top: 4px;
+}
 
 
 
