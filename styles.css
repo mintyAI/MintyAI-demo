@@ -1,28 +1,25 @@
+/* ====================================================== Minty AI — Clean, Stable, Fully Working UI ====================================================== */
 :root{
   --minty:#70e6b8;
   --minty-strong:#1abc9c;
   --deep:#0d3d27;
   --bg-dark:#2f2f2f;
-  --panel:rgba(13,61,39,0.25);
   --text-light:#e5e5e5;
 }
 
-/* GLOBAL */
-*{box-sizing:border-box}
-html,body{height:100%}
+/* GLOBAL -------------------------------------------- */
+*{ box-sizing:border-box; }
+html,body{ height:100%; margin:0; padding:0; }
 body{
-  margin:0;
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color:#fff;
   background:var(--bg-dark);
+  color:#fff;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   display:flex;
   flex-direction:column;
   align-items:center;
-  min-height:100vh;
-  -webkit-font-smoothing:antialiased;
 }
 
-/* Video background */
+/* BACKGROUND VIDEO ---------------------------------- */
 .video-bg{
   position:fixed;
   inset:0;
@@ -34,92 +31,159 @@ body{
   pointer-events:none;
 }
 
-/* NAVBAR */
+/* ====================================================== NAVBAR ====================================================== */
 .minty-nav{
   width:92%;
   max-width:1100px;
   margin:12px auto 0;
   padding:10px 18px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
   background:var(--deep);
   border:2px solid var(--minty);
   border-radius:12px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
   box-shadow:0 6px 20px rgba(0,0,0,0.35);
   position:sticky;
-  top:8px;
-  z-index:50;
+  top:10px;
+  z-index:1000;
 }
-.nav-left{display:flex;align-items:center;gap:10px}
-.nav-logo img{height:44px; display:block;}
-.nav-right{display:flex;align-items:center;gap:14px;position:relative;}
-.nav-links{display:flex;align-items:center;gap:18px;list-style:none;margin:0;padding:0}
-.nav-links li a{
+.nav-left{ display:flex; align-items:center; }
+.nav-logo img{ height:44px; display:block; }
+.nav-right{ display:flex; align-items:center; position:relative; gap:16px; }
+/* Desktop links */
+.nav-links{ display:flex; gap:28px; list-style:none; margin:0; padding:0; }
+.nav-links a{
   color:var(--minty);
   text-decoration:none;
-  font-weight:600;
   padding:6px 10px;
   border-radius:8px;
-  transition:.18s;
-  display:inline-block;
+  font-weight:600;
+  transition:.2s;
 }
-.nav-links li a:hover,
-.nav-links li a.active{ background:var(--minty-strong); color:var(--deep) }
+.nav-links a:hover, .nav-links a.active{ background:var(--minty-strong); color:var(--deep); }
+/* Hamburger */
+.hamburger{ display:none; font-size:30px; color:var(--minty); cursor:pointer; padding:6px; border-radius:6px; }
 
-.hamburger{ display:none; font-size:28px; color:var(--minty); cursor:pointer; padding:6px; border-radius:8px; }
-
-/* MAIN */
-main{ width:100%; max-width:1200px; padding:22px; margin-top:8px; }
-.page-title{ font-size:2rem; text-align:center; color:#98fbcb; margin:18px 0; }
-
-/* Feedback container */
-.feedback-box{
-  width:100%;
-  max-width:1100px;
-  margin:18px auto;
-  background:var(--panel);
-  border:2px solid var(--minty);
-  border-radius:14px;
-  padding:18px;
-  box-shadow:0 6px 24px rgba(0,0,0,0.35);
-}
-
-.feedback-frame{
-  width:100%;
-  height:calc(100vh - 280px);
-  min-height:700px;
-  border:0;
-  border-radius:10px;
-  display:block;
-  background:transparent;
-}
-
-/* Responsive tweaks */
-@media (max-width:900px){
-  .feedback-frame{ height:900px; min-height:600px; }
-}
-@media (max-width:680px){
+/* ====================================================== MOBILE NAV ====================================================== */
+@media(max-width:768px){
   .hamburger{ display:block; }
+  /* hide desktop layout */
   .nav-links{
     position:absolute;
     top:64px;
-    right:12px;
-    width:220px;
+    right:10px;
     flex-direction:column;
-    gap:12px;
-    background:var(--deep);
+    width:220px;
+    background:#0d3d27;
     border:2px solid var(--minty);
     border-radius:12px;
-    padding:12px;
     box-shadow:0 8px 20px rgba(0,0,0,0.35);
-    max-height:0;
     overflow:hidden;
+    max-height:0;
+    padding:0;
     transition:max-height .35s ease, padding .25s ease;
+    z-index:999;
   }
-  .nav-links.open{ max-height:500px; padding:12px; }
+  /* OPEN */
+  .nav-links.open{ max-height:400px; padding:14px; }
 }
 
-/* small utility to ensure embedded form matches background */
-.feedback-frame iframe, .feedback-frame { background: transparent; }
+/* ====================================================== MAIN CONTENT ====================================================== */
+main{ width:100%; max-width:1200px; padding:22px; }
+.page-title{ font-size:2rem; text-align:center; margin:20px 0; color:#98fbcb; }
+
+/* CHAT ------------------------------------------------ */
+.chat-container{
+  width:100%;
+  max-width:1200px;
+  height:75vh;
+  background:linear-gradient(to bottom,#000,#fff);
+  border-radius:12px;
+  box-shadow:0 4px 16px rgba(0,0,0,0.4);
+  margin:20px auto;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+#quickchat-embedded{ width:95%; height:95%; border-radius:10px; background:#FAF9F6; }
+
+/* ====================================================== THEME SELECTOR — UNIFORM GRID ====================================================== */
+.theme-container{ width:100%; max-width:760px; padding:12px; margin:0 auto; display:flex; flex-direction:column; gap:22px; }
+/* Desktop = 3 columns */
+.theme-buttons{ display:grid; grid-template-columns:repeat(3, 1fr); gap:22px; }
+/* Breakpoints */
+@media(max-width:900px){ .theme-buttons{ grid-template-columns:repeat(2, 1fr); } }
+@media(max-width:600px){ .theme-buttons{ grid-template-columns:1fr; } }
+.theme-buttons button{
+  width:100%;
+  height:130px;
+  position:relative;
+  overflow:hidden;
+  border:2px solid var(--minty);
+  border-radius:12px;
+  background:#0d3d27;
+  color:var(--minty);
+  display:flex;
+  align-items:flex-end;
+  justify-content:center;
+  cursor:pointer;
+  font-weight:600;
+  transition:.2s;
+}
+/* Thumbnail image — ALWAYS UNIFORM */
+.theme-buttons button img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  opacity:.75;
+  transition:.2s;
+  pointer-events:none;
+}
+.theme-buttons button span{
+  position:relative;
+  z-index:2;
+  background:rgba(0,0,0,0.5);
+  padding:6px 10px;
+  border-radius:8px;
+}
+/* Hover effect */
+.theme-buttons button:hover{
+  border-color:var(--minty-strong);
+  background:var(--minty-strong);
+  color:var(--deep);
+}
+.theme-buttons button:hover img{ opacity:.4; }
+
+/* ====================================================== DEVLOGS — CLEAN, SEPARATE MODULE ====================================================== */
+.devlog-entry{
+  background:rgba(0,0,0,0.35);
+  padding:20px;
+  border-radius:12px;
+  border-left:4px solid var(--minty);
+  margin-bottom:24px;
+  color:var(--text-light);
+}
+.devlog-entry h2{ margin:0 0 6px 0; color:#98fbcb; }
+/* Small spacing fix so feedback page never inherits devlog spacing */
+.devlog-entry:last-child { margin-bottom:40px; }
+
+/* ====================================================== FEEDBACK PAGE — FULLY SEPARATE STYLING ====================================================== */
+.feedback-section { width:100%; max-width:1100px; margin:25px auto 40px auto !important; display:flex; justify-content:center; }
+.feedback-box { width:100%; background:rgba(0,0,0,0.45); border:2px solid var(--minty); border-radius:14px; padding:22px; box-shadow:0 6px 20px rgba(0,0,0,0.35); backdrop-filter:blur(6px); }
+/* Bigger, more readable form area */
+.feedback-frame { width:100%; height:1200px; border:none; border-radius:12px; background:transparent; }
+/* Mobile adjustments */
+@media (max-width:768px){
+  .feedback-frame { height:1400px; }
+  .feedback-box { padding:16px; }
+}
+.page-content li { margin-bottom: 12px; line-height: 1.5; }
+.answer { color: #98fbcb; display: inline-block; text-align: center; margin-top: 4px; }
+.Commonly-asked-questions { color: var(--minty); /* minty green */ font-family: 'Bangers', cursive; /* fun burger-style font */ font-size: 2.5rem; margin-bottom: 24px; }
+.page-content { list-style: none; padding: 0; width: 100%; max-width: 800px; margin: 0 auto; }
+.question { font-weight: bold; color: var(--minty); font-size: 1.25rem; margin-bottom: 6px; }
+.answer { color: #98fbcb; font-size: 1rem; display: block; line-height: 1.5; }
+h3.commonly-asked-questions { font-size: 1.8rem; color: var(--minty); text-align: center; margin-top: 40px; margin-bottom: 20px; font-weight: 700; letter-spacing: 0.5px; text-shadow: 0 0 6px rgba(112, 230, 184, 0.4); }
