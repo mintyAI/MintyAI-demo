@@ -383,54 +383,16 @@ main{
   display: block;
   line-height: 1.5;
 }
-/* Heading */
-/* ---------- FAQ Section ---------- */
 
-.faq-title {
+h3.commonly-asked-questions {
+  font-size: 1.8rem;
   color: var(--minty);
-  font-family: 'Bangers', cursive;  /* chunky fun font */
   text-align: center;
-  font-size: 2.5rem;
-  margin: 40px 0 30px 0;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-shadow: 0 0 6px rgba(112, 230, 184, 0.4);
 }
 
-.faq-list {
-  list-style: none;
-  padding: 0;
-  max-width: 700px;
-  margin: 0 auto; /* center the FAQ block */
-}
 
-.faq-list li {
-  text-align: center;
-  margin-bottom: 30px; /* spacing between Q&A items */
-}
-
-/* Question styling */
-.faq-list .question {
-  font-weight: bold;
-  font-size: 1.3rem;
-  color: var(--minty);
-  margin-bottom: 8px;
-  position: relative;
-}
-
-/* Optional underline */
-.faq-list .question::after {
-  content: '';
-  display: block;
-  width: 60px;
-  height: 2px;
-  background: var(--minty);
-  margin: 6px auto 0 auto;
-  border-radius: 1px;
-}
-
-/* Answer styling */
-.faq-list .answer {
-  color: #98fbcb;
-  font-size: 1rem;
-  line-height: 1.5;
-  display: block;
-  margin-top: 6px;
-}
