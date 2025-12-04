@@ -180,10 +180,15 @@ main{ width:100%; max-width:1200px; padding:22px; }
   .feedback-frame { height:1400px; }
   .feedback-box { padding:16px; }
 }
-.page-content li { margin-bottom: 12px; line-height: 1.5; }
+.page-content li {
+  margin-bottom: 12px;
+  line-height: 1.5;
+  text-align: center; /* centers the text inside each <li> */
+}
 .answer { color: #98fbcb; display: inline-block; text-align: center; margin-top: 4px; }
 .Commonly-asked-questions { color: var(--minty); /* minty green */ font-family: 'Bangers', cursive; /* fun burger-style font */ font-size: 2.5rem; margin-bottom: 24px; }
 .page-content { list-style: none; padding: 0; width: 100%; max-width: 800px; margin: 0 auto; }
 .question { font-weight: bold; color: var(--minty); font-size: 1.25rem; margin-bottom: 6px; }
 .answer { color: #98fbcb; font-size: 1rem; display: block; line-height: 1.5; }
 h3.commonly-asked-questions { font-size: 1.8rem; color: var(--minty); text-align: center; margin-top: 40px; margin-bottom: 20px; font-weight: 700; letter-spacing: 0.5px; text-shadow: 0 0 6px rgba(112, 230, 184, 0.4); }
+
