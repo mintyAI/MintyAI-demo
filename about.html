@@ -9,7 +9,7 @@
 
 <body>
 
-    <!-- Background videos (auto-controlled by JS theme system) -->
+    <!-- Background videos controlled by theme.js -->
     <video id="theme1" class="video-bg" autoplay loop muted></video>
     <video id="theme2" class="video-bg" autoplay loop muted></video>
     <video id="theme3" class="video-bg" autoplay loop muted></video>
@@ -40,67 +40,61 @@
         <!-- Page Title -->
         <h1 class="page-title">About MintyAI</h1>
 
-        <!-- Subjects Section (CENTER ONLY THIS) -->
-        <section style="text-align:center; margin-bottom:40px;">
-            <h2 style="color: var(--minty); margin-bottom:12px;">Subjects Covered</h2>
+        <!-- SUBJECTS (centered only) -->
+        <section class="center-block">
+            <h2 style="color: var(--minty); margin-bottom: 12px;">Subjects Covered</h2>
 
-            <p style="margin-top:10px; line-height:1.8; font-size:1.2rem;">
+            <div class="subjects-list">
                 Chemistry<br>
                 Biology<br>
                 ICT<br>
                 Math<br>
                 World History<br>
                 Physics (will be added VERY soon)
-            </p>
+            </div>
         </section>
 
-        <!-- Q & A — also centered -->
+        <!-- Q&A Title (centered via CSS class) -->
         <h3 class="commonly-asked-questions">Commonly Asked Questions</h3>
 
-        <ul class="page-content" style="text-align:center;">
+        <!-- Q&A Content (centered only here) -->
+        <section class="page-content" style="text-align:center;">
 
-            <li>
-                <span class="question">
-                    Question: Why don't I use the normal ChatGPT instead?
-                </span>
+            <p>
+                <span class="question">Question: Why don't I use the normal ChatGPT instead?</span>
                 <span class="answer">
-                    Because normal AI answers are too broad, too complex, or off-curriculum.
+                    Normal AI answers are often too broad, too complex, or off-curriculum.
                     MintyAI is trained to explain simply **while staying aligned with the 9th-grade curriculum**.
                 </span>
-            </li>
+            </p>
 
-            <li>
-                <span class="question">
-                    Question: Is MintyAI 100% accurate?
-                </span>
+            <p>
+                <span class="question">Question: Is MintyAI 100% accurate?</span>
                 <span class="answer">
                     No AI is perfect — but MintyAI is tuned for high accuracy and curriculum-correct explanations most of the time.
                 </span>
-            </li>
+            </p>
 
-            <li>
-                <span class="question">
-                    Question: Does this project gain any profit?
-                </span>
+            <p>
+                <span class="question">Question: Does this project gain any profit?</span>
                 <span class="answer">
                     No. The project is entirely free and has no monetization of any kind.
                 </span>
-            </li>
+            </p>
 
-            <li>
-                <span class="question">
-                    Question: Does your project get updated?
-                </span>
+            <p>
+                <span class="question">Question: Does your project get updated?</span>
                 <span class="answer">
-                    Yes! We update it regularly to improve accuracy, visuals, and overall usability.
+                    Yes! We update it regularly to improve accuracy, visuals, and usability.
                     Your feedback helps — submit it at <strong>mintyai.xyz/feedback.html</strong>.
                 </span>
-            </li>
+            </p>
 
-        </ul>
+        </section>
 
     </main>
 
+    <!-- JS -->
     <script src="theme.js"></script>
     <script>
         function toggleMenu() {
