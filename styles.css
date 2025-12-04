@@ -352,7 +352,6 @@ main{
 .Commonly-asked-questions {
   color: var(--minty);      /* minty green */
   font-family: 'Bangers', cursive; /* fun burger-style font */
-  text-align: center;       /* center the heading */
   font-size: 2.5rem;
   margin-bottom: 24px;
 }
@@ -394,5 +393,16 @@ h3.commonly-asked-questions {
   letter-spacing: 0.5px;
   text-shadow: 0 0 6px rgba(112, 230, 184, 0.4);
 }
+h3.commonly-asked-questions {
+  font-size: 1.5rem;
+  color: var(--minty);
+  font-weight: 700;
+  margin-top: 35px;
+  margin-bottom: 15px;
+  text-align: left;        /* ← NOT centered */
+  border-left: 4px solid var(--minty);
+  padding-left: 12px;
+}
+
 
 
