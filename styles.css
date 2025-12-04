@@ -347,6 +347,7 @@ main{
 .answer {
   color: #98fbcb;
   display: inline-block;
+text-align: center; 
   margin-top: 4px;
 }
 .Commonly-asked-questions {
@@ -362,11 +363,6 @@ main{
   width: 100%;
   max-width: 800px;
   margin: 0 auto;
-}
-
-.page-content li {
-  margin-bottom: 20px;
-  text-align: center; /* center questions & answers */
 }
 
 .question {
@@ -393,6 +389,7 @@ h3.commonly-asked-questions {
   letter-spacing: 0.5px;
   text-shadow: 0 0 6px rgba(112, 230, 184, 0.4);
 }
+
 
 
 
