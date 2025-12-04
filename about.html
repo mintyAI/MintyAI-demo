@@ -3,102 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About MintyAI</title>
+    <title>About Minty AI</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 
-    <!-- Background videos controlled by theme.js -->
-    <video id="theme1" class="video-bg" autoplay loop muted></video>
-    <video id="theme2" class="video-bg" autoplay loop muted></video>
-    <video id="theme3" class="video-bg" autoplay loop muted></video>
-    <video id="themeNone" class="video-bg" autoplay loop muted></video>
+    <!-- Background video elements -->
+    <video id="bg-video" class="video-bg" autoplay muted loop playsinline>
+        <source id="bg-source" src="" type="video/mp4">
+    </video>
 
     <!-- NAVBAR -->
-    <nav class="minty-nav">
+    <nav class="minty-nav" role="navigation">
         <div class="nav-left">
-            <a class="nav-logo" href="index.html">
-                <img src="logo.png" alt="Minty Logo">
-            </a>
+            <a href="index.html" class="nav-logo"><img src="minty.png" alt="Minty"></a>
         </div>
 
         <div class="nav-right">
-            <div class="hamburger" onclick="toggleMenu()">☰</div>
-
-            <ul class="nav-links" id="navLinks">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="devlogs.html">Devlogs</a></li>
+            <ul class="nav-links" id="mobileMenu">
                 <li><a href="about.html" class="active">About</a></li>
+                <li><a href="index.html">Chatbot</a></li>
+                <li><a href="theme.html">Themes</a></li>
+                <li><a href="devlogs.html">Devlogs</a></li>
                 <li><a href="feedback.html">Feedback</a></li>
             </ul>
+
+            <div class="hamburger" onclick="toggleMenu()">☰</div>
         </div>
     </nav>
 
     <main>
+        <h1 class="page-title">About Minty AI</h1>
 
-        <!-- Page Title -->
-        <h1 class="page-title">About MintyAI</h1>
+        <p class="page-content">
+            Minty AI is an AI developed by Ahmed Aleid and Mohammed Albaiz. Its main goal is to help you understand the curriculum in a clearer and simpler way.
+        </p>
 
-        <!-- SUBJECTS (centered only) -->
-        <section class="center-block">
-            <h2 style="color: var(--minty); margin-bottom: 12px;">Subjects Covered</h2>
+        <p class="page-content">Supported subjects:</p>
+        <ul class="page-content">
+            <li>English Grammar Book</li>
+            <li>Chemistry</li>
+            <li>Biology</li>
+            <li>ICT</li>
+            <li>Math</li>
+            <li>World History</li>
+            <li>Physics (will be added VERY soon)</li>
+        </ul>
 
-            <div class="subjects-list">
-                Chemistry<br>
-                Biology<br>
-                ICT<br>
-                Math<br>
-                World History<br>
-                Physics (will be added VERY soon)
-            </div>
-        </section>
+        <h2 class="page-title">Fun Facts</h2>
+        <ul class="page-content">
+            <li>Minty AI is named after Mohammed’s mint plant, Minty.</li>
+            <li>A similar project was developed by Ahmed last year, but decided to renew it because of WAICY's 2025 competition.</li>
+        </ul>
 
-        <!-- Q&A Title (centered via CSS class) -->
-        <h3 class="commonly-asked-questions">Commonly Asked Questions</h3>
+        <h3 class="commonly-asked-questions">Commonly asked questions</h3>
 
-        <!-- Q&A Content (centered only here) -->
-        <section class="page-content" style="text-align:center;">
-
-            <p>
-                <span class="question">Question: Why don't I use the normal ChatGPT instead?</span>
-                <span class="answer">
-                    Normal AI answers are often too broad, too complex, or off-curriculum.
-                    MintyAI is trained to explain simply **while staying aligned with the 9th-grade curriculum**.
-                </span>
-            </p>
-
-            <p>
-                <span class="question">Question: Is MintyAI 100% accurate?</span>
-                <span class="answer">
-                    No AI is perfect — but MintyAI is tuned for high accuracy and curriculum-correct explanations most of the time.
-                </span>
-            </p>
-
-            <p>
-                <span class="question">Question: Does this project gain any profit?</span>
-                <span class="answer">
-                    No. The project is entirely free and has no monetization of any kind.
-                </span>
-            </p>
-
-            <p>
-                <span class="question">Question: Does your project get updated?</span>
-                <span class="answer">
-                    Yes! We update it regularly to improve accuracy, visuals, and usability.
-                    Your feedback helps — submit it at <strong>mintyai.xyz/feedback.html</strong>.
-                </span>
-            </p>
-
-        </section>
+        <ul class="page-content">
+            <li>
+                <strong>Question:</strong> Why don't I use the normal ChatGPT instead?
+                <br>
+                <span class="answer">Answer:</span> Because normal AI answers are too broad or too specific, along with being complicated in general. But MintyAI solves both since it's trained to explain in simpler ways while trained to not go far from the curriculum.
+            </li>
+            <br>
+            <li>
+                <strong>Question:</strong> Is MintyAI 100% accurate?
+                <br>
+                <span class="answer">Answer:</span> No, since at the end of the day it's still and AI model, but it's very accurate most if the time.
+            </li>
+            <br>
+            <li>
+                <strong>Question:</strong> Does this project gain any profit from being used?
+                <br>
+                <span class="answer">Answer:</span> No, it's completely free to use and we don't gain anything in the first place.
+            </li>
+            <br>
+            <li>
+                <strong>Question:</strong> Does your project get updated every once in a while?
+                <br>
+                <span class="answer">Answer:</span> Yes! We're trying to improve it in ways that will make it more accurate, sleeker, and more comfortable to use in general. So every feedback counts. If you'd like to submit one go to mintyai.xyz/feedback.html .
+            </li>
+        </ul>
 
     </main>
 
-    <!-- JS -->
-    <script src="theme.js"></script>
+    <script src="java.js" defer></script>
     <script>
         function toggleMenu() {
-            document.getElementById("navLinks").classList.toggle("open");
+            const menu = document.getElementById('mobileMenu');
+            if (!menu) return;
+            menu.classList.toggle('open');
         }
     </script>
 
